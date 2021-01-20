@@ -1,0 +1,252 @@
+@import './variables';
+
+*,*::before,*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body{
+    @include roboto;
+    font-size: 1.6rem;
+    // background-color: $main-color;
+}
+
+
+nav#navbar.navbar{
+    // background-color: rgba(0, 0, 0, 0.431);
+    padding-bottom: 0;
+    i{
+        color: white;
+    }
+    .navbar-brand{
+        margin-left: .2em;
+        // margin-top: .05em;
+        position: relative;
+        font-size: 4rem;
+        font-weight: bold;
+        color: $main-color;
+        letter-spacing: 2px;
+        @include title;
+        overflow: hidden;
+        &::before{
+            position: absolute;
+            right: 0%;
+            color:white;
+            content: 'DB';
+            transition: right 1s;
+        }
+
+        span{
+            position: relative;
+            color: $main-color;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        
+        &:hover{
+            span{
+                opacity: 1;
+            }
+
+            &::before{
+            right: -50%;
+            }
+
+        }
+
+        i{
+            padding-right: .4em;
+        }
+    }
+
+    .navbar-toggler{
+        font-size: 4rem;
+        padding: .3em 1em;
+        border: none;
+
+    }
+
+    .navbar-nav{
+        font-size: 2.2rem;
+        text-transform: capitalize;
+        transition: .5s;
+        .nav-link{
+            position: relative;
+            color: white;
+            padding: 0.5em 1em;
+            &::after{
+                @include link;
+            }
+            &:hover::after{
+                height: 80%;
+            }
+        }
+        .active{
+            color: rgb(209, 209, 209);
+        }
+
+    }
+}
+
+//header
+
+header{
+    position: relative;
+    height: 100vh;
+    background-image: url('../img/header-lg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 40%;
+    .shadow-bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.897);
+    }
+    .hero{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 1;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.644);
+
+        .header-title{
+            font-size: 10rem;
+            @include title;
+            color: $main-color;
+            span{
+                color: white;
+            }
+        }
+        
+    .btn{
+        position: relative;
+        margin-top: 2em;
+        padding: .7em 1.4em;
+        font-size: 2rem;
+        text-transform: uppercase;
+        color: white;
+        border: 1px solid white;
+        transition: color .5s, border .5s;//nadać na co
+
+        &::after,&::before{
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            transition: top .5s, bottom .5s, right .5s, left .5s, border-width .5s;
+        }
+        &::before{
+            top: 0px;
+            left: 0;
+        }
+        &::after{
+            bottom: 0;
+            right: 0;
+        }
+
+        &:hover{
+            color: $main-color;
+            background-color: transparent;
+            border-color: transparent;
+            &::after{
+                bottom: -10px;
+                right: -10px;
+                border-bottom: 5px solid $main-color;
+                border-right: 5px solid $main-color;
+            }
+            &::before{
+                top: -10px;
+                left: -10px;
+                border-top: 5px solid $main-color;
+                border-left: 5px solid $main-color;
+            }
+        }
+
+    }
+    }
+    .header-text{
+        font-size: 2rem;
+    }
+
+}
+
+@media(min-width: 768px){
+    nav#navbar.navbar{
+        .navbar-brand{
+            font-size: 5rem;
+        }
+        .navbar-nav{
+            font-size: 3rem;
+        }
+
+    }
+    header{
+        .hero{
+            .header-title{
+                font-size: 10rem;
+            }
+            .header-text{
+                font-size: 2rem;
+            }
+            .btn{
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+@media(min-width: 996px){
+    nav#navbar.navbar{
+        .navbar-brand{
+            font-size: 5rem;
+        }
+        .navbar-nav{
+            font-size: 2.5rem;
+
+            .nav-link::after{
+                width: 100%;
+            }
+        }
+    }
+    header{
+        .hero{
+            .header-title{
+                font-size: 15rem;
+            }
+            .header-text{
+                font-size: 3rem;
+            }
+            .btn{
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+@media(min-width: 1200px){
+    nav#navbar.navbar{
+        .navbar-brand{
+            margin-left: .5em;
+        }
+
+        .nav-link{
+            margin: 0 .5em;
+        }
+
+        .navbar-nav{
+            font-size: 2.5rem;
+        }
+    }
+}

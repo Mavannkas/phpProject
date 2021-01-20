@@ -1,0 +1,254 @@
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+}
+
+nav#navbar.navbar {
+  padding-bottom: 0;
+}
+
+nav#navbar.navbar i {
+  color: white;
+}
+
+nav#navbar.navbar .navbar-brand {
+  margin-left: .2em;
+  position: relative;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #2eb0ca;
+  letter-spacing: 2px;
+  font-family: 'Amatic SC', cursive;
+  overflow: hidden;
+}
+
+nav#navbar.navbar .navbar-brand::before {
+  position: absolute;
+  right: 0%;
+  color: white;
+  content: 'DB';
+  -webkit-transition: right 1s;
+  transition: right 1s;
+}
+
+nav#navbar.navbar .navbar-brand span {
+  position: relative;
+  color: #2eb0ca;
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+nav#navbar.navbar .navbar-brand:hover span {
+  opacity: 1;
+}
+
+nav#navbar.navbar .navbar-brand:hover::before {
+  right: -50%;
+}
+
+nav#navbar.navbar .navbar-brand i {
+  padding-right: .4em;
+}
+
+nav#navbar.navbar .navbar-toggler {
+  font-size: 4rem;
+  padding: .3em 1em;
+  border: none;
+}
+
+nav#navbar.navbar .navbar-nav {
+  font-size: 2.2rem;
+  text-transform: capitalize;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+nav#navbar.navbar .navbar-nav .nav-link {
+  position: relative;
+  color: white;
+  padding: 0.5em 1em;
+}
+
+nav#navbar.navbar .navbar-nav .nav-link::after {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 0;
+  width: 50%;
+  border-radius: 4px;
+  background-color: #2eb0ca;
+  -webkit-transition: height .5s;
+  transition: height .5s;
+  content: '';
+  z-index: -10;
+}
+
+nav#navbar.navbar .navbar-nav .nav-link:hover::after {
+  height: 80%;
+}
+
+nav#navbar.navbar .navbar-nav .active {
+  color: #d1d1d1;
+}
+
+header {
+  position: relative;
+  height: 100vh;
+  background-image: url("../img/header-lg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 40%;
+}
+
+header .shadow-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.897);
+}
+
+header .hero {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 1;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.644);
+}
+
+header .hero .header-title {
+  font-size: 10rem;
+  font-family: 'Amatic SC', cursive;
+  color: #2eb0ca;
+}
+
+header .hero .header-title span {
+  color: white;
+}
+
+header .hero .btn {
+  position: relative;
+  margin-top: 2em;
+  padding: .7em 1.4em;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: white;
+  border: 1px solid white;
+  -webkit-transition: color .5s, border .5s;
+  transition: color .5s, border .5s;
+}
+
+header .hero .btn::after, header .hero .btn::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  -webkit-transition: top .5s, bottom .5s, right .5s, left .5s, border-width .5s;
+  transition: top .5s, bottom .5s, right .5s, left .5s, border-width .5s;
+}
+
+header .hero .btn::before {
+  top: 0px;
+  left: 0;
+}
+
+header .hero .btn::after {
+  bottom: 0;
+  right: 0;
+}
+
+header .hero .btn:hover {
+  color: #2eb0ca;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+header .hero .btn:hover::after {
+  bottom: -10px;
+  right: -10px;
+  border-bottom: 5px solid #2eb0ca;
+  border-right: 5px solid #2eb0ca;
+}
+
+header .hero .btn:hover::before {
+  top: -10px;
+  left: -10px;
+  border-top: 5px solid #2eb0ca;
+  border-left: 5px solid #2eb0ca;
+}
+
+header .header-text {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  nav#navbar.navbar .navbar-brand {
+    font-size: 5rem;
+  }
+  nav#navbar.navbar .navbar-nav {
+    font-size: 3rem;
+  }
+  header .hero .header-title {
+    font-size: 10rem;
+  }
+  header .hero .header-text {
+    font-size: 2rem;
+  }
+  header .hero .btn {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 996px) {
+  nav#navbar.navbar .navbar-brand {
+    font-size: 5rem;
+  }
+  nav#navbar.navbar .navbar-nav {
+    font-size: 2.5rem;
+  }
+  nav#navbar.navbar .navbar-nav .nav-link::after {
+    width: 100%;
+  }
+  header .hero .header-title {
+    font-size: 15rem;
+  }
+  header .hero .header-text {
+    font-size: 3rem;
+  }
+  header .hero .btn {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  nav#navbar.navbar .navbar-brand {
+    margin-left: .5em;
+  }
+  nav#navbar.navbar .nav-link {
+    margin: 0 .5em;
+  }
+  nav#navbar.navbar .navbar-nav {
+    font-size: 2.5rem;
+  }
+}
+/*# sourceMappingURL=mian.css.map */

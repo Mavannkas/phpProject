@@ -1,0 +1,22 @@
+$main-color: #2eb0ca;
+
+@mixin roboto {
+    font-family: 'Roboto', sans-serif;
+}
+@mixin title {
+    font-family: 'Amatic SC', cursive;
+}
+
+@mixin link {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 0;
+    width: 50%;
+    border-radius: 4px;
+    background-color: $main-color;
+    transition: height .5s;
+    content:'';
+    z-index: -10;
+}
