@@ -14,13 +14,54 @@ html{
 body{
     @include roboto;
     font-size: 1.6rem;
+    background-color: #f8f9fa;
     // background-color: $main-color;
 }
 
+.whiteBlock{
+    position: absolute;
+    width: 40%;
+    height: 25px;
+    background-color: #f8f9fa;
+    &--left{
+        left: -50px;
+        bottom: 0;
+        transform: skew(45deg);
+    }
+    &--right{
+        right: -50px;
+        bottom: 0;
+        transform: skew(-45deg);
+    }
+    &--top-right{
+        top: 0;
+        left: 60%;
+        transform: translateX(-50%) skew(-45deg);
+    }
+    &--top-left{
+        top: 0;
+        left: 40%;
+        transform: translateX(-50%) skew(45deg);
+    }
+
+}
+
+.wrapper{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em 0;
+}
+
+.section__title{
+    margin: 1em 0;
+    color: $main-color;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3rem;
+}
 
 nav#navbar.navbar{
-    // background-color: rgba(0, 0, 0, 0.431);
-    padding-bottom: 0;
     i{
         color: white;
     }
@@ -39,7 +80,9 @@ nav#navbar.navbar{
             right: 0%;
             color:white;
             content: 'DB';
-            transition: right 1s;
+            transition: transform .7s;
+            transform-origin: right;
+            perspective: 1000px;
         }
 
         span{
@@ -55,7 +98,7 @@ nav#navbar.navbar{
             }
 
             &::before{
-            right: -50%;
+            transform: rotateY(-90deg);
             }
 
         }
@@ -99,10 +142,11 @@ nav#navbar.navbar{
 header{
     position: relative;
     height: 100vh;
-    background-image: url('../img/header-lg.jpg');
+    background-image: url('../img/header-sm.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: 40%;
+    overflow: hidden;
     .shadow-bg{
         position: absolute;
         top: 0;
@@ -182,8 +226,110 @@ header{
 
 }
 
+
+//aboutus
+
+#aboutus{
+    .aboutus__bottomTitle{
+        display: none;
+    }
+
+    .aboutus__elements{
+        display: grid;
+        height: 800px;
+        grid-row: 1fr;
+        grid-template-rows: 2fr .3fr 2fr;
+    }
+
+    .aboutus__topTitle, .aboutus__phoneTitle, .aboutus__bottomTitle{
+        text-transform: capitalize;
+        padding: 0 1em;
+        margin-bottom: 0.5em;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .aboutus__phoneTitle{
+        margin-top: auto;
+        text-align: right;
+    }
+
+    .aboutus__element{
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        flex-basis: 100%;
+        overflow: hidden;
+        transition: flex-basis .5s;
+        &:hover{
+            flex-basis: 250%;
+            .aboutus__elementText{
+                bottom: 0;
+                opacity: 1;
+            }
+        }
+
+        .aboutus__elementText{
+            position: absolute;
+            bottom: -100%;
+            width: 100%;
+            padding: 1em;
+            color: white;
+            background-color: rgba(0,0,0,.7);
+            text-align: center;
+            opacity: 0;
+            transition: opacity .5s ease-in-out, bottom .5s ease-in-out;
+
+        }
+        .aboutus__elementTitle{
+            text-transform: uppercase;
+            font-size: 2rem;
+            margin-bottom: 1em;
+        }
+    }
+    .aboutus__elementOne{
+        position: relative;
+        display: flex;
+        .one{
+            background-image: url('../img/experience.jpg');
+ 
+        }
+        .two{
+            background-image: url('../img/friendship.jpg');
+            flex-basis: 100%;
+            &:hover{
+                flex-basis: 250%;
+            }
+        }
+
+    }
+    .aboutus__elementTwo{
+        position: relative;
+        display: flex;
+        .three{
+            background-image: url('../img/simple.jpg');
+        }
+        .four{
+            background-image: url('../img/nice.jpg');
+        }
+    }
+}
+
 @media(min-width: 768px){
+    .wrapper{
+        width: 90%;
+    }
+
+    .section__title{
+        font-size: 4rem;
+    }
+
+    .whiteBlock{
+        width: 35%;
+        height: 40px;
+    }
     nav#navbar.navbar{
+        
         .navbar-brand{
             font-size: 5rem;
         }
@@ -205,15 +351,40 @@ header{
             }
         }
     }
+    #aboutus{
+        .aboutus__topTitle{
+            font-size: 2.5rem;
+        }
+
+        .aboutus__bottomTitle{
+            font-size: 2.5rem;
+            display: block;
+            margin-top: 0.5em;
+            text-align: right;
+        }
+
+        .aboutus__phoneTitle{
+            display: none;
+        }
+
+        .aboutus__elements{
+            display: grid;
+            height: 800px;
+            grid-template-rows: 2fr 2fr;
+        }
+    }
 }
 
-@media(min-width: 996px){
+@media(min-width: 992px){
+    nav{
+    height: 70px;
+    }
     nav#navbar.navbar{
         .navbar-brand{
             font-size: 5rem;
         }
         .navbar-nav{
-            font-size: 2.5rem;
+            font-size: 2rem;
 
             .nav-link::after{
                 width: 100%;
@@ -223,13 +394,13 @@ header{
     header{
         .hero{
             .header-title{
-                font-size: 15rem;
+                font-size: 12rem;
             }
             .header-text{
-                font-size: 3rem;
+                font-size: 2rem;
             }
             .btn{
-                font-size: 3rem;
+                font-size: 2rem;
             }
         }
     }
@@ -246,7 +417,10 @@ header{
         }
 
         .navbar-nav{
-            font-size: 2.5rem;
+            font-size: 2.5rem;  
         }
+    }
+    footer{
+    background-image: url('../img/header-lg.jpg');
     }
 }
