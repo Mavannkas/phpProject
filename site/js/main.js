@@ -1,5 +1,8 @@
 const main=()=>{
     const nav=document.querySelector("#navbar");
+    const pricesBtns=document.querySelectorAll(".prices__btn")
+    const prices=document.querySelector(".prices")
+    const pricesBoxes=document.querySelectorAll(".prices__box");
 
 
     const setBGC=()=>{
@@ -20,6 +23,31 @@ const main=()=>{
     });
 
     window.addEventListener('scroll',setBGC);
+
+    pricesBtns[0].addEventListener('click',()=>{
+        pricesBoxes[0].style.display="block";
+        pricesBoxes[1].style.display="none";
+        pricesBoxes[2].style.display="none";
+    })
+    pricesBtns[1].addEventListener('click',()=>{
+        pricesBoxes[0].style.display="none";
+        pricesBoxes[1].style.display="block";
+        pricesBoxes[2].style.display="none";
+    })
+    pricesBtns[2].addEventListener('click',()=>{
+        pricesBoxes[0].style.display="none";
+        pricesBoxes[1].style.display="none";
+        pricesBoxes[2].style.display="block";
+    })
+    pricesBtns.forEach(a=>{
+        a.addEventListener('click',()=>prices.classList.add("stonks"));
+    })
+    prices.addEventListener('dblclick',()=>{
+        prices.classList.remove("stonks");
+        pricesBoxes[0].style.display="none";
+        pricesBoxes[1].style.display="none";
+        pricesBoxes[2].style.display="none";
+    })
 }
 
 

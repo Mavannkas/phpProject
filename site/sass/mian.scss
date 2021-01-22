@@ -14,7 +14,7 @@ html{
 body{
     @include roboto;
     font-size: 1.6rem;
-    background-color: #f8f9fa;
+    background: $body-color;
     // background-color: $main-color;
 }
 
@@ -22,7 +22,7 @@ body{
     position: absolute;
     width: 40%;
     height: 25px;
-    background-color: #f8f9fa;
+    background: $body-color;
     &--left{
         left: -50px;
         bottom: 0;
@@ -34,13 +34,15 @@ body{
         transform: skew(-45deg);
     }
     &--top-right{
+        width: 20%;
         top: 0;
-        left: 60%;
+        left: 56%;
         transform: translateX(-50%) skew(-45deg);
     }
     &--top-left{
+        width: 20%;
         top: 0;
-        left: 40%;
+        left: 44%;
         transform: translateX(-50%) skew(45deg);
     }
 
@@ -51,6 +53,7 @@ body{
     max-width: 1200px;
     margin: 0 auto;
     padding: 1em 0;
+    margin-bottom: 5em;
 }
 
 .section__title{
@@ -61,6 +64,68 @@ body{
     font-size: 3rem;
 }
 
+.btn{
+        position: relative;
+        text-transform: uppercase;
+        transition: color .5s, border .5s;//nadać na co
+
+        &::after,&::before{
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            transition: top .5s, bottom .5s, right .5s, left .5s, border-width .5s;
+        }
+        &::before{
+            top: 0px;
+            left: 0;
+        }
+        &::after{
+            bottom: 0;
+            right: 0;
+        }
+
+        &:hover{
+            color: $main-color;
+            background-color: transparent;
+            border-color: transparent;
+            &::after{
+                bottom: -10px;
+                right: -10px;
+                border-bottom: 5px solid $main-color;
+                border-right: 5px solid $main-color;
+            }
+            &::before{
+                top: -10px;
+                left: -10px;
+                border-top: 5px solid $main-color;
+                border-left: 5px solid $main-color;
+            }
+        }
+
+    }
+
+.scroll-fix{
+    &::before{
+        display: block;
+        margin-top: -62px;
+        height: 62px;
+        content: '';
+    }
+}
+
+.shadow-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.897);
+}
+
+main{
+    position: relative;
+}
 nav#navbar.navbar{
     i{
         color: white;
@@ -147,14 +212,7 @@ header{
     background-attachment: fixed;
     background-position: 40%;
     overflow: hidden;
-    .shadow-bg{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.897);
-    }
+
     .hero{
         position: absolute;
         left: 50%;
@@ -173,52 +231,18 @@ header{
                 color: white;
             }
         }
-        
-    .btn{
-        position: relative;
-        margin-top: 2em;
-        padding: .7em 1.4em;
-        font-size: 2rem;
-        text-transform: uppercase;
-        color: white;
-        border: 1px solid white;
-        transition: color .5s, border .5s;//nadać na co
-
-        &::after,&::before{
-            position: absolute;
-            content: '';
-            width: 100%;
-            height: 100%;
-            transition: top .5s, bottom .5s, right .5s, left .5s, border-width .5s;
-        }
-        &::before{
-            top: 0px;
-            left: 0;
-        }
-        &::after{
-            bottom: 0;
-            right: 0;
-        }
-
-        &:hover{
-            color: $main-color;
-            background-color: transparent;
-            border-color: transparent;
-            &::after{
-                bottom: -10px;
-                right: -10px;
-                border-bottom: 5px solid $main-color;
-                border-right: 5px solid $main-color;
-            }
-            &::before{
-                top: -10px;
-                left: -10px;
-                border-top: 5px solid $main-color;
-                border-left: 5px solid $main-color;
+        .btn{
+            margin-top: 2em;
+            padding: .7em 1.4em;
+            font-size: 2rem;
+            color: white;
+            border: 1px solid white;
+            &:hover{
+                background-color: transparent;
+                border-color: transparent;
             }
         }
 
-    }
     }
     .header-text{
         font-size: 2rem;
@@ -253,7 +277,17 @@ header{
         margin-top: auto;
         text-align: right;
     }
-
+    .one,.three{
+        i{
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: .5em;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.109);
+            transition: opacity .5s;
+        }
+    }
     .aboutus__element{
         position: relative;
         background-size: cover;
@@ -262,6 +296,9 @@ header{
         overflow: hidden;
         transition: flex-basis .5s;
         &:hover{
+            i{
+                opacity: 0;
+            }
             flex-basis: 250%;
             .aboutus__elementText{
                 bottom: 0;
@@ -315,7 +352,179 @@ header{
     }
 }
 
-@media(min-width: 768px){
+//prices
+.stonks{
+    background-image: url('../img/Stonks.png')!important;
+}
+.prices{
+    position: relative;
+    background-image: url('../img/notStonks.jpg');
+    background-size: cover;
+    background-position: top;
+    overflow: hidden;
+    z-index: 1;
+    height: 100vh;
+    min-height: 600px;
+    .shadow-bg{
+        pointer-events: none;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0.849);
+    }
+    .section__title{
+        margin-top: 1.3em;
+        margin-bottom: .2em;
+    }
+    .prices__btns{
+        display: flex;
+        justify-content: space-evenly;
+
+        .prices__btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 30%;
+            font-size: 1.6rem;
+            padding: .5em;
+            text-transform: uppercase;
+            color: white;
+            text-align: center;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: color .5s, border .5s ,background-color .5s;
+            &:hover{
+                background-color: transparent;
+                border-color: transparent;
+                color: $main-color;
+            }
+            &:focus{
+                box-shadow: none;
+            }
+            p{
+                margin: 0;
+            }
+        }
+    }
+    .prices__boxes{
+        position: relative;
+        width: 100%;
+        height: 700px;
+        overflow: hidden;
+        .prices__box{
+            position: absolute;
+            display: block;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 350px;
+            background-color: #fff;
+
+            &-text{
+                text-align: center;
+
+                i{
+                    margin-top: .8em;
+                    margin-bottom: .5em;
+                    font-size: 2rem;
+                }
+                hr{
+                    width: 75%;
+                    margin: 0 auto;
+                }
+
+                .prices__box-title{
+                    margin-bottom: .7em;
+                    font-weight: bold;
+                    font-size: 2rem;
+                }
+                .prices__box-text{
+                    margin: .5em 0;
+                }
+                .prices__box-price{
+                    margin-top: .2em;
+                    position: relative;
+                    font-weight: bold;
+                    font-size: 3rem;
+                    &::before,&::after{
+                        position: absolute;
+                        transform: translate(-50%, -50%);
+                        font-size: 1rem;
+                    }
+                    
+                    &::before{
+                        left: 42%;
+                        top: 50%;
+                        font-size: 1.5rem;
+                        content: 'zł';
+                    }
+                    &::after{
+                        right: 30%;
+                        top: 65%;
+                        content: "/mies";
+                    }
+                }
+            }
+            .btn{
+                left: 50%;
+                transform: translateX(-50%);
+                padding: .8em 1.6em;
+                margin-top: .5em;
+                font-size: 1.3rem;
+                color: black;
+                color: white;
+                background-color: $main-color;
+                transition: color .5s, border .5s ,background-color .5s;
+                &:hover{
+                    background-color: transparent;
+                    border-color: white;
+                    color: black;
+                }
+                &:focus{
+                    box-shadow: none;
+                }
+            }
+        }
+        
+        .one{
+            display: none;
+            border-top: 5px solid $main-color;
+        }
+        .two{
+            display: none;
+            border-top: 5px solid rgb(197, 34, 34);
+            .prices__box-price{
+                &::before{
+                    left: 40%;
+                }
+                &::after{
+                    right: 28%;
+                }
+            }
+        }
+        .three{
+            display: none;
+            border-top: 5px solid rgb(209, 189, 72);
+            transition: display 1s;
+            .prices__box-price{
+                &::before{
+                    left: 36%;
+                }
+                &::after{
+                    right: 24%;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+@media(min-width: 767px){
     .wrapper{
         width: 90%;
     }
@@ -327,6 +536,11 @@ header{
     .whiteBlock{
         width: 35%;
         height: 40px;
+        &--top-right, &--top-left{
+            width: 20%;
+  
+        }
+
     }
     nav#navbar.navbar{
         
@@ -371,6 +585,33 @@ header{
             display: grid;
             height: 800px;
             grid-template-rows: 2fr 2fr;
+        }
+    }
+    #prices{
+
+        .prices__boxes{
+
+            .prices__box{
+                top: 50%;
+                width: 350px;
+                height: 450px;
+            }
+            i{
+                font-size: 4rem;
+            }
+            .prices__box-title{
+                margin-bottom: 1.2em;
+            }
+            .prices__box-text{
+                margin: 0.6em;
+            }
+            .prices__box-price{
+                font-size: 4rem;
+            }
+            .prices__box-btn{
+                margin-top: 0;
+                font-size: 1.8rem;
+            }
         }
     }
 }
@@ -420,7 +661,45 @@ header{
             font-size: 2.5rem;  
         }
     }
-    footer{
-    background-image: url('../img/header-lg.jpg');
+
+    #prices{
+
+        .prices__boxes{
+
+            .prices__box{
+                top: 50%;
+                width: 550px;
+                height: 600px;
+            }
+            i{
+                margin-top: .5em;
+                font-size: 6rem;
+            }
+            .prices__box-title{
+                font-size: 3rem;
+                margin-bottom: 0.8em;
+            }
+            .prices__box-text{
+                font-size: 1.6rem;
+                margin: .8em;
+            }
+            .prices__box-price{
+                font-size: 6rem;
+                &::before,&::after{
+                    font-size: 2rem;
+                }
+            }
+            .prices__box-btn{
+                font-size: 2.5rem;
+            }
+            
+        }
+        .section__title{
+            margin: 2.5em 0 1em 0;
+        }
+        .prices__btn{
+            font-size: 2.5rem;
+        }
+
     }
 }

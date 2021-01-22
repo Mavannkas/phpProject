@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *, *::before, *::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -13,14 +14,14 @@ html {
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
-  background-color: #f8f9fa;
+  background: #ebebeb;
 }
 
 .whiteBlock {
   position: absolute;
   width: 40%;
   height: 25px;
-  background-color: #f8f9fa;
+  background: #ebebeb;
 }
 
 .whiteBlock--left {
@@ -38,15 +39,17 @@ body {
 }
 
 .whiteBlock--top-right {
+  width: 20%;
   top: 0;
-  left: 60%;
+  left: 56%;
   -webkit-transform: translateX(-50%) skew(-45deg);
           transform: translateX(-50%) skew(-45deg);
 }
 
 .whiteBlock--top-left {
+  width: 20%;
   top: 0;
-  left: 40%;
+  left: 44%;
   -webkit-transform: translateX(-50%) skew(45deg);
           transform: translateX(-50%) skew(45deg);
 }
@@ -56,6 +59,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1em 0;
+  margin-bottom: 5em;
 }
 
 .section__title {
@@ -64,6 +68,72 @@ body {
   text-transform: uppercase;
   text-align: center;
   font-size: 3rem;
+}
+
+.btn {
+  position: relative;
+  text-transform: uppercase;
+  -webkit-transition: color .5s, border .5s;
+  transition: color .5s, border .5s;
+}
+
+.btn::after, .btn::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  -webkit-transition: top .5s, bottom .5s, right .5s, left .5s, border-width .5s;
+  transition: top .5s, bottom .5s, right .5s, left .5s, border-width .5s;
+}
+
+.btn::before {
+  top: 0px;
+  left: 0;
+}
+
+.btn::after {
+  bottom: 0;
+  right: 0;
+}
+
+.btn:hover {
+  color: #2eb0ca;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn:hover::after {
+  bottom: -10px;
+  right: -10px;
+  border-bottom: 5px solid #2eb0ca;
+  border-right: 5px solid #2eb0ca;
+}
+
+.btn:hover::before {
+  top: -10px;
+  left: -10px;
+  border-top: 5px solid #2eb0ca;
+  border-left: 5px solid #2eb0ca;
+}
+
+.scroll-fix::before {
+  display: block;
+  margin-top: -62px;
+  height: 62px;
+  content: '';
+}
+
+.shadow-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.897);
+}
+
+main {
+  position: relative;
 }
 
 nav#navbar.navbar i {
@@ -170,15 +240,6 @@ header {
   overflow: hidden;
 }
 
-header .shadow-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.897);
-}
-
 header .hero {
   position: absolute;
   left: 50%;
@@ -202,54 +263,16 @@ header .hero .header-title span {
 }
 
 header .hero .btn {
-  position: relative;
   margin-top: 2em;
   padding: .7em 1.4em;
   font-size: 2rem;
-  text-transform: uppercase;
   color: white;
   border: 1px solid white;
-  -webkit-transition: color .5s, border .5s;
-  transition: color .5s, border .5s;
-}
-
-header .hero .btn::after, header .hero .btn::before {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 100%;
-  -webkit-transition: top .5s, bottom .5s, right .5s, left .5s, border-width .5s;
-  transition: top .5s, bottom .5s, right .5s, left .5s, border-width .5s;
-}
-
-header .hero .btn::before {
-  top: 0px;
-  left: 0;
-}
-
-header .hero .btn::after {
-  bottom: 0;
-  right: 0;
 }
 
 header .hero .btn:hover {
-  color: #2eb0ca;
   background-color: transparent;
   border-color: transparent;
-}
-
-header .hero .btn:hover::after {
-  bottom: -10px;
-  right: -10px;
-  border-bottom: 5px solid #2eb0ca;
-  border-right: 5px solid #2eb0ca;
-}
-
-header .hero .btn:hover::before {
-  top: -10px;
-  left: -10px;
-  border-top: 5px solid #2eb0ca;
-  border-left: 5px solid #2eb0ca;
 }
 
 header .header-text {
@@ -283,6 +306,17 @@ header .header-text {
   text-align: right;
 }
 
+#aboutus .one i, #aboutus .three i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: .5em;
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.109);
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
 #aboutus .aboutus__element {
   position: relative;
   background-size: cover;
@@ -299,6 +333,10 @@ header .header-text {
 #aboutus .aboutus__element:hover {
   -ms-flex-preferred-size: 250%;
       flex-basis: 250%;
+}
+
+#aboutus .aboutus__element:hover i {
+  opacity: 0;
 }
 
 #aboutus .aboutus__element:hover .aboutus__elementText {
@@ -362,7 +400,209 @@ header .header-text {
   background-image: url("../img/nice.jpg");
 }
 
-@media (min-width: 768px) {
+.stonks {
+  background-image: url("../img/Stonks.png") !important;
+}
+
+.prices {
+  position: relative;
+  background-image: url("../img/notStonks.jpg");
+  background-size: cover;
+  background-position: top;
+  overflow: hidden;
+  z-index: 1;
+  height: 100vh;
+  min-height: 600px;
+}
+
+.prices .shadow-bg {
+  pointer-events: none;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.849);
+}
+
+.prices .section__title {
+  margin-top: 1.3em;
+  margin-bottom: .2em;
+}
+
+.prices .prices__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.prices .prices__btns .prices__btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  width: 30%;
+  font-size: 1.6rem;
+  padding: .5em;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  border: 1px solid white;
+  cursor: pointer;
+  -webkit-transition: color .5s, border .5s ,background-color .5s;
+  transition: color .5s, border .5s ,background-color .5s;
+}
+
+.prices .prices__btns .prices__btn:hover {
+  background-color: transparent;
+  border-color: transparent;
+  color: #2eb0ca;
+}
+
+.prices .prices__btns .prices__btn:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.prices .prices__btns .prices__btn p {
+  margin: 0;
+}
+
+.prices .prices__boxes {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+
+.prices .prices__boxes .prices__box {
+  position: absolute;
+  display: block;
+  top: 35%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 250px;
+  height: 350px;
+  background-color: #fff;
+}
+
+.prices .prices__boxes .prices__box-text {
+  text-align: center;
+}
+
+.prices .prices__boxes .prices__box-text i {
+  margin-top: .8em;
+  margin-bottom: .5em;
+  font-size: 2rem;
+}
+
+.prices .prices__boxes .prices__box-text hr {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.prices .prices__boxes .prices__box-text .prices__box-title {
+  margin-bottom: .7em;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.prices .prices__boxes .prices__box-text .prices__box-text {
+  margin: .5em 0;
+}
+
+.prices .prices__boxes .prices__box-text .prices__box-price {
+  margin-top: .2em;
+  position: relative;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.prices .prices__boxes .prices__box-text .prices__box-price::before, .prices .prices__boxes .prices__box-text .prices__box-price::after {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 1rem;
+}
+
+.prices .prices__boxes .prices__box-text .prices__box-price::before {
+  left: 42%;
+  top: 50%;
+  font-size: 1.5rem;
+  content: 'zł';
+}
+
+.prices .prices__boxes .prices__box-text .prices__box-price::after {
+  right: 30%;
+  top: 65%;
+  content: "/mies";
+}
+
+.prices .prices__boxes .prices__box .btn {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  padding: .8em 1.6em;
+  margin-top: .5em;
+  font-size: 1.3rem;
+  color: black;
+  color: white;
+  background-color: #2eb0ca;
+  -webkit-transition: color .5s, border .5s ,background-color .5s;
+  transition: color .5s, border .5s ,background-color .5s;
+}
+
+.prices .prices__boxes .prices__box .btn:hover {
+  background-color: transparent;
+  border-color: white;
+  color: black;
+}
+
+.prices .prices__boxes .prices__box .btn:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.prices .prices__boxes .one {
+  display: none;
+  border-top: 5px solid #2eb0ca;
+}
+
+.prices .prices__boxes .two {
+  display: none;
+  border-top: 5px solid #c52222;
+}
+
+.prices .prices__boxes .two .prices__box-price::before {
+  left: 40%;
+}
+
+.prices .prices__boxes .two .prices__box-price::after {
+  right: 28%;
+}
+
+.prices .prices__boxes .three {
+  display: none;
+  border-top: 5px solid #d1bd48;
+  -webkit-transition: display 1s;
+  transition: display 1s;
+}
+
+.prices .prices__boxes .three .prices__box-price::before {
+  left: 36%;
+}
+
+.prices .prices__boxes .three .prices__box-price::after {
+  right: 24%;
+}
+
+@media (min-width: 767px) {
   .wrapper {
     width: 90%;
   }
@@ -372,6 +612,9 @@ header .header-text {
   .whiteBlock {
     width: 35%;
     height: 40px;
+  }
+  .whiteBlock--top-right, .whiteBlock--top-left {
+    width: 20%;
   }
   nav#navbar.navbar .navbar-brand {
     font-size: 5rem;
@@ -406,6 +649,27 @@ header .header-text {
     height: 800px;
     -ms-grid-rows: 2fr 2fr;
         grid-template-rows: 2fr 2fr;
+  }
+  #prices .prices__boxes .prices__box {
+    top: 50%;
+    width: 350px;
+    height: 450px;
+  }
+  #prices .prices__boxes i {
+    font-size: 4rem;
+  }
+  #prices .prices__boxes .prices__box-title {
+    margin-bottom: 1.2em;
+  }
+  #prices .prices__boxes .prices__box-text {
+    margin: 0.6em;
+  }
+  #prices .prices__boxes .prices__box-price {
+    font-size: 4rem;
+  }
+  #prices .prices__boxes .prices__box-btn {
+    margin-top: 0;
+    font-size: 1.8rem;
   }
 }
 
@@ -443,8 +707,37 @@ header .header-text {
   nav#navbar.navbar .navbar-nav {
     font-size: 2.5rem;
   }
-  footer {
-    background-image: url("../img/header-lg.jpg");
+  #prices .prices__boxes .prices__box {
+    top: 50%;
+    width: 550px;
+    height: 600px;
+  }
+  #prices .prices__boxes i {
+    margin-top: .5em;
+    font-size: 6rem;
+  }
+  #prices .prices__boxes .prices__box-title {
+    font-size: 3rem;
+    margin-bottom: 0.8em;
+  }
+  #prices .prices__boxes .prices__box-text {
+    font-size: 1.6rem;
+    margin: .8em;
+  }
+  #prices .prices__boxes .prices__box-price {
+    font-size: 6rem;
+  }
+  #prices .prices__boxes .prices__box-price::before, #prices .prices__boxes .prices__box-price::after {
+    font-size: 2rem;
+  }
+  #prices .prices__boxes .prices__box-btn {
+    font-size: 2.5rem;
+  }
+  #prices .section__title {
+    margin: 2.5em 0 1em 0;
+  }
+  #prices .prices__btn {
+    font-size: 2.5rem;
   }
 }
 /*# sourceMappingURL=mian.css.map */
