@@ -935,5 +935,8 @@ footer .footer__bottom a {
   #prices .prices__btn {
     font-size: 2.5rem;
   }
+  footer .footer__body {
+    background-image: url("../img/footer-lg.jpg");
+  }
 }
 /*# sourceMappingURL=mian.css.map */
