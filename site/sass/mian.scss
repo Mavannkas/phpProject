@@ -18,6 +18,10 @@ body{
     // background-color: $main-color;
 }
 
+.visibility {
+    visibility: hidden;
+  }
+
 .whiteBlock{
     position: absolute;
     width: 40%;
@@ -254,6 +258,7 @@ header{
 //aboutus
 
 #aboutus{
+    overflow: hidden;
     .aboutus__bottomTitle{
         display: none;
     }
@@ -364,14 +369,14 @@ header{
     overflow: hidden;
     z-index: 1;
     height: 100vh;
-    min-height: 600px;
+    min-height: 1000px;
     .shadow-bg{
         pointer-events: none;
         z-index: -1;
         background-color: rgba(0, 0, 0, 0.849);
     }
     .section__title{
-        margin-top: 1.3em;
+        margin-top: 2em;
         margin-bottom: .2em;
     }
     .prices__btns{
@@ -471,7 +476,6 @@ header{
                 padding: .8em 1.6em;
                 margin-top: .5em;
                 font-size: 1.3rem;
-                color: black;
                 color: white;
                 background-color: $main-color;
                 transition: color .5s, border .5s ,background-color .5s;
@@ -518,10 +522,140 @@ header{
     }
 }
 
+//contact 
+#contact{
+    form{
+        padding: 2em;
+    }
+    label{
+        display: block;
+        padding: 1em 0 .3em 0;
+        font-size: 2rem;
+    }
+    label+input{
+        width: 100%;
+        padding: 0.5em;
+        margin-bottom: 0em;
+        border:none;
+        background: rgba(255, 255, 255, 0.452);
+        box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
+        border-radius: 5px;
+    }
+    textarea{
+        display: block;
+        width: 100%;
+        padding: .5em;
+        resize: vertical;
+        border:none;
+        background: rgba(255, 255, 255, 0.452);
+        box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
+        border-radius: 5px;
+    }
+    form>div{
+        margin-top: 2em;
+        display: flex;
+        justify-content: space-around;
+    }
+    div>input{
+        padding: .7em 1.4em;
+        margin-top: .5em;
+        font-size: 1.6rem;
+        color: white;
+        background-color: $main-color;
+        border: 3px outset transparent;
+        transition: color .5s, border .5s ,background-color .5s;
+        border-radius: 5px;
+        &:hover{
+            background-color: transparent;
+            border-color: $main-color;
+            color: black;
+        }
+    }
+}
 
+//footer
+footer{
+    position: relative;
+    color: white;
 
-
-
+    .footer__body{
+        padding: 2em;
+        height: 80vh;
+        min-height: 600px;
+        background-image: url("../img/footer-sm.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        z-index: 0;
+        .wrapper{
+            width: 100%;
+            height: 100%;
+            margin-bottom: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas: 
+            'address address'
+            'social social'
+            'contact contact';
+            >div{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 1;
+            }
+            .footer__header{
+                font-size: 2rem;
+                margin-bottom: .9em;
+            }
+            .footer__address{
+                grid-area: address;
+            }
+            .footer__findus{
+                grid-area: social;
+                
+                .footer__socials{
+                    a:nth-child(2) i{
+                        margin:0 0.5em;
+                    }
+                    i{
+                        font-size: 2rem;
+                        color: $main-color;
+                        transition: color .5s;
+                        
+                        &:hover{
+                            color: rgb(34, 106, 155)
+                        }
+                    }
+                }
+            }
+            .footer__contact{
+                grid-area: contact;
+            }
+        }
+    }
+    .shadow-bg{
+        pointer-events: none;
+        background: rgba(0, 0, 0, 0.472);
+        z-index: 0;
+    }
+    .footer__bottom{
+        position: absolute;
+        bottom: 0;
+        padding: 1em;
+        height:  50px;
+        width: 100%;
+        font-size: 1.3rem;
+        text-align: center;
+        color: white;
+        background-color: black;
+        a{
+            color: white;
+        }
+    }
+}
 
 
 @media(min-width: 767px){
@@ -613,6 +747,41 @@ header{
                 font-size: 1.8rem;
             }
         }
+    }
+    #contact{
+        form>div{
+            margin-top: 3em;
+        }
+        div>input{
+            padding: .7em 1.4em;
+            font-size: 2rem;
+        }
+    }
+
+    footer{
+        .footer__body{
+            background-image: url("../img/footer-sm.jpg");
+            .wrapper{
+                grid-template-areas:
+                'address social'
+                'address contact';
+
+                .footer__header{
+                    font-size: 3rem;
+                }
+
+                .footer__findus{
+                    
+                    .footer__socials{
+                        i{
+                            font-size: 3rem   
+                        }
+                    }
+                }
+ 
+            }
+        }
+
     }
 }
 

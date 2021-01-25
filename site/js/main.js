@@ -22,8 +22,11 @@ const main=()=>{
         }
     });
 
-    window.addEventListener('scroll',setBGC);
+    document.querySelector(".footer__year").innerText=new Date().getFullYear();
 
+
+
+    window.addEventListener('scroll',setBGC);
     pricesBtns[0].addEventListener('click',()=>{
         pricesBoxes[0].style.display="block";
         pricesBoxes[1].style.display="none";
@@ -52,3 +55,14 @@ const main=()=>{
 
 
 window.addEventListener("load",main);
+
+
+
+
+
+//TODO
+//Formularz - po wyślij komunikat
+//Popup logowania
+//popup rejestracji
+    //Podpiąć ją pod biorę w cenniku i jako link w logowaniu
+    
