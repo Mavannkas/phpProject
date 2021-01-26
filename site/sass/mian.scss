@@ -131,6 +131,7 @@ main{
     position: relative;
 }
 nav#navbar.navbar{
+    background-color: rgba(0,0,0,.6);
     i{
         color: white;
     }
@@ -265,9 +266,8 @@ header{
 
     .aboutus__elements{
         display: grid;
-        height: 800px;
         grid-row: 1fr;
-        grid-template-rows: 2fr .3fr 2fr;
+        grid-template-rows: 2fr 2fr;
     }
 
     .aboutus__topTitle, .aboutus__phoneTitle, .aboutus__bottomTitle{
@@ -300,6 +300,7 @@ header{
         flex-basis: 100%;
         overflow: hidden;
         transition: flex-basis .5s;
+        padding-top: 20em;
         &:hover{
             i{
                 opacity: 0;
@@ -358,18 +359,16 @@ header{
 }
 
 //prices
-.stonks{
-    background-image: url('../img/Stonks.png')!important;
-}
+
 .prices{
     position: relative;
-    background-image: url('../img/notStonks.jpg');
+    background-image: url('../img/prices-sm.jpg');
     background-size: cover;
     background-position: top;
     overflow: hidden;
     z-index: 1;
-    height: 100vh;
-    min-height: 1000px;
+    // height: 100vh;
+    // min-height: 1000px;
     .shadow-bg{
         pointer-events: none;
         z-index: -1;
@@ -411,18 +410,13 @@ header{
         }
     }
     .prices__boxes{
-        position: relative;
         width: 100%;
-        height: 700px;
         overflow: hidden;
         .prices__box{
-            position: absolute;
             display: block;
-            top: 35%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            margin: 2em auto;
             width: 250px;
-            height: 350px;
+   
             background-color: #fff;
 
             &-text{
@@ -475,6 +469,7 @@ header{
                 transform: translateX(-50%);
                 padding: .8em 1.6em;
                 margin-top: .5em;
+                margin-bottom: .5em;
                 font-size: 1.3rem;
                 color: white;
                 background-color: $main-color;
@@ -491,7 +486,7 @@ header{
         }
         
         .one{
-            display: none;
+            display: block;
             border-top: 5px solid $main-color;
         }
         .two{
@@ -554,11 +549,11 @@ header{
     form>div{
         margin-top: 2em;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
     }
     div>input{
         padding: .7em 1.4em;
-        margin-top: .5em;
+        margin: .5em 2.5em;
         font-size: 1.6rem;
         color: white;
         background-color: $main-color;
@@ -580,8 +575,8 @@ footer{
 
     .footer__body{
         padding: 2em;
-        height: 80vh;
-        min-height: 600px;
+        // height: 80vh;
+        // min-height: 600px;
         background-image: url("../img/footer-sm.jpg");
         background-position: center;
         background-repeat: no-repeat;
@@ -591,7 +586,7 @@ footer{
         .wrapper{
             width: 100%;
             height: 100%;
-            margin-bottom: 0;
+            margin: 5em auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto;
@@ -612,9 +607,11 @@ footer{
             }
             .footer__address{
                 grid-area: address;
+                padding-bottom: 2em;
             }
             .footer__findus{
                 grid-area: social;
+                padding-bottom: 2em;
                 
                 .footer__socials{
                     a:nth-child(2) i{
@@ -717,7 +714,7 @@ footer{
 
         .aboutus__elements{
             display: grid;
-            height: 800px;
+            // height: 800px;
             grid-template-rows: 2fr 2fr;
         }
     }
@@ -728,7 +725,7 @@ footer{
             .prices__box{
                 top: 50%;
                 width: 350px;
-                height: 450px;
+                // height: 450px;
             }
             i{
                 font-size: 4rem;
@@ -743,7 +740,8 @@ footer{
                 font-size: 4rem;
             }
             .prices__box-btn{
-                margin-top: 0;
+                margin-top: 0; 
+                margin-bottom: 1em; 
                 font-size: 1.8rem;
             }
         }
@@ -762,10 +760,6 @@ footer{
         .footer__body{
             background-image: url("../img/footer-sm.jpg");
             .wrapper{
-                grid-template-areas:
-                'address social'
-                'address contact';
-
                 .footer__header{
                     font-size: 3rem;
                 }
@@ -790,6 +784,7 @@ footer{
     height: 70px;
     }
     nav#navbar.navbar{
+        background-color: none;
         .navbar-brand{
             font-size: 5rem;
         }
@@ -832,13 +827,13 @@ footer{
     }
 
     #prices{
-
+        background-image: url("../img/prices-lg.jpg");
         .prices__boxes{
+            display: flex;
 
             .prices__box{
-                top: 50%;
-                width: 550px;
-                height: 600px;
+                display: block;
+                width: 30%;
             }
             i{
                 margin-top: .5em;
@@ -857,6 +852,32 @@ footer{
                 &::before,&::after{
                     font-size: 2rem;
                 }
+                &::after{
+                    right: 15%;
+                }
+                &::before{
+                    left: 35%;
+                }
+            }
+            .one{
+                .prices__box-price{
+                    &::after{
+                        right: 20%;
+                    }
+                    &::before{
+                        left: 40%;
+                    }
+                }
+            }
+            .three{
+                .prices__box-price{
+                    &::after{
+                        right: 10%;
+                    }
+                    &::before{
+                        left: 30%;
+                    }
+                }
             }
             .prices__box-btn{
                 font-size: 2.5rem;
@@ -868,6 +889,12 @@ footer{
         }
         .prices__btn{
             font-size: 2.5rem;
+        }
+        .wrapper{
+            .prices__btn{
+                display: none;
+            }
+
         }
 
     }

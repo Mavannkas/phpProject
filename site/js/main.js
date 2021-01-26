@@ -6,10 +6,9 @@ const main=()=>{
 
 
     const setBGC=()=>{
-        console.log()
         if(window.scrollY>0){
             nav.style.backgroundColor="rgba(0,0,0,.6)";
-        }else{
+        }else if(window.innerWidth>991){
             nav.style.backgroundColor="transparent";
         }
     }
@@ -42,11 +41,8 @@ const main=()=>{
         pricesBoxes[1].style.display="none";
         pricesBoxes[2].style.display="block";
     })
-    pricesBtns.forEach(a=>{
-        a.addEventListener('click',()=>prices.classList.add("stonks"));
-    })
+
     prices.addEventListener('dblclick',()=>{
-        prices.classList.remove("stonks");
         pricesBoxes[0].style.display="none";
         pricesBoxes[1].style.display="none";
         pricesBoxes[2].style.display="none";

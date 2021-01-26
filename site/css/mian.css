@@ -140,6 +140,10 @@ main {
   position: relative;
 }
 
+nav#navbar.navbar {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
 nav#navbar.navbar i {
   color: white;
 }
@@ -294,11 +298,10 @@ header .header-text {
 #aboutus .aboutus__elements {
   display: -ms-grid;
   display: grid;
-  height: 800px;
   -ms-grid-row: 1;
   grid-row: 1fr;
-  -ms-grid-rows: 2fr .3fr 2fr;
-      grid-template-rows: 2fr .3fr 2fr;
+  -ms-grid-rows: 2fr 2fr;
+      grid-template-rows: 2fr 2fr;
 }
 
 #aboutus .aboutus__topTitle, #aboutus .aboutus__phoneTitle, #aboutus .aboutus__bottomTitle {
@@ -336,6 +339,7 @@ header .header-text {
   transition: -webkit-flex-basis .5s;
   transition: flex-basis .5s;
   transition: flex-basis .5s, -webkit-flex-basis .5s, -ms-flex-preferred-size .5s;
+  padding-top: 20em;
 }
 
 #aboutus .aboutus__element:hover {
@@ -408,19 +412,13 @@ header .header-text {
   background-image: url("../img/nice.jpg");
 }
 
-.stonks {
-  background-image: url("../img/Stonks.png") !important;
-}
-
 .prices {
   position: relative;
-  background-image: url("../img/notStonks.jpg");
+  background-image: url("../img/prices-sm.jpg");
   background-size: cover;
   background-position: top;
   overflow: hidden;
   z-index: 1;
-  height: 100vh;
-  min-height: 1000px;
 }
 
 .prices .shadow-bg {
@@ -482,21 +480,14 @@ header .header-text {
 }
 
 .prices .prices__boxes {
-  position: relative;
   width: 100%;
-  height: 700px;
   overflow: hidden;
 }
 
 .prices .prices__boxes .prices__box {
-  position: absolute;
   display: block;
-  top: 35%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  margin: 2em auto;
   width: 250px;
-  height: 350px;
   background-color: #fff;
 }
 
@@ -558,6 +549,7 @@ header .header-text {
           transform: translateX(-50%);
   padding: .8em 1.6em;
   margin-top: .5em;
+  margin-bottom: .5em;
   font-size: 1.3rem;
   color: white;
   background-color: #2eb0ca;
@@ -577,7 +569,7 @@ header .header-text {
 }
 
 .prices .prices__boxes .one {
-  display: none;
+  display: block;
   border-top: 5px solid #2eb0ca;
 }
 
@@ -647,13 +639,14 @@ header .header-text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #contact div > input {
   padding: .7em 1.4em;
-  margin-top: .5em;
+  margin: .5em 2.5em;
   font-size: 1.6rem;
   color: white;
   background-color: #2eb0ca;
@@ -676,8 +669,6 @@ footer {
 
 footer .footer__body {
   padding: 2em;
-  height: 80vh;
-  min-height: 600px;
   background-image: url("../img/footer-sm.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -689,7 +680,7 @@ footer .footer__body {
 footer .footer__body .wrapper {
   width: 100%;
   height: 100%;
-  margin-bottom: 0;
+  margin: 5em auto;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -726,6 +717,7 @@ footer .footer__body .wrapper .footer__address {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: address;
+  padding-bottom: 2em;
 }
 
 footer .footer__body .wrapper .footer__findus {
@@ -733,6 +725,7 @@ footer .footer__body .wrapper .footer__findus {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: social;
+  padding-bottom: 2em;
 }
 
 footer .footer__body .wrapper .footer__findus .footer__socials a:nth-child(2) i {
@@ -823,14 +816,12 @@ footer .footer__bottom a {
   #aboutus .aboutus__elements {
     display: -ms-grid;
     display: grid;
-    height: 800px;
     -ms-grid-rows: 2fr 2fr;
         grid-template-rows: 2fr 2fr;
   }
   #prices .prices__boxes .prices__box {
     top: 50%;
     width: 350px;
-    height: 450px;
   }
   #prices .prices__boxes i {
     font-size: 4rem;
@@ -846,6 +837,7 @@ footer .footer__bottom a {
   }
   #prices .prices__boxes .prices__box-btn {
     margin-top: 0;
+    margin-bottom: 1em;
     font-size: 1.8rem;
   }
   #contact form > div {
@@ -858,9 +850,6 @@ footer .footer__bottom a {
   footer .footer__body {
     background-image: url("../img/footer-sm.jpg");
   }
-  footer .footer__body .wrapper {
-        grid-template-areas: 'address social' 'address contact';
-  }
   footer .footer__body .wrapper .footer__header {
     font-size: 3rem;
   }
@@ -872,6 +861,9 @@ footer .footer__bottom a {
 @media (min-width: 992px) {
   nav {
     height: 70px;
+  }
+  nav#navbar.navbar {
+    background-color: none;
   }
   nav#navbar.navbar .navbar-brand {
     font-size: 5rem;
@@ -903,10 +895,17 @@ footer .footer__bottom a {
   nav#navbar.navbar .navbar-nav {
     font-size: 2.5rem;
   }
+  #prices {
+    background-image: url("../img/prices-lg.jpg");
+  }
+  #prices .prices__boxes {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
   #prices .prices__boxes .prices__box {
-    top: 50%;
-    width: 550px;
-    height: 600px;
+    display: block;
+    width: 30%;
   }
   #prices .prices__boxes i {
     margin-top: .5em;
@@ -926,6 +925,24 @@ footer .footer__bottom a {
   #prices .prices__boxes .prices__box-price::before, #prices .prices__boxes .prices__box-price::after {
     font-size: 2rem;
   }
+  #prices .prices__boxes .prices__box-price::after {
+    right: 15%;
+  }
+  #prices .prices__boxes .prices__box-price::before {
+    left: 35%;
+  }
+  #prices .prices__boxes .one .prices__box-price::after {
+    right: 20%;
+  }
+  #prices .prices__boxes .one .prices__box-price::before {
+    left: 40%;
+  }
+  #prices .prices__boxes .three .prices__box-price::after {
+    right: 10%;
+  }
+  #prices .prices__boxes .three .prices__box-price::before {
+    left: 30%;
+  }
   #prices .prices__boxes .prices__box-btn {
     font-size: 2.5rem;
   }
@@ -934,6 +951,9 @@ footer .footer__bottom a {
   }
   #prices .prices__btn {
     font-size: 2.5rem;
+  }
+  #prices .wrapper .prices__btn {
+    display: none;
   }
   footer .footer__body {
     background-image: url("../img/footer-lg.jpg");
