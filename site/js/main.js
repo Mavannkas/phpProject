@@ -7,7 +7,7 @@ const main=()=>{
 
     const setBGC=()=>{
         if(window.scrollY>0){
-            nav.style.backgroundColor="rgba(0,0,0,.6)";
+            nav.style.backgroundColor="rgba(0,0,0,.8)";
         }else if(window.innerWidth>991){
             nav.style.backgroundColor="transparent";
         }

@@ -109,6 +109,33 @@ body{
 
     }
 
+.secondary-btn{
+    position: relative;
+    text-transform: uppercase;
+
+    &::after{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        transform: scaleX(0);
+        transform-origin: top right;
+        transition: .5s;
+        content: '';
+        z-index: -1;
+    }
+
+    &:hover{
+
+        &::after{
+            transform-origin: bottom left;
+            transform: scaleX(1);
+        }
+    }
+
+}
 .scroll-fix{
     &::before{
         display: block;
@@ -131,7 +158,7 @@ main{
     position: relative;
 }
 nav#navbar.navbar{
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0,0,0,.8);
     i{
         color: white;
     }
@@ -464,20 +491,23 @@ header{
                     }
                 }
             }
-            .btn{
+            .secondary-btn{
                 left: 50%;
                 transform: translateX(-50%);
                 padding: .8em 1.6em;
                 margin-top: .5em;
                 margin-bottom: .5em;
                 font-size: 1.3rem;
+                border: none;
+                border-radius: 5px;
                 color: white;
                 background-color: $main-color;
-                transition: color .5s, border .5s ,background-color .5s;
+                overflow: hidden;
+                
                 &:hover{
-                    background-color: transparent;
-                    border-color: white;
-                    color: black;
+                    &::after{
+                        background-color: #238396;
+                    }
                 }
                 &:focus{
                     box-shadow: none;
@@ -551,19 +581,19 @@ header{
         display: flex;
         justify-content: center;
     }
-    div>input{
+    div>button{
         padding: .7em 1.4em;
         margin: .5em 2.5em;
         font-size: 1.6rem;
         color: white;
         background-color: $main-color;
-        border: 3px outset transparent;
-        transition: color .5s, border .5s ,background-color .5s;
+        border: none;
         border-radius: 5px;
+        overflow: hidden;
         &:hover{
-            background-color: transparent;
-            border-color: $main-color;
-            color: black;
+            &::after{
+                background-color: #238396;
+            }
         }
     }
 }

@@ -120,6 +120,35 @@ body {
   border-left: 5px solid #2eb0ca;
 }
 
+.secondary-btn {
+  position: relative;
+  text-transform: uppercase;
+}
+
+.secondary-btn::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+  -webkit-transition: .5s;
+  transition: .5s;
+  content: '';
+  z-index: -1;
+}
+
+.secondary-btn:hover::after {
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
 .scroll-fix::before {
   display: block;
   margin-top: -62px;
@@ -141,7 +170,7 @@ main {
 }
 
 nav#navbar.navbar {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 nav#navbar.navbar i {
@@ -543,7 +572,7 @@ header .header-text {
   content: "/mies";
 }
 
-.prices .prices__boxes .prices__box .btn {
+.prices .prices__boxes .prices__box .secondary-btn {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -551,19 +580,18 @@ header .header-text {
   margin-top: .5em;
   margin-bottom: .5em;
   font-size: 1.3rem;
+  border: none;
+  border-radius: 5px;
   color: white;
   background-color: #2eb0ca;
-  -webkit-transition: color .5s, border .5s ,background-color .5s;
-  transition: color .5s, border .5s ,background-color .5s;
+  overflow: hidden;
 }
 
-.prices .prices__boxes .prices__box .btn:hover {
-  background-color: transparent;
-  border-color: white;
-  color: black;
+.prices .prices__boxes .prices__box .secondary-btn:hover::after {
+  background-color: #238396;
 }
 
-.prices .prices__boxes .prices__box .btn:focus {
+.prices .prices__boxes .prices__box .secondary-btn:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -644,22 +672,19 @@ header .header-text {
           justify-content: center;
 }
 
-#contact div > input {
+#contact div > button {
   padding: .7em 1.4em;
   margin: .5em 2.5em;
   font-size: 1.6rem;
   color: white;
   background-color: #2eb0ca;
-  border: 3px outset transparent;
-  -webkit-transition: color .5s, border .5s ,background-color .5s;
-  transition: color .5s, border .5s ,background-color .5s;
+  border: none;
   border-radius: 5px;
+  overflow: hidden;
 }
 
-#contact div > input:hover {
-  background-color: transparent;
-  border-color: #2eb0ca;
-  color: black;
+#contact div > button:hover::after {
+  background-color: #238396;
 }
 
 footer {
