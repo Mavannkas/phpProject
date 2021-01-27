@@ -3,7 +3,16 @@ const main=()=>{
     const pricesBtns=document.querySelectorAll(".prices__btn")
     const prices=document.querySelector(".prices")
     const pricesBoxes=document.querySelectorAll(".prices__box");
+    
+    const cross=document.querySelector(".loginPop__close");
+    const logPop=document.querySelector(".loginPop");
+    const bodyShadow=document.querySelector(".body-shadow");
+    const logBtn=document.querySelector("#log");
 
+    const togglePop=a=>{
+        bodyShadow.style.display=a;
+        logPop.style.display=a;
+    }
 
     const setBGC=()=>{
         if(window.scrollY>0){
@@ -47,6 +56,10 @@ const main=()=>{
         pricesBoxes[1].style.display="none";
         pricesBoxes[2].style.display="none";
     })
+
+    bodyShadow.addEventListener('click',()=>togglePop("none"));
+    cross.addEventListener('click',()=>togglePop("none"));
+    logBtn.addEventListener('click',()=>togglePop("block"));
 }
 
 
