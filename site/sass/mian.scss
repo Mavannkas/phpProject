@@ -20,7 +20,7 @@ body{
 
 .visibility {
     visibility: hidden;
-  }
+}
 
 .whiteBlock{
     position: absolute;
@@ -162,47 +162,9 @@ nav#navbar.navbar{
     i{
         color: white;
     }
+    
     .navbar-brand{
-        margin-left: .2em;
-        // margin-top: .05em;
-        position: relative;
-        font-size: 4rem;
-        font-weight: bold;
-        color: $main-color;
-        letter-spacing: 2px;
-        @include title;
-        overflow: hidden;
-        &::before{
-            position: absolute;
-            right: 0%;
-            color:white;
-            content: 'DB';
-            transition: transform .7s;
-            transform-origin: right;
-            perspective: 1000px;
-        }
-
-        span{
-            position: relative;
-            color: $main-color;
-            opacity: 0;
-            transition: opacity 1s;
-        }
-        
-        &:hover{
-            span{
-                opacity: 1;
-            }
-
-            &::before{
-            transform: rotateY(-90deg);
-            }
-
-        }
-
-        i{
-            padding-right: .4em;
-        }
+       @include brand;
     }
 
     .navbar-toggler{
@@ -434,6 +396,7 @@ header{
             p{
                 margin: 0;
             }
+
         }
     }
     .prices__boxes{
@@ -512,6 +475,12 @@ header{
                 &:focus{
                     box-shadow: none;
                 }
+            }
+            a{
+                color: white;
+                text-decoration: none;
+                padding: .4em .8em;
+                
             }
         }
         

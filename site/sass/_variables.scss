@@ -1,5 +1,6 @@
 $main-color: #2eb0ca;
 $body-color: rgb(235, 235, 235);
+$hover-color: #238396;
 
 @mixin roboto {
     font-family: 'Roboto', sans-serif;
@@ -20,4 +21,47 @@ $body-color: rgb(235, 235, 235);
     transition: height .5s;
     content:'';
     z-index: -10;
+}
+
+@mixin brand {
+    margin-left: .2em;
+    // margin-top: .05em;
+    position: relative;
+    font-size: 4rem;
+    font-weight: bold;
+    color: $main-color;
+    letter-spacing: 2px;
+    @include title;
+    overflow: hidden;
+    &::before{
+        position: absolute;
+        right: 0%;
+        color:white;
+        content: 'DB';
+        transition: transform .7s;
+        transform-origin: right;
+        perspective: 1000px;
+    }
+
+    span{
+        position: relative;
+        color: $main-color;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+    
+    &:hover{
+        span{
+            opacity: 1;
+        }
+
+        &::before{
+        transform: rotateY(-90deg);
+        }
+
+    }
+
+    i{
+        padding-right: .4em;
+    }
 }

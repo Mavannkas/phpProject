@@ -51,12 +51,6 @@ const main=()=>{
         pricesBoxes[2].style.display="block";
     })
 
-    prices.addEventListener('dblclick',()=>{
-        pricesBoxes[0].style.display="none";
-        pricesBoxes[1].style.display="none";
-        pricesBoxes[2].style.display="none";
-    })
-
     bodyShadow.addEventListener('click',()=>togglePop("none"));
     cross.addEventListener('click',()=>togglePop("none"));
     logBtn.addEventListener('click',()=>togglePop("block"));

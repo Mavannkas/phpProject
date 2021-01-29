@@ -1,0 +1,120 @@
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+  background: #ebebeb;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background-color: black;
+}
+
+.header__back {
+  display: inline-block;
+  font-size: 2.5rem;
+  color: white;
+  text-decoration: none;
+  padding: 30px;
+  border-right: 1px solid white;
+  -webkit-transition: color .3s;
+  transition: color .3s;
+}
+
+.header__back:hover {
+  color: #238396;
+  text-decoration: none;
+}
+
+.header__logo {
+  margin-left: .2em;
+  position: relative;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #2eb0ca;
+  letter-spacing: 2px;
+  font-family: 'Amatic SC', cursive;
+  overflow: hidden;
+  position: absolute;
+  display: inline-block;
+  left: 47%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  line-height: 100px;
+  font-size: 5rem;
+}
+
+.header__logo::before {
+  position: absolute;
+  right: 0%;
+  color: white;
+  content: 'DB';
+  -webkit-transition: -webkit-transform .7s;
+  transition: -webkit-transform .7s;
+  transition: transform .7s;
+  transition: transform .7s, -webkit-transform .7s;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+.header__logo span {
+  position: relative;
+  color: #2eb0ca;
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.header__logo:hover span {
+  opacity: 1;
+}
+
+.header__logo:hover::before {
+  -webkit-transform: rotateY(-90deg);
+          transform: rotateY(-90deg);
+}
+
+.header__logo i {
+  padding-right: .4em;
+}
+
+.header__logo:hover {
+  text-decoration: none;
+  color: #2eb0ca;
+}
+
+.header__profile {
+  position: absolute;
+  display: inline-block;
+  right: 0;
+  padding: 1.5em 3em;
+  border-left: 1px solid white;
+}
+
+.header__profile-img {
+  background-color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1.5em;
+}
+
+.header__profile-name {
+  display: inline-block;
+  color: white;
+}
+/*# sourceMappingURL=panel.css.map */
