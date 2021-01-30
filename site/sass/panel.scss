@@ -25,6 +25,11 @@ body{
 .rotate{
     transform: rotateZ(180deg);
 }
+
+.gray{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 .header{
     position: relative;
     width: 100%;
@@ -106,8 +111,10 @@ body{
                 padding: .5em .5em;
                 margin: .3em 0;
                 color: black;
-                transition: color .5s;
-
+                transition: color .5s; 
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                overflow: hidden;
                 &::before{
                     position: absolute;
                     top: 0;
@@ -115,11 +122,11 @@ body{
                     height: 100%;
                     width: 2px;
                     background-color: black;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
                     content: '';
                     z-index: -1;
                     transition: width .5s;
-                    border-top-right-radius: 5px;
-                    border-bottom-right-radius: 5px;
                 }
 
                 &:hover{

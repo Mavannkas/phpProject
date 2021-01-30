@@ -4,6 +4,7 @@ const main=()=>{
         menuExpandItems.forEach(mainItem=>{
             mainItem.querySelector("a").addEventListener('click',()=>{
                 mainItem.querySelector(".list__secondary").classList.toggle("show");
+                mainItem.querySelector("a").classList.toggle("gray");
                 mainItem.querySelector(".fas").classList.toggle("rotate");
             })
         });

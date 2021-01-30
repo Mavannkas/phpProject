@@ -25,6 +25,10 @@ body {
           transform: rotateZ(180deg);
 }
 
+.gray {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .header {
   position: relative;
   width: 100%;
@@ -157,6 +161,9 @@ body {
   color: black;
   -webkit-transition: color .5s;
   transition: color .5s;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: hidden;
 }
 
 .nav .list__main-fun a::before {
@@ -166,12 +173,12 @@ body {
   height: 100%;
   width: 2px;
   background-color: black;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   content: '';
   z-index: -1;
   -webkit-transition: width .5s;
   transition: width .5s;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 .nav .list__main-fun a:hover {
