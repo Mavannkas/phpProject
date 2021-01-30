@@ -18,6 +18,13 @@ body{
     // background-color: $main-color;
 }
 
+.show{
+    display: block!important;
+}
+
+.rotate{
+    transform: rotateZ(180deg);
+}
 .header{
     position: relative;
     width: 100%;
@@ -71,4 +78,137 @@ body{
             color: white;
         }
     }
+}
+
+//aside nav
+.nav{
+    display: flex;
+    justify-content: flex-end;
+    min-height: 1000px;
+    width: 200px;
+    padding-top: 1em;
+    border-right: 1px solid black;
+
+    ul{
+        list-style: none;
+    }
+
+    .list{
+        padding-right: 1em;
+        
+        &__main-fun{
+            // margin-bottom: 1em;
+
+            a{
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                padding: .5em .5em;
+                margin: .3em 0;
+                color: black;
+                transition: color .5s;
+
+                &::before{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 2px;
+                    background-color: black;
+                    content: '';
+                    z-index: -1;
+                    transition: width .5s;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }
+
+                &:hover{
+                    text-decoration: none;
+                    color: $main-color;
+                    &::before{
+                        width: 100%;
+                    }
+                }
+            }
+            .list__secondary{
+                display: none;
+                padding-left: 1em;
+            }
+        }
+    }
+}
+//footer
+footer{
+    width: 100%;
+    text-align: center;
+    padding: .5em;
+    background-color: black;
+    color: white;
+    p{
+        margin: 0;
+    }
+    a{
+        color: white;
+        &:hover{
+            color: white;
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+.small-device{
+    display: none;
+}
+@media(max-width: 768px){
+    .small-device{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: $body-color;
+
+        p{
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .dev-img-box{
+            position: relative;
+            margin-top: 2em;
+            
+            .phone{
+                font-size: 12rem;
+            }
+
+            &::before{
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                height: 135%;
+                width: 5px;
+                background-color: red;
+                transform-origin: top;
+                content: '';
+            }
+
+            &::before{
+                transform: rotateZ(-32deg);
+            }
+
+
+        }
+
+    }
+
 }
