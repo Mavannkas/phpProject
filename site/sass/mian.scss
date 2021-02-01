@@ -107,7 +107,7 @@ body{
             }
         }
 
-    }
+}
 
 .secondary-btn{
     position: relative;
@@ -562,11 +562,11 @@ header{
         border: none;
         border-radius: 5px;
         overflow: hidden;
-        z-index: 1031;
+        // z-index: 1031;
         &:hover{
             &::after{
                 background-color: #238396;
-                z-index: 1033;
+                // z-index: 1033;
             }
         }
     }

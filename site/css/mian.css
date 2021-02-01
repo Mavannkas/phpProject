@@ -688,12 +688,10 @@ header .header-text {
   border: none;
   border-radius: 5px;
   overflow: hidden;
-  z-index: 1031;
 }
 
 #contact div > button:hover::after {
   background-color: #238396;
-  z-index: 1033;
 }
 
 footer {

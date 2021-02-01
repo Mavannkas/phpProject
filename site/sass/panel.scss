@@ -18,6 +18,53 @@ body{
     // background-color: $main-color;
 }
 
+.title{
+    margin: 1em 0;
+    color: $main-color;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.secondary-btn{
+    position: relative;
+    text-transform: uppercase;
+    min-width: 110px;
+    padding: .7em 1.4em;
+    margin: 1em 0;
+    font-size: 1.6rem;
+    color: white;
+    background-color: $main-color;
+    border: none;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 0;
+
+    &::after{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        transform: scaleX(0);
+        transform-origin: top right;
+        transition: .5s;
+        content: '';
+        z-index: -1;
+    }
+
+    &:hover{
+
+        &::after{
+            transform-origin: bottom left;
+            transform: scaleX(1);
+            background-color: #238396;
+        }
+    }
+
+}
+
 .show{
     display: block!important;
 }
@@ -148,6 +195,69 @@ body{
         }
     }
 }
+//main
+main{
+    display: flex;
+
+    section{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+//form-reg
+.form{
+    position: relative;
+    width: 500px;
+    &__body{
+        // width: 250px;
+        margin: 0 auto;
+        label{
+            display: block;
+            margin-top: 1em;
+            font-size: 2rem;
+        }
+        input{
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: 0em;
+            border:none;
+            background: rgba(255, 255, 255, 0.452);
+            box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
+            border-radius: 5px;
+        }
+        .form__input-box{
+            position: relative;
+
+            i{
+                position: absolute;
+                right: 15px;
+                bottom: 8px;
+                font-size: 2.5rem;
+                color: $main-color;
+            }
+        }
+
+        button{
+            display: block;
+            margin: 2em auto;
+            font-size: 2rem;
+        }
+
+        .error{
+            margin-top: 1em;
+            color: red;
+        }
+    }
+
+    &__footer{
+        display: block;
+        text-align: right;
+    }
+
+}
 //footer
 footer{
     width: 100%;
@@ -164,14 +274,7 @@ footer{
             color: white;
         }
     }
-    
 }
-
-
-
-
-
-
 
 .small-device{
     display: none;

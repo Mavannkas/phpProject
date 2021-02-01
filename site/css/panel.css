@@ -16,6 +16,54 @@ body {
   background: #ebebeb;
 }
 
+.title {
+  margin: 1em 0;
+  color: #2eb0ca;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.secondary-btn {
+  position: relative;
+  text-transform: uppercase;
+  min-width: 110px;
+  padding: .7em 1.4em;
+  margin: 1em 0;
+  font-size: 1.6rem;
+  color: white;
+  background-color: #2eb0ca;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.secondary-btn::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+  -webkit-transition: .5s;
+  transition: .5s;
+  content: '';
+  z-index: -1;
+}
+
+.secondary-btn:hover::after {
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  background-color: #238396;
+}
+
 .show {
   display: block !important;
 }
@@ -202,6 +250,79 @@ body {
 .nav .list__main-fun .list__secondary {
   display: none;
   padding-left: 1em;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main section {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form {
+  position: relative;
+  width: 500px;
+}
+
+.form__body {
+  margin: 0 auto;
+}
+
+.form__body label {
+  display: block;
+  margin-top: 1em;
+  font-size: 2rem;
+}
+
+.form__body input {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 0em;
+  border: none;
+  background: rgba(255, 255, 255, 0.452);
+  -webkit-box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
+          box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
+  border-radius: 5px;
+}
+
+.form__body .form__input-box {
+  position: relative;
+}
+
+.form__body .form__input-box i {
+  position: absolute;
+  right: 15px;
+  bottom: 8px;
+  font-size: 2.5rem;
+  color: #2eb0ca;
+}
+
+.form__body button {
+  display: block;
+  margin: 2em auto;
+  font-size: 2rem;
+}
+
+.form__body .error {
+  margin-top: 1em;
+  color: red;
+}
+
+.form__footer {
+  display: block;
+  text-align: right;
 }
 
 footer {
