@@ -65,3 +65,20 @@ $hover-color: #238396;
         padding-right: .4em;
     }
 }
+
+@mixin myInput {
+    label{
+        display: block;
+        margin-top: 1em;
+        font-size: 2rem;
+    }
+    input{
+        width: 100%;
+        padding: 0.5em;
+        margin-bottom: 0em;
+        border:none;
+        background: rgba(255, 255, 255, 0.452);
+        box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
+        border-radius: 5px;
+    }
+}

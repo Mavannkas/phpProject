@@ -15,7 +15,14 @@ const main=()=>{
 
     navBtn.addEventListener('click',()=>nav.classList.toggle("nav-expand"));
     profile.addEventListener('click',()=>dropdownMenu.classList.toggle("header__profile__expand"));
+
 }
+
+
+
+
+
+
 
 
 

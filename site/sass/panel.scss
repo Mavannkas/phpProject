@@ -18,6 +18,11 @@ body{
     // background-color: $main-color;
 }
 
+.error{
+    margin-top: 1em;
+    color: red;
+}
+
 .title{
     margin: 1em 0;
     color: $main-color;
@@ -64,6 +69,17 @@ body{
     }
 
 }
+.secondary-btn--danger{
+    background-color: rgb(235, 60, 60);
+
+    &:hover{
+
+        &::after{
+
+            background-color:  rgba(255, 0, 0, 0.993);
+        }
+    }
+}
 
 .show{
     display: block!important;
@@ -101,7 +117,7 @@ body{
         position: absolute;
         display: inline-block;
         // perspective: 1000px;
-        left: 47%;
+        left: 50%;
         transform: translateX(-50%);
         line-height: 60px;
         font-size: 3rem;
@@ -122,6 +138,9 @@ body{
         z-index: 100;
 
         &-img{
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
             background-color: #fff;
             border-radius: 50%;
             overflow: hidden;
@@ -132,7 +151,6 @@ body{
             display: inline-block;
             color: white;
         }
-        
         &-head{
             display: flex;
             justify-content: center;
@@ -149,19 +167,16 @@ body{
             }
         }
         >.header__profile__expand{
-            transform:scaleY(1) ;
+            display: block;
         }
     }
     &__dropdown-menu{
-        display: block;
+        display: none;
         width: 180px;
         margin: .5em 0;
         border-radius: 5px;
         background-color: #fff;
         box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.144);
-        transform: scaleY(0);
-        transform-origin: top;
-        transition: transform .3s;
 
         ul{
             padding: .5em 0;
@@ -196,8 +211,8 @@ body{
     width: 200px;
     padding-top: 1em;
     border-right: 1px solid black;
-    background-color: #b6b6b691;
-    z-index: 0;
+    background-color: #d8d8d8;
+    z-index: 10;
     transform-origin: left;
     transform: translateX(-200px);
     transition: transform .3s;
@@ -207,7 +222,7 @@ body{
     
     .list{
         width: 100%;
-        z-index: 0;
+        z-index: 10;
         
         &__main-fun{
             // margin-bottom: 1em;
@@ -296,20 +311,7 @@ main{
     &__body{
         // width: 250px;
         margin: 0 auto;
-        label{
-            display: block;
-            margin-top: 1em;
-            font-size: 2rem;
-        }
-        input{
-            width: 100%;
-            padding: 0.5em;
-            margin-bottom: 0em;
-            border:none;
-            background: rgba(255, 255, 255, 0.452);
-            box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
-            border-radius: 5px;
-        }
+
         .form__input-box{
             position: relative;
 
@@ -328,10 +330,7 @@ main{
             font-size: 2rem;
         }
 
-        .error{
-            margin-top: 1em;
-            color: red;
-        }
+
     }
 
     &__footer{
@@ -358,9 +357,63 @@ footer{
     }
 }
 
+
+//acc-edit
+.profile-edit{
+    min-width: 700px;
+    margin: 4em 0;
+    @include myInput;
+    hr{
+        background-color: $main-color;
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    &__option{
+        padding: 1em;
+
+        &-header{
+            font-size: 2.5rem;
+            text-align: center;
+            padding-bottom: .5em;
+        }
+    }
+
+    &__img{
+        display: block;
+        width: 200px;
+        height: 200px;
+        margin: 2em auto;
+        border: 1px solid black;
+        background-color: white;
+        border-radius: 3px;
+    }
+
+    &__btn-box{
+        margin-top: 1em;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__form--delete{
+        margin-top: 2em;
+        text-align: center;
+        p{
+            margin: .2em 0;
+        }
+        span{
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: red;
+        }
+    }
+}
+
 .small-device{
     display: none;
 }
+
 @media(max-width: 768px){
     .small-device{
         position: fixed;

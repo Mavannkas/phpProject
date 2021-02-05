@@ -16,6 +16,11 @@ body {
   background: #ebebeb;
 }
 
+.error {
+  margin-top: 1em;
+  color: red;
+}
+
 .title {
   margin: 1em 0;
   color: #2eb0ca;
@@ -64,6 +69,14 @@ body {
   background-color: #238396;
 }
 
+.secondary-btn--danger {
+  background-color: #eb3c3c;
+}
+
+.secondary-btn--danger:hover::after {
+  background-color: rgba(255, 0, 0, 0.993);
+}
+
 .show {
   display: block !important;
 }
@@ -110,7 +123,7 @@ body {
   overflow: hidden;
   position: absolute;
   display: inline-block;
-  left: 47%;
+  left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   line-height: 60px;
@@ -169,6 +182,10 @@ body {
 }
 
 .header__profile-img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
   background-color: #fff;
   border-radius: 50%;
   overflow: hidden;
@@ -207,26 +224,17 @@ body {
 }
 
 .header__profile > .header__profile__expand {
-  -webkit-transform: scaleY(1);
-          transform: scaleY(1);
+  display: block;
 }
 
 .header__dropdown-menu {
-  display: block;
+  display: none;
   width: 180px;
   margin: .5em 0;
   border-radius: 5px;
   background-color: #fff;
   -webkit-box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.144);
           box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.144);
-  -webkit-transform: scaleY(0);
-          transform: scaleY(0);
-  -webkit-transform-origin: top;
-          transform-origin: top;
-  -webkit-transition: -webkit-transform .3s;
-  transition: -webkit-transform .3s;
-  transition: transform .3s;
-  transition: transform .3s, -webkit-transform .3s;
 }
 
 .header__dropdown-menu ul {
@@ -265,8 +273,8 @@ body {
   width: 200px;
   padding-top: 1em;
   border-right: 1px solid black;
-  background-color: #b6b6b691;
-  z-index: 0;
+  background-color: #d8d8d8;
+  z-index: 10;
   -webkit-transform-origin: left;
           transform-origin: left;
   -webkit-transform: translateX(-200px);
@@ -283,7 +291,7 @@ body {
 
 .nav .list {
   width: 100%;
-  z-index: 0;
+  z-index: 10;
 }
 
 .nav .list__main-fun {
@@ -390,23 +398,6 @@ main section {
   margin: 0 auto;
 }
 
-.form__body label {
-  display: block;
-  margin-top: 1em;
-  font-size: 2rem;
-}
-
-.form__body input {
-  width: 100%;
-  padding: 0.5em;
-  margin-bottom: 0em;
-  border: none;
-  background: rgba(255, 255, 255, 0.452);
-  -webkit-box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
-          box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
-  border-radius: 5px;
-}
-
 .form__body .form__input-box {
   position: relative;
 }
@@ -423,11 +414,6 @@ main section {
   display: block;
   margin: 2em auto;
   font-size: 2rem;
-}
-
-.form__body .error {
-  margin-top: 1em;
-  color: red;
 }
 
 .form__footer {
@@ -453,6 +439,80 @@ footer a {
 
 footer a:hover {
   color: white;
+}
+
+.profile-edit {
+  min-width: 700px;
+  margin: 4em 0;
+}
+
+.profile-edit label {
+  display: block;
+  margin-top: 1em;
+  font-size: 2rem;
+}
+
+.profile-edit input {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 0em;
+  border: none;
+  background: rgba(255, 255, 255, 0.452);
+  -webkit-box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
+          box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.164);
+  border-radius: 5px;
+}
+
+.profile-edit hr {
+  background-color: #2eb0ca;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.profile-edit__option {
+  padding: 1em;
+}
+
+.profile-edit__option-header {
+  font-size: 2.5rem;
+  text-align: center;
+  padding-bottom: .5em;
+}
+
+.profile-edit__img {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 2em auto;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 3px;
+}
+
+.profile-edit__btn-box {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.profile-edit__form--delete {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.profile-edit__form--delete p {
+  margin: .2em 0;
+}
+
+.profile-edit__form--delete span {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: red;
 }
 
 .small-device {
