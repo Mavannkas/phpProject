@@ -161,9 +161,11 @@ body {
 .header__profile {
   position: absolute;
   display: inline-block;
-  right: 0;
-  padding: 10px 3em;
+  width: 200px;
+  right: 20px;
+  padding: 10px 1em;
   border-radius: 5px;
+  z-index: 100;
 }
 
 .header__profile-img {
@@ -180,24 +182,39 @@ body {
   color: white;
 }
 
-.header__profile:hover {
-  cursor: pointer;
+.header__profile-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.header__profile:hover .header__dropdown-menu {
-  -webkit-transform: scaleY(1);
-          transform: scaleY(1);
+.header__profile-head p {
+  margin: 0;
+}
+
+.header__profile:hover {
+  cursor: pointer;
 }
 
 .header__profile:hover .header__profile-name {
   color: #2eb0ca;
 }
 
+.header__profile > .header__profile__expand {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
 .header__dropdown-menu {
   display: block;
-  position: absolute;
-  bottom: -170%;
-  width: 150px;
+  width: 180px;
+  margin: .5em 0;
   border-radius: 5px;
   background-color: #fff;
   -webkit-box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.144);
@@ -237,18 +254,27 @@ body {
 }
 
 .nav {
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  min-height: 1000px;
+  height: 100%;
   width: 200px;
   padding-top: 1em;
   border-right: 1px solid black;
   background-color: #b6b6b691;
   z-index: 0;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: translateX(-200px);
+          transform: translateX(-200px);
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
 }
 
 .nav ul {
@@ -309,10 +335,37 @@ body {
   padding-left: 1em;
 }
 
+.nav .nav-btn {
+  position: absolute;
+  top: 0px;
+  right: -50px;
+  font-size: 3rem;
+  padding: .3em;
+  color: #2eb0ca;
+  cursor: pointer;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+.nav .nav-btn:hover {
+  color: #238396;
+}
+
+.nav .nav-btn:focus-visible {
+  border: 1px solid black;
+}
+
+.nav-expand {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
 main {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 100vh;
 }
 
 main section {
