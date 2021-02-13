@@ -1,3 +1,4 @@
+
 const main=()=>{
     const nav=document.querySelector("#navbar");
     const pricesBtns=document.querySelectorAll(".prices__btn")
@@ -54,18 +55,15 @@ const main=()=>{
     bodyShadow.addEventListener('click',()=>togglePop("none"));
     cross.addEventListener('click',()=>togglePop("none"));
     logBtn.addEventListener('click',()=>togglePop("block"));
+
 }
 
+console.log(1);
 
 window.addEventListener("load",main);
 
 
-
-
-
 //TODO
 //Formularz - po wyślij komunikat
-//Popup logowania
-//popup rejestracji
-    //Podpiąć ją pod biorę w cenniku i jako link w logowaniu
+
     

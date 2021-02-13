@@ -106,7 +106,7 @@ class Row{
             autoIncrement:objToPrep.querySelector('input[name="autoIncrement"]').checked
         };
     }
-    
+
     genJSON(){
         const structArr=[];
         for(const i in this.rowNodesArr){
@@ -122,3 +122,6 @@ const columnMain=()=>{
 };
 
 window.addEventListener('load',columnMain);
+
+
+

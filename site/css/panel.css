@@ -421,11 +421,11 @@ main section {
   margin: 0 auto;
 }
 
-.form__body .form__input-box {
+.form__body > .form__input-box {
   position: relative;
 }
 
-.form__body .form__input-box i {
+.form__body > .form__input-box i {
   position: absolute;
   right: 15px;
   bottom: 8px;
@@ -546,6 +546,16 @@ footer a:hover {
   padding: 6em;
 }
 
+.addColumns input[type=text], .addColumns select {
+  width: 90%;
+  padding: 0.5em;
+  background-color: rgba(255, 255, 255, 0.726);
+  border: none;
+  border-radius: 8px;
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.397);
+          box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.397);
+}
+
 .addColumns tr {
   display: -ms-grid;
   display: grid;
@@ -591,16 +601,6 @@ footer a:hover {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 1em;
-}
-
-.addColumns input[type=text], .addColumns select {
-  width: 90%;
-  padding: 0.5em;
-  background-color: rgba(255, 255, 255, 0.726);
-  border: none;
-  border-radius: 8px;
-  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.397);
-          box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.397);
 }
 
 .addColumns option:hover {
@@ -686,6 +686,131 @@ footer a:hover {
 
 .addColumns .del:hover {
   background-color: #cc1313;
+}
+
+.addColumns input:disabled, .addColumns select:disabled, .addColumns input[type="checkbox"]:disabled + label {
+  background-color: #bebebe;
+  cursor: not-allowed;
+}
+
+.form__body--small {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form__body--small label {
+  font-size: 2rem;
+}
+
+.form__body--small select {
+  width: 40%;
+  margin-bottom: 1em;
+}
+
+.form__body--small button {
+  padding: .5em 1em;
+  margin: 1em 2em 4em 2em;
+}
+
+.form__body--small .btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.truncate p {
+  text-align: center;
+}
+
+.truncate p > span {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: red;
+  letter-spacing: 2px;
+}
+
+.truncate button {
+  font-size: 1.6rem;
+}
+
+.shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.596);
+  z-index: 101;
+}
+
+.shadow .popup {
+  width: 30%;
+  background-color: white;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.shadow .popup h4 {
+  margin-top: .6em;
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: red;
+}
+
+.shadow .popup p {
+  margin: 1em 2em;
+  padding: 1em;
+  overflow: auto;
+  max-height: 400px;
+}
+
+.shadow .popup p span {
+  color: red;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.shadow .popup .popup__button-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 1em;
+}
+
+.shadow .popup .popup__button-box button {
+  font-size: 1.6rem;
 }
 
 @media (max-width: 768px) {
