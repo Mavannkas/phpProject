@@ -813,6 +813,95 @@ footer a:hover {
   font-size: 1.6rem;
 }
 
+.show-data td {
+  border-right: 1px solid black;
+}
+
+.show-data tr > td:last-child {
+  border-right: none;
+}
+
+.show {
+  max-width: 1000px;
+  overflow-x: auto;
+}
+
+.show table {
+  display: table;
+}
+
+.show table tr {
+  display: table-row;
+}
+
+.show table tr td, .show table tr th {
+  display: table-cell;
+}
+
+.shadow-edit {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.shadow-edit .popup {
+  width: 80%;
+  margin-bottom: 1em;
+}
+
+.shadow-edit .popup h4 {
+  font-size: 2rem;
+  font-weight: normal;
+  color: #2eb0ca;
+}
+
+.shadow-edit .popup .secondary-btn-box {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.shadow-edit .popup .secondary-btn-box button {
+  font-size: 1.3rem;
+  padding: 1em;
+}
+
+.shadow-edit .popup form .table-scroll {
+  width: 90%;
+  margin: 2em auto 1em auto;
+  overflow-x: auto;
+}
+
+.shadow-edit .popup form table {
+  display: table;
+  max-width: 100%;
+  border: 1px solid black;
+}
+
+.shadow-edit .popup form table tr {
+  display: table-row;
+}
+
+.shadow-edit .popup form table th, .shadow-edit .popup form table td {
+  display: table-cell;
+  padding: .5em;
+  white-space: nowrap;
+}
+
+.shadow-edit .popup form table thead tr {
+  background-color: #3197ac8a;
+  border: 2px solid black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.shadow-edit .popup form table td {
+  border-right: 1px solid black;
+}
+
+.shadow-edit .popup form table tr > td:last-child {
+  border-right: none;
+}
+
 @media (max-width: 768px) {
   .small-device {
     position: fixed;

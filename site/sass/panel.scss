@@ -441,7 +441,6 @@ footer{
         background: transparent;
         grid-template-columns: 2fr 2fr 2fr 1fr 1fr 1fr;
         text-align: center;
-       
     }
 
     thead tr{
@@ -653,7 +652,83 @@ footer{
     }
 }
 
+//show-data
+.show-data{
+    td{
+        border-right: 1px solid black;
+    }
+    tr>td:last-child{
+        border-right:none;
+    }
+}
 
+.show{
+    max-width: 1000px;
+    overflow-x: auto;
+    table{
+        display: table;
+        tr{
+            display: table-row;
+            td,th{
+                display: table-cell;
+            }
+        }
+    }
+}
+
+.shadow-edit{
+    align-items: flex-end;
+    .popup{
+        width: 80%;
+        margin-bottom: 1em;
+
+        h4{
+            font-size: 2rem;
+            font-weight: normal;
+            color: $main-color;
+        }
+
+        .secondary-btn-box{
+            justify-content: space-around;
+            button{
+                font-size: 1.3rem;
+                padding: 1em;
+            }
+        }
+        form{
+            .table-scroll{
+                width: 90%;
+                margin: 2em auto 1em auto;
+                overflow-x: auto;
+            }
+            table{
+                display: table;
+                max-width: 100%;
+                border: 1px solid black;
+                tr{
+                    display: table-row;
+                }
+                th,td{
+                    display: table-cell;
+                    padding: .5em;
+                    white-space: nowrap;
+                }
+                thead tr{
+                    background-color: #3197ac8a;
+                    border: 2px solid black;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }
+                td{
+                    border-right: 1px solid black;
+                }
+                tr>td:last-child{
+                    border-right:none;
+                }
+            };
+        }
+    }
+}
 @media(max-width: 768px){
     .small-device{
         position: fixed;

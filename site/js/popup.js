@@ -60,11 +60,11 @@ class Popup{
             btns[1].removeEventListener('click', this.destroy);
         }
 
-        document.body.style.overflow="scroll";
+        document.body.style.overflow="auto";
         this.popupLayer.remove();
     }
 
-    firstType(txt, callback){
+    firstType(txt){
         this.popupLayer.querySelector("p").innerHTML=this.text;
 
         const btn=this.normalBtn(txt);
