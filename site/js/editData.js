@@ -7,13 +7,30 @@ class editTuple{
 
         this.theaderNode=this.genTHeader(this.colNames);
         this.popupBody=this.genPopupBody();
+        this.insertData();
+        this.popupBody.querySelector("#send").addEventListener('click',this.close.bind(this));
+        this.popupBody.querySelector("#close").addEventListener('click',this.close.bind(this));
 
     }
 
     close(){
+        this.popupBody.querySelector("#send").removeEventListener('click',this.close.bind(this));
+        this.popupBody.querySelector("#close").removeEventListener('click',this.close.bind(this));
         this.popupBody.remove();
     }
     
+    insertData(){
+        const dst=this.popupBody.querySelector("tr");
+        this.allCells.forEach(element => {
+            let tdNode=document.createElement("td");
+            tdNode.appendChild(element.inputNode);
+            dst.appendChild(tdNode);
+        });
+        this.popupBody.querySelector('thead').appendChild(this.theaderNode);
+        console.log(this.popupBody)
+        document.body.appendChild(this.popupBody)
+    }
+
     genPopupBody(){
         const myDiv=document.createElement('div');
         myDiv.classList.add("shadow","shadow-edit");
@@ -27,6 +44,7 @@ class editTuple{
                         <thead>
                         </thead>
                         <tbody>
+                        <tr></tr>
                         </tbody>
                     </table>
                 </div>
@@ -85,13 +103,13 @@ class editTuple{
                 break;
             case "varchar":
                 myType={
-                    type:"text",
+                    type:"textarea",
                     maxlength:"536870912"
                 }
                 break;
             case "text":
                 myType={
-                    type:"text",
+                    type:"textarea",
                     maxlength:"30000000"
                 }
                 break;
@@ -122,14 +140,14 @@ class editTuple{
     }
 
     genInputNode(data, value, index){
-        const input=document.createElement("input");
-        input.value=value;
+        const input=data.type=="textarea"?document.createElement("textarea"):document.createElement("input");
+        console.log(value.replace(" ","T"));
+        input.value=data.type=="datetime-local"?value.replace(" ","T"):value;
         input.setAttribute("name",this.colNames[index]);
 
         for (const i in data) {
             input.setAttribute(i,data[i]);
         }
-        console.log(input)
         return{
             inputNode:input
         };
@@ -137,4 +155,3 @@ class editTuple{
 }
 
 document.querySelector(".show-data").addEventListener('click',a=>console.log(new editTuple(a.target.parentNode)))
-
