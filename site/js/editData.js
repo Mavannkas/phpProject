@@ -159,19 +159,17 @@ class editTuple{
     }
 
     addListeners(){
-        this.popupBody.querySelector("#send").addEventListener('click',()=>{
-            this.popupEvent(2, "Czy jesteś pewny, że chcesz zapisać zmiany?",this.close.bind(this))
-        });
+        this.popupBody.querySelector("#send").addEventListener('click',()=>this.popupEvent(2, "Czy jesteś pewny, że chcesz zapisać zmiany?",this.close.bind(this)));
 
-        this.popupBody.querySelector("#close").addEventListener('click',()=>{
-            this.popupEvent(3, "Czy na pewno chcesz anulować zmiany?",this.close.bind(this));
-        });
+        this.popupBody.querySelector("#close").addEventListener('click',()=>this.popupEvent(3, "Czy na pewno chcesz anulować zmiany?",this.close.bind(this)));
+
         this.eventHandler=this.bodyEvent.bind(this);
         document.body.addEventListener('keypress', this.eventHandler, true);
     }
 
     bodyEvent(key){
-        if(key.key==="Enter" && !(this.popupHandler && this.popupHandler.exists)){
+        console.log()
+        if(key.key==="Enter" && !(this.popupHandler && this.popupHandler.exists) && !"INPUT,TEXTAREA".includes(key.target.nodeName)){
             this.popupEvent(2, "Czy jesteś pewny, że chcesz zapisać zmiany?",this.close.bind(this))
         }
     }
