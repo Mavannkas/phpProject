@@ -8,14 +8,13 @@ class editTuple{
         this.theaderNode=this.genTHeader(this.colNames);
         this.popupBody=this.genPopupBody();
         this.insertData();
-        this.popupBody.querySelector("#send").addEventListener('click',this.close.bind(this));
-        this.popupBody.querySelector("#close").addEventListener('click',this.close.bind(this));
-
+        this.addListeners();
     }
 
     close(){
         this.popupBody.querySelector("#send").removeEventListener('click',this.close.bind(this));
         this.popupBody.querySelector("#close").removeEventListener('click',this.close.bind(this));
+        document.body.removeEventListener('keypress', this.eventHandler, true)
         this.popupBody.remove();
     }
     
@@ -27,7 +26,6 @@ class editTuple{
             dst.appendChild(tdNode);
         });
         this.popupBody.querySelector('thead').appendChild(this.theaderNode);
-        console.log(this.popupBody)
         document.body.appendChild(this.popupBody)
     }
 
@@ -80,7 +78,6 @@ class editTuple{
         
 
     }
-    
 
     getHTMLInputType(type){
         let myType;
@@ -141,7 +138,6 @@ class editTuple{
 
     genInputNode(data, value, index){
         const input=data.type=="textarea"?document.createElement("textarea"):document.createElement("input");
-        console.log(value.replace(" ","T"));
         input.value=data.type=="datetime-local"?value.replace(" ","T"):value;
         input.setAttribute("name",this.colNames[index]);
 
@@ -152,6 +148,34 @@ class editTuple{
             inputNode:input
         };
     }
+
+    popupEvent(type, txt, callback){
+        if(!this.popupHandler || !this.popupHandler.exists){
+            if(this.popupHandler){
+                delete this.popupHandler;
+            }
+            this.popupHandler=new Popup(type, txt, callback);
+        }
+    }
+
+    addListeners(){
+        this.popupBody.querySelector("#send").addEventListener('click',()=>{
+            this.popupEvent(2, "Czy jesteś pewny, że chcesz zapisać zmiany?",this.close.bind(this))
+        });
+
+        this.popupBody.querySelector("#close").addEventListener('click',()=>{
+            this.popupEvent(3, "Czy na pewno chcesz anulować zmiany?",this.close.bind(this));
+        });
+        this.eventHandler=this.bodyEvent.bind(this);
+        document.body.addEventListener('keypress', this.eventHandler, true);
+    }
+
+    bodyEvent(key){
+        if(key.key==="Enter" && !(this.popupHandler && this.popupHandler.exists)){
+            this.popupEvent(2, "Czy jesteś pewny, że chcesz zapisać zmiany?",this.close.bind(this))
+        }
+    }
+
 }
 
-document.querySelector(".show-data").addEventListener('click',a=>console.log(new editTuple(a.target.parentNode)))
+document.querySelector(".show-data").addEventListener('click',a=>new editTuple(a.target.parentNode))

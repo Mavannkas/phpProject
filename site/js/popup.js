@@ -5,8 +5,10 @@ class Popup{
         this.callback=callback;
         this.popupLayer=this.genLayer();
         this.init();
+        this.setFocus();
+        this.exists=true;
     }
-    
+
     genLayer(){
         const popupLayer=document.createElement('div');
         popupLayer.innerHTML=`
@@ -47,19 +49,20 @@ class Popup{
 
     redBtn(txt){
         const btn=this.normalBtn(txt);
-        btn.classList.add("secondary-btn--danger")
+        btn.classList.add("secondary-btn--danger");
         return btn;
     }
 
     destroy(){
+        this.exists=false;
         if(this.type==1){
-            this.popupLayer.querySelector('button').removeEventListener('click',this.destroy);
+            this.popupLayer.querySelector('button').removeEventListener('click',this.destroy, true);
         }else{
             const btns=this.popupLayer.querySelectorAll('button');
-            btns[0].removeEventListener('click', this.callback);
-            btns[1].removeEventListener('click', this.destroy);
+            btns[0].removeEventListener('click', this.callback, true);
+            btns[1].removeEventListener('click', this.destroy, true);
         }
-
+        document.body.removeEventListener('keypress', this.bodyEvHandler, true);
         document.body.style.overflow="auto";
         this.popupLayer.remove();
     }
@@ -99,4 +102,7 @@ class Popup{
         document.body.appendChild(this.popupLayer);
     }
 
+    setFocus(){
+        this.popupLayer.querySelector("button").focus();
+    }
 }
