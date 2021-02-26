@@ -177,3 +177,17 @@ class editTuple{
 }
 
 document.querySelector(".show-data").addEventListener('click',a=>new editTuple(a.target.parentNode))
+
+
+
+
+
+const queryArea=document.querySelector('.advanced-query__input-area');
+const inputArea=document.querySelector('#query');
+document.querySelector('#isAdv').addEventListener('click',()=>queryArea.classList.toggle('hidden'));
+inputArea.addEventListener('keydown',() => inputArea.style.height=`${inputArea.scrollHeight}px`);
+
+document.querySelector('#reset-area').addEventListener('click',()=>{
+    queryArea.classList.add('hidden');
+    inputArea.style='';
+});

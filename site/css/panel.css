@@ -29,6 +29,57 @@ body {
   font-size: 3rem;
 }
 
+.checkboxContainer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.checkboxContainer label {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  border-radius: 5px;
+  margin: 0;
+  background-color: #fff;
+}
+
+.checkboxContainer label:hover {
+  background-color: #d4d4d4;
+  cursor: pointer;
+}
+
+.checkboxContainer input:focus {
+  outline: none;
+}
+
+.checkboxContainer input:focus + label {
+  border: 1px solid black;
+}
+
+.checkboxContainer input:checked + label::after {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  content: '\2713';
+  color: #2eb0ca;
+  font-weight: bold;
+}
+
 .secondary-btn {
   position: relative;
   text-transform: uppercase;
@@ -543,7 +594,7 @@ footer a:hover {
 }
 
 .addColumns {
-  padding: 6em;
+  margin-bottom: 1em;
 }
 
 .addColumns input[type=text], .addColumns select {
@@ -605,39 +656,6 @@ footer a:hover {
 
 .addColumns option:hover {
   background-color: #fff;
-}
-
-.addColumns .checkboxContainer {
-  position: relative;
-}
-
-.addColumns .checkboxContainer label {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  display: inline-block;
-  border-radius: 5px;
-  margin: 0;
-  background-color: #fff;
-}
-
-.addColumns .checkboxContainer label:hover {
-  background-color: #d4d4d4;
-  cursor: pointer;
-}
-
-.addColumns .checkboxContainer input:focus {
-  outline: none;
-}
-
-.addColumns .checkboxContainer input:focus + label {
-  border: 1px solid black;
-}
-
-.addColumns .checkboxContainer input:checked + label::after {
-  content: '\2713';
-  color: #2eb0ca;
-  font-weight: bold;
 }
 
 .addColumns .btn-container {
@@ -925,6 +943,100 @@ footer a:hover {
 
 .shadow-edit .popup form table tr > td:last-child {
   border-right: none;
+}
+
+.show-data-section {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.tuple-number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10em;
+}
+
+.tuple-number button {
+  border: none;
+  font-size: 2rem;
+  padding: .2em 1em;
+  background-color: transparent;
+  -webkit-transform: scaleX(1.3);
+          transform: scaleX(1.3);
+  -webkit-transition: color .3s, -webkit-transform .3s;
+  transition: color .3s, -webkit-transform .3s;
+  transition: transform .3s, color .3s;
+  transition: transform .3s, color .3s, -webkit-transform .3s;
+}
+
+.tuple-number button:hover {
+  color: #2eb0ca;
+  -webkit-transform: scaleX(1.5) scaleY(1.2);
+          transform: scaleX(1.5) scaleY(1.2);
+}
+
+.tuple-number p {
+  margin: 0;
+}
+
+.advanced-query {
+  width: 100%;
+}
+
+.advanced-query .hidden {
+  display: none;
+}
+
+.advanced-query .title {
+  font-size: 2rem;
+}
+
+.advanced-query p {
+  font-size: 1rem;
+  color: #6d6a6a;
+  text-align: center;
+}
+
+.advanced-query__input-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2em;
+}
+
+.advanced-query__input-area textarea {
+  height: auto;
+  width: 60%;
+  padding: .5em;
+  border: none;
+  border-radius: 5px;
+}
+
+.advanced-query__btn-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+}
+
+.advanced-query__btn-box button {
+  font-size: 1.2rem;
 }
 
 @media (max-width: 768px) {

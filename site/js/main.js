@@ -58,12 +58,5 @@ const main=()=>{
 
 }
 
-console.log(1);
 
 window.addEventListener("load",main);
-
-
-//TODO
-//Formularz - po wyślij komunikat
-
-    
