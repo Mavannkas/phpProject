@@ -840,7 +840,7 @@ footer a:hover {
 }
 
 .show {
-  max-width: 1000px;
+  max-width: 80vw;
   overflow-x: auto;
 }
 
@@ -1037,6 +1037,123 @@ footer a:hover {
 
 .advanced-query__btn-box button {
   font-size: 1.2rem;
+}
+
+.add-data table {
+  display: table;
+}
+
+.add-data table tr {
+  display: table-row;
+}
+
+.add-data table tr td, .add-data table tr th {
+  display: table-cell;
+}
+
+.add-data .btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.add-data .tabBtn {
+  display: inline-block;
+  height: 20px;
+  width: 60px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: black;
+  text-align: center;
+  line-height: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+}
+
+.add-data .tabBtn:focus {
+  outline: none;
+  border: 1px solid black;
+}
+
+.add-data .add {
+  border-bottom-left-radius: 90%;
+  background-color: #5bd85b;
+}
+
+.add-data .add:hover {
+  background-color: #4db44d;
+}
+
+.add-data .del {
+  border-bottom-right-radius: 90%;
+  background-color: #eb3c3c;
+}
+
+.add-data .del:hover {
+  background-color: #cc1313;
+}
+
+.add-data table {
+  border: 1px solid black;
+}
+
+.add-data table th {
+  text-align: center;
+  padding: 1em 2em;
+  white-space: nowrap;
+}
+
+.add-data table thead tr {
+  background-color: #3197ac8a;
+  border: 2px solid black;
+}
+
+.add-data table tbody td {
+  text-align: center;
+  border-right: 1px solid black;
+  background-color: white;
+}
+
+.add-data table tbody tr {
+  border-bottom: 1px solid black;
+}
+
+.add-data table tr > td:last-child {
+  border-right: none;
+}
+
+.add-data table textarea {
+  height: 70px;
+  resize: none;
+}
+
+.add-data table textarea, .add-data table input {
+  min-width: 150px;
+  height: 60px;
+  width: 100%;
+  padding: 0.5em;
+  background-color: rgba(255, 255, 255, 0.726);
+  border: none;
+}
+
+.add-data table textarea {
+  min-width: 400px;
+  width: 100%;
+}
+
+.add-data table textarea:focus, .add-data table input:focus {
+  outline: none;
+}
+
+.add-data .form__body-container {
+  max-width: 80vw;
+  overflow-x: auto;
 }
 
 @media (max-width: 768px) {

@@ -82,3 +82,56 @@ $hover-color: #238396;
         border-radius: 5px;
     }
 }
+
+@mixin addBtn {
+    .btn-container{
+        display: flex;
+        justify-content: center;
+        // padding-right: 1em;
+    }
+    .tabBtn{
+        display: inline-block;
+        height: 20px;
+        width: 60px;
+        margin: 0;
+        padding: 0;
+        border:none;
+        color: black;
+        text-align: center;
+        line-height: 20px;
+        font-size: 2rem;
+        font-weight: bold;
+        transition: background-color .3s;
+        &:focus{
+            outline: none;
+            border: 1px solid black;
+        }
+    }
+    .add{
+        border-bottom-left-radius:90%;
+        background-color: rgb(91, 216, 91);
+        &:hover{
+            background-color: rgb(77, 180, 77);
+        }
+    }
+    .del{
+        border-bottom-right-radius:90%;
+        background-color: #eb3c3c;
+        &:hover{
+            background-color: #cc1313;
+        }
+    }
+}
+
+@mixin tableStyle{
+
+    table{
+        display: table;
+        tr{
+            display: table-row;
+            td,th{
+                display: table-cell;
+            }
+        }
+    }
+}

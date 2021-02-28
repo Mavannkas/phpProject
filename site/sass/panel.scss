@@ -519,43 +519,7 @@ footer{
         background-color: #fff;
     }
 
-    .btn-container{
-        display: flex;
-        justify-content: center;
-        // padding-right: 1em;
-    }
-    .tabBtn{
-        display: inline-block;
-        height: 20px;
-        width: 60px;
-        margin: 0;
-        padding: 0;
-        border:none;
-        color: black;
-        text-align: center;
-        line-height: 20px;
-        font-size: 2rem;
-        font-weight: bold;
-        transition: background-color .3s;
-        &:focus{
-            outline: none;
-            border: 1px solid black;
-        }
-    }
-    .add{
-        border-bottom-left-radius:90%;
-        background-color: rgb(91, 216, 91);
-        &:hover{
-            background-color: rgb(77, 180, 77);
-        }
-    }
-    .del{
-        border-bottom-right-radius:90%;
-        background-color: #eb3c3c;
-        &:hover{
-            background-color: #cc1313;
-        }
-    }
+    @include addBtn;
 
     input:disabled, select:disabled, input[type="checkbox"]:disabled+label{
         background-color: #bebebe;
@@ -671,17 +635,9 @@ footer{
 }
 
 .show{
-    max-width: 1000px;
+    max-width: 80vw;
     overflow-x: auto;
-    table{
-        display: table;
-        tr{
-            display: table-row;
-            td,th{
-                display: table-cell;
-            }
-        }
-    }
+    @include tableStyle;
     tbody{
         tr:hover{
             cursor: pointer;
@@ -756,7 +712,7 @@ footer{
                 tr>td:last-child{
                     border-right:none;
                 }
-            };
+            }
         }
     }
 
@@ -828,6 +784,61 @@ footer{
             font-size: 1.2rem;
         }
     }
+}
+
+.add-data{
+    @include tableStyle;
+    @include addBtn;
+    table{
+        border: 1px solid black;
+        th{
+            text-align: center;;
+            padding: 1em 2em;
+            white-space: nowrap;
+        }
+        thead tr{
+            background-color: #3197ac8a;
+            border: 2px solid black;
+        }
+        tbody{
+            td{
+                text-align: center;
+                border-right: 1px solid black;
+                background-color: white;
+            }
+            tr{
+                border-bottom: 1px solid black;
+            }
+        }
+        tr>td:last-child{
+            border-right:none;
+        }
+        textarea{
+            height: 70px;
+            resize: none;
+        }
+        textarea,input{
+            min-width: 150px;
+            height: 60px;
+            width: 100%;
+            padding: 0.5em;
+            background-color: rgba(255, 255, 255, 0.726);
+            border:none;
+        }
+        textarea{
+            min-width: 400px;
+            width: 100%;
+        }
+        textarea:focus,input:focus{
+            outline: none;
+        }
+    }
+    .form__body-container{
+        max-width: 80vw;
+        overflow-x: auto;
+    }
+
+
 }
 
 @media(max-width: 768px){

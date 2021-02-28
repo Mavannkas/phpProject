@@ -16,8 +16,8 @@
 </head>
 <body>
     <header class="header">
-        <a href="../index.html" class="header__back" ><i class="fas fa-home"></i></a>
-        <a class="header__logo" href="#"><i class="fas fa-database"></i>Make<span>DB</span></a>
+        <a href="./?lvl=showTable" class="header__back" ><i class="fas fa-home"></i></a>
+        <a class="header__logo" href="../"><i class="fas fa-database"></i>Make<span>DB</span></a>
         <div class="header__profile">
             <div class="header__profile-head">
                 <img src="../img/user.svg" alt="user profile" class="header__profile-img" width="40px"></img>
@@ -25,10 +25,10 @@
             </div>
             <div class="header__dropdown-menu">
                 <ul>
-                    <li><a href="login.html">Logowanie</a></li>
-                    <li><a href="register.html">Rejestracja</a></li>
+                    <li><a href="./?lvl=login">Logowanie</a></li>
+                    <li><a href="./?lvl=register">Rejestracja</a></li>
                     <hr>
-                    <li><a href="edit.html">Edycja Konta</a></li>
+                    <li><a href="./?lvl=edit">Edycja Konta</a></li>
                 </ul>
             </div>
         </div>
@@ -38,51 +38,26 @@
             <nav class="nav">
                 <i class="fas fa-bars nav-btn"></i>
                 <ul class="list">
-                    <li class="list__main-fun"><a href="#">Podgląd</a></li>
-                    <li class="list__main-fun expand"><a href="#">Edycja zawartości <i class="fas fa-caret-down"></i></a>
-                        <ul class="list__secondary">
-                            <li class="list__secondary-element"><a href="#">Dodawanie</a></li>
-                            <li class="list__secondary-element"><a href="#">Edycja</a></li>
-                        </ul>
-                    </li>
+                    <li class="list__main-fun"><a href="./?lvl=showTable">Podgląd</a></li>
+                    <li class="list__main-fun"><a href="./?lvl=addData">Dodaj krotki</a></li>
                     <li class="list__main-fun expand"><a href="#">Edycja tabeli <i class="fas fa-caret-down"></i></a>
                         <ul class="list__secondary">
-                            <li class="list__secondary-element"><a href="#">Dodaj kolumnę</a></li>
-                            <li class="list__secondary-element"><a href="#">Edytuj kolumnę</a></li>
-                            <li class="list__secondary-element"><a href="#">Usuń kolumnę</a></li>
-                            <li class="list__secondary-element"><a href="#">Truncate</a></li>
+                            <li class="list__secondary-element"><a href="./?lvl=addColumns">Dodaj kolumny</a></li>
+                            <li class="list__secondary-element"><a href="./?lvl=editColumn">Edytuj kolumnę</a></li>
+                            <li class="list__secondary-element"><a href="./?lvl=truncate">Truncate</a></li>
                         </ul>
                     </li>
-                    <li class="list__main-fun"><a href="#">SQL</a></li>
                 </ul>
             </nav>
         </aside>
         <section>
-            <div class="addColumns">
-                <h3 class="title">Stwórz kolumny</h3>
-                <form class="form__body">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nazwa</th>
-                                <th>Typ</th>
-                                <th>Startowa wartość</th>
-                                <th>NULL</th>
-                                <th>Primary</th>
-                                <th>A.I</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <div class="btn-container"><button type="button" class="tabBtn add">+</button><button type="button" class="tabBtn del">-</button></div>
-                    <div class="secondary-btn-box">
-                        <button type="button" class="secondary-btn" id="submit">Zatwierdź</button>
-                        <button type="reset" class="secondary-btn secondary-btn--danger">Wyczyść</button>
-                    </div>
-                </form>
-            </div>
-            <script src="../js/addCols.js"></script>
+            <?php 
+                if(!empty($_GET['lvl'])){
+                    require_once './'.$_GET['lvl'].'.php';
+                }else{
+                    require_once './showTable.php';
+                }
+            ?>
         </section>
     </main>
     <footer>
@@ -100,5 +75,6 @@
     crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
       <script src="../js/panel.js"> </script>
+      <script src="../js/popup.js"></script>
 </body>
 </html>
