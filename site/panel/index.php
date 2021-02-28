@@ -53,7 +53,11 @@
         <section>
             <?php 
                 if(!empty($_GET['lvl'])){
-                    require_once './'.$_GET['lvl'].'.php';
+                    if(file_exists('./'.$_GET['lvl'].'.php')){
+                        require_once './'.$_GET['lvl'].'.php';
+                    }else{
+                        echo '<h1 style="color:red;">Nie znaleziono oczekiwanego pliku</h1>';
+                    }
                 }else{
                     require_once './showTable.php';
                 }
