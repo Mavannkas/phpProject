@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -26,7 +27,11 @@
               <a class="nav-link" href="#aboutus">Oferta</a>
               <a class="nav-link" href="#prices">Cennik</a>
               <a class="nav-link" href="#contact">Napisz do nas!</a>
-              <a class="nav-link" href="#" id="log">Logowanie</a>
+              <?php if(empty($_SESSION['user'])):?>
+                <a class="nav-link" href="#" id="log">Logowanie</a>
+                <?php else:?>
+                    <a class="nav-link" href="panel">Wejdź na panel</a>
+                <?php endif; ?>
             </div>
           </div>
     </nav>
@@ -218,7 +223,7 @@
 
             <div class="loginPop__close"><i class="fas fa-times"></i></div>
             <h4 class="loginPop__header">Logowanie</h4>
-            <form>
+            <form action="http://localhost/PHP_PROJEKT/site/panel/?lvl=login" method="POST">
                 <label for="login">Login</label>
                 <input type="text" id="login" name="login" required>
                 <label for="pass">Hasło</label>

@@ -21,6 +21,12 @@ body {
   color: red;
 }
 
+.error--output {
+  text-align: center;
+  color: red;
+  margin-bottom: 4em;
+}
+
 .title {
   margin: 1em 0;
   color: #2eb0ca;
@@ -1154,6 +1160,36 @@ footer a:hover {
 .add-data .form__body-container {
   max-width: 80vw;
   overflow-x: auto;
+}
+
+a.logout {
+  color: #ff4141;
+}
+
+a.logout:hover {
+  color: red;
+}
+
+.info-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 30px;
+}
+
+.info-box span {
+  text-transform: uppercase;
+  color: #2eb0ca;
 }
 
 @media (max-width: 768px) {

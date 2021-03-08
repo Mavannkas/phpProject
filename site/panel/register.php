@@ -23,7 +23,7 @@
                     <p class="error"></p>
                     <button type="button" class="secondary-btn">Zarejestruj się!</button>
                 </form>
-                <a href="login.html" class="form__footer">Zaloguj się!</a>
+                <a href="./?lvl=login" class="form__footer">Zaloguj się!</a>
             </div>
             <script src="../js/reg.js"></script>
         </section>

@@ -21,6 +21,11 @@ body{
 .error{
     margin-top: 1em;
     color: red;
+    &--output{
+        text-align: center;
+        color: red;
+        margin-bottom: 4em;
+    }
 }
 
 .title{
@@ -841,6 +846,27 @@ footer{
 
 }
 
+
+//PHP STYLES
+a.logout{
+    color: rgb(255, 65, 65);
+    
+    &:hover{
+        color: rgb(255, 0, 0);
+    }
+}
+
+.info-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    span{
+        text-transform: uppercase;
+        color: $main-color;
+    }
+}
 @media(max-width: 768px){
     .small-device{
         position: fixed;

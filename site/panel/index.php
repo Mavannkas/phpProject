@@ -1,3 +1,10 @@
+<?php session_start();
+if(empty($_SESSION['user']) && (empty($_GET['lvl']) || ($_GET['lvl']!='login' && $_GET['lvl']!='register'))){
+    header("Location: http://localhost/PHP_PROJEKT/site/panel/?lvl=login");
+}else if(!empty($_SESSION['user']) && !empty($_GET['lvl']) && ($_GET['lvl']=='login' || $_GET['lvl']=='register')){
+    header("Location: http://localhost/PHP_PROJEKT/site/panel/");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,19 +28,25 @@
         <div class="header__profile">
             <div class="header__profile-head">
                 <img src="../img/user.svg" alt="user profile" class="header__profile-img" width="40px"></img>
-                <p class="header__profile-name">Gość <i class="fas fa-caret-down"></i></p>
+                <p class="header__profile-name"><?php echo empty($_SESSION['user'])?'Gość':$_SESSION['user']; ?> <i class="fas fa-caret-down"></i></p>
             </div>
             <div class="header__dropdown-menu">
                 <ul>
-                    <li><a href="./?lvl=login">Logowanie</a></li>
-                    <li><a href="./?lvl=register">Rejestracja</a></li>
-                    <hr>
-                    <li><a href="./?lvl=edit">Edycja Konta</a></li>
+                    <?php if(empty($_SESSION['user'])):?>
+                        <li><a href="./?lvl=login">Logowanie</a></li>
+                        <hr>
+                        <li><a href="./?lvl=register">Rejestracja</a></li>
+                    <?php else:?>
+                        <li><a href="./?lvl=edit">Edycja Konta</a></li>
+                        <hr>
+                        <li><a href="./?logout=1" class='logout'>Wyloguj się</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
     </header>
     <main>
+        <?php if(!empty($_SESSION['user'])):?>
         <aside>
             <nav class="nav">
                 <i class="fas fa-bars nav-btn"></i>
@@ -50,6 +63,7 @@
                 </ul>
             </nav>
         </aside>
+        <?php endif; ?>
         <section>
             <?php 
                 if(!empty($_GET['lvl'])){
@@ -58,7 +72,14 @@
                     }else{
                         echo '<h1 style="color:red;">Nie znaleziono oczekiwanego pliku</h1>';
                     }
-                }else{
+                }else if(!empty($_GET['logout']) && $_GET['logout']=="1"){
+                    echo "<section class='info-box'>";
+                    echo "<p>Poprawnie wylogowano</p>";
+                    echo "<p>Żegnaj <span>".$_SESSION['user']."<span></p>";
+                    echo "</section>";
+                    session_destroy();
+                }
+                else{
                     require_once './showTable.php';
                 }
             ?>
