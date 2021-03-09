@@ -4,7 +4,7 @@ include_once 'db.php';
     function getHash($nick){
       global $conn;
       $conn->select_db("makedb");
-      $sql="SELECT login, password_hash FROM users WHERE BINARY login='$nick'";
+      $sql="SELECT login, password_hash FROM users WHERE BINARY login='$nick' and is_active=1";
       $result=$conn->query($sql);
 
       if($result && $result->num_rows){

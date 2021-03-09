@@ -19,12 +19,13 @@ const regMain=()=>{
             green='#7efb7e';
         colorReset();
         let message='';
-        // if(login.value && checkLogin(login.value)){
-        //     login.style.backgroundColor=red;
-        //     message+="Login zajęty lub pusty\n";
-        // }else{
-        //     login.style.backgroundColor=green;
-        // }
+
+        if(login.value.length<=3){
+            login.style.backgroundColor=red;
+            message+="Zbyt krótki login\n";
+        }else{
+            login.style.backgroundColor=green;
+        }
 
         if(!mail.value || !(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(mail.value))){
             mail.style.backgroundColor=red;
@@ -46,7 +47,6 @@ const regMain=()=>{
             }
         }
         if(!message){
-            console.log(message)
             document.querySelector('.form__body').submit();
         }else{
             err.innerText=message;

@@ -8,7 +8,7 @@
         ?>
         </p>
                 <h3 class="title">Logowanie</h3>
-                <form action="http://localhost/PHP_PROJEKT/site/panel/?lvl=login" method="POST" class="form__body">
+                <form action="./?lvl=login" method="POST" class="form__body">
                     <div class="form__input-box">
                         <label for="login">Login</label>
                         <input type="text" id="login" name="login" required>

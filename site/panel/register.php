@@ -1,7 +1,13 @@
         <section>
             <div class="form">
+            <p class="error--output">
+            <?php
+            include_once 'php/register_code.php';
+            ?>
+            </p>
+            
                 <h3 class="title">Rejestracja</h3>
-                <form action="#" class="form__body">
+                <form action="./?lvl=register" method="POST"class="form__body">
                     <div class="form__input-box">
                         <label for="login">Login</label>
                         <input type="text" id="login" name="login" required>
@@ -18,7 +24,7 @@
                     </div>
                     <div class="form__input-box">
                         <label for="pass-test">Powtórz hasło</label>
-                        <input type="password" id="pass-test" name="pass-test" required>
+                        <input type="password" id="pass-test" required>
                     </div>
                     <p class="error"></p>
                     <button type="button" class="secondary-btn">Zarejestruj się!</button>
