@@ -36,14 +36,14 @@ function sendMail($mail, $login, $hash){
   $headers[] = 'From: Weryfikacja konta <noreply@makedb.pl>';
   $message='
   <html>
-<head>
-  <title>Weryfikacja konta</title>
-</head>
-<body>
-  <p>Witaj, <strong>'.$login.'</strong> dziękuję za rejestrację!</p>
-  <p> Jeśli ty zakładałeś konto kliknij <a href="http://localhost/PHP_PROJEKT/site/verify.php?email='.$mail.'&hash='.$hash.'">tutaj</a>. Jeśli nie, to zignoruj wiadomość</p>
-</body>
-</html>
+    <head>
+      <title>Weryfikacja konta</title>
+    </head>
+    <body>
+      <p>Witaj, <strong>'.$login.'</strong> dziękuję za rejestrację!</p>
+      <p> Jeśli ty zakładałeś konto kliknij <a href="http://localhost/PHP_PROJEKT/site/verify.php?email='.$mail.'&hash='.$hash.'">tutaj</a>. Jeśli nie, zignoruj wiadomość</p>
+    </body>
+  </html>
 ';
 
   mail($mail, $sub, $message,implode("\r\n", $headers));

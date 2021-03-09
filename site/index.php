@@ -167,7 +167,13 @@
             <div class="wrapper">
                 <h2 class="section__title os-animation visibility"  data-animation='fadeIn'>Kontakt</h2>
                 <div class="section__body">
-                    <form action="#">
+                    <form action="#contact" method="get">
+                        <p style="color:green; text-align:center">
+                        <?php 
+                         include_once 'panel/php/mailer.php';
+                        ?>
+                        </p>
+
                         <label for="name" class=" os-animation visibility"  data-animation='flipInX'>Imię i Nazwisko</label>
                         <input type="text" id="name" name="name" placeholder="Jan Nowak" required pattern="[\w\W]{2,} [\w\W]{2,}" class=" os-animation visibility"  data-animation='flipInX'>
                         <label for="mail" class=" os-animation visibility"  data-animation='flipInX'>Mail</label>
@@ -180,7 +186,6 @@
                             <button type="submit" class="secondary-btn os-animation visibility"  data-animation='flipInX'>Wyślij</button>
                             <button type="reset" class="secondary-btn os-animation visibility"  data-animation='flipInX'>Wyczyść</button>
                         </div>
-
                     </form>
                 </div>
             </section>
