@@ -4,7 +4,6 @@ const main=()=>{
     const nav=document.querySelector('nav');
     const dropdownMenu=document.querySelector('.header__dropdown-menu');
     const profile=document.querySelector('.header__profile');
-
     menuExpandItems.forEach(mainItem=>{
         mainItem.querySelector("a").addEventListener('click',()=>{
             mainItem.querySelector(".list__secondary").classList.toggle("show");

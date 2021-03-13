@@ -1,10 +1,10 @@
 <?php
 include_once 'db.php';
 
-    function getHash($nick){
+    function getUserData($nick){
       global $conn;
       $conn->select_db("makedb");
-      $sql="SELECT login, password_hash FROM users WHERE BINARY login='$nick' and is_active=1";
+      $sql="SELECT * FROM users WHERE BINARY login='$nick' and is_active=1";
       $result=$conn->query($sql);
 
       if($result && $result->num_rows){
@@ -14,13 +14,32 @@ include_once 'db.php';
       }
     }
 
+    function addLogin($id){
+      global $conn;
+      $conn->select_db("makedb");
+      $sql="INSERT INTO login (user_id_fk) VALUES ($id)";
+      $result=$conn->query($sql);
+    }
+
 
 
 if (!empty($_POST['login']) && !empty($_POST['pass']))
   {
-    $data=getHash($_POST['login']);
+    $data=getUserData($_POST['login']);
   if($data && password_verify($_POST['pass'], $data['password_hash'])){
-    $_SESSION['user']=$data['login'];
+    $temp=array(
+      'user'=>$data['login'],
+      'id'=>$data['user_id'],
+      'img'=>$data['has_img'],
+      'admin'=>$data['is_admin'],
+      'db'=>$data['has_database']
+    );
+    
+    foreach($temp as $key=>$value){
+      $_SESSION[$key]=$value;
+    }
+    
+    addLogin($data['user_id']);
     header("Location: http://localhost/PHP_PROJEKT/site/");
   }else{
     echo "Błędne dane logowania";

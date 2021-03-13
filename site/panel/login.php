@@ -20,5 +20,6 @@
                     <button type="submit" class="secondary-btn">Zaloguj się!</button>
                 </form>
                 <a href="./?lvl=register" class="form__footer">Zarejestruj się!</a>
+                <a href="./?lvl=recovery" class="form__footer">Odzyskaj hasło!</a>
             </div>
         </section>

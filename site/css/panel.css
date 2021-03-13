@@ -18,12 +18,23 @@ body {
 
 .error {
   margin-top: 1em;
-  color: red;
+  color: #ff9797;
 }
 
 .error--output {
   text-align: center;
-  color: red;
+  color: #ff9797;
+  margin-bottom: 4em;
+}
+
+.success {
+  margin-top: 1em;
+  color: #49d349;
+}
+
+.success--output {
+  text-align: center;
+  color: #49d349;
   margin-bottom: 4em;
 }
 
@@ -337,6 +348,8 @@ body {
   padding-top: 1em;
   border-right: 1px solid black;
   background-color: #d8d8d8;
+  -webkit-box-shadow: 10px 0px 20px #0000004a;
+          box-shadow: 10px 0px 20px #0000004a;
   z-index: 10;
   -webkit-transform-origin: left;
           transform-origin: left;
@@ -617,8 +630,8 @@ footer a:hover {
   display: -ms-grid;
   display: grid;
   background: transparent;
-  -ms-grid-columns: 2fr 2fr 2fr 1fr 1fr 1fr;
-      grid-template-columns: 2fr 2fr 2fr 1fr 1fr 1fr;
+  -ms-grid-columns: 2fr 2fr 2fr 1fr 1fr;
+      grid-template-columns: 2fr 2fr 2fr 1fr 1fr;
   text-align: center;
 }
 
@@ -792,6 +805,7 @@ footer a:hover {
 }
 
 .shadow .popup {
+  min-width: 500px;
   width: 30%;
   background-color: white;
   border-radius: 8px;
@@ -807,7 +821,7 @@ footer a:hover {
 }
 
 .shadow .popup p {
-  margin: 1em 2em;
+  margin: 3em 2em 1em 2em;
   padding: 1em;
   overflow: auto;
   max-height: 400px;

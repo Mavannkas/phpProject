@@ -59,10 +59,6 @@ class Row{
         <td class="checkboxContainer">
             <input type="checkbox" name="isPrimary" id="isPrimary-${actualID}">
             <label for="isPrimary-${actualID}"></label>
-        </td>
-        <td class="checkboxContainer">
-            <input type="checkbox" name="autoIncrement" id="autoIncrement-${actualID}">
-            <label for="autoIncrement-${actualID}"></label>
         </td>`;
         const newRow=document.createElement('tr');
         newRow.innerHTML=myTxtHTML;
@@ -102,8 +98,7 @@ class Row{
             type:objToPrep.querySelector('select').value,
             value:objToPrep.querySelector('input[name="startValue"]').value,
             null:objToPrep.querySelector('input[name="isNull"]').checked,
-            primary:objToPrep.querySelector('input[name="isPrimary"]').checked,
-            autoIncrement:objToPrep.querySelector('input[name="autoIncrement"]').checked
+            primary:objToPrep.querySelector('input[name="isPrimary"]').checked
         };
     }
 
@@ -116,9 +111,31 @@ class Row{
     }
 };
 
+const sendToPHP=async json=>{
+    let response = await fetch('php/add_cols.php',{
+        method:"POST",
+        mode:"same-origin",
+        credentials:"same-origin",
+        body: json
+    });
+    response=await response.json();
+    if(response.message){
+        new Popup(1, response.message);
+    }
+};
+
 const columnMain=()=>{
     const myObj=new Row()
-    document.querySelector("#submit").addEventListener('click',()=>myObj.genJSON()?alert("Poprawnie wypełniono"):alert("Niepoprawnie wypełniono"));
+    document.querySelector("#submit").addEventListener('click',()=>{
+        new Popup(2,"Jesteś pewien, że chcesz zatwierdzić?",()=>{
+            const json=myObj.genJSON();
+            if(json){
+                sendToPHP(json);
+            }else{
+                new Popup(1,"Błędnie wypełniłeś");
+            }
+        })
+    });
 };
 
 window.addEventListener('load',columnMain);

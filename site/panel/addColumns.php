@@ -9,8 +9,7 @@
                                 <th>Typ</th>
                                 <th>Startowa wartość</th>
                                 <th>NULL</th>
-                                <th>Primary</th>
-                                <th>A.I</th>
+                                <th>Unique</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -19,7 +18,7 @@
                     <div class="btn-container"><button type="button" class="tabBtn add">+</button><button type="button" class="tabBtn del">-</button></div>
                     <div class="secondary-btn-box">
                         <button type="button" class="secondary-btn" id="submit">Zatwierdź</button>
-                        <button type="reset" class="secondary-btn secondary-btn--danger">Wyczyść</button>
+                        <button type="button" class="secondary-btn secondary-btn--danger">Wyczyść</button>
                     </div>
                 </form>
             </div>

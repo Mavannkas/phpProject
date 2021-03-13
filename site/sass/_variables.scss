@@ -135,3 +135,13 @@ $hover-color: #238396;
         }
     }
 }
+
+@mixin output($color){
+    margin-top: 1em;
+    color: $color;
+    &--output{
+        text-align: center;
+        color: $color;
+        margin-bottom: 4em;
+    }
+}

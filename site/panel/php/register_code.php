@@ -13,6 +13,14 @@ function isNotInDB($name,$value){
     return true;
   }
 }
+function createDB($name){
+  global $conn;
+  $conn->select_db("makedb_user");
+  $sql="CREATE TABLE user_$name(
+    id int not null
+  )";
+  $result=$conn->query($sql);
+}
 
 function createAccount($login,$mail,$password, $reg){
   global $conn;
@@ -20,9 +28,22 @@ function createAccount($login,$mail,$password, $reg){
   $hash=password_hash($password, PASSWORD_DEFAULT);
   $sql="INSERT INTO users(login, email, password_hash, register_hash) VALUES ('$login','$mail','$hash', '$reg')";
   $result = $conn->query($sql);
-
+  
   if($result){
     return true;
+  }else{
+    return false;
+  }
+}
+
+function getID($login){
+  global $conn;
+  $conn->select_db("makedb");
+  $sql="SELECT user_id FROM users WHERE login='$login'";
+  $result = $conn->query($sql);
+
+  if($result && $result->num_rows){
+    return $result->fetch_assoc()['user_id'];
   }else{
     return false;
   }
@@ -88,6 +109,7 @@ if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['password
     $reg_hash=md5(rand(0,1000));
     if(createAccount($login, $mail, $_POST['password'],$reg_hash)){
       echo '<p style="color:green; text-align:center">Udało się utworzyć konto. Musisz je jeszcze aktywować</p>';
+      createDB(getID($login));
       sendMail($mail, $login, $reg_hash);
     }else{
       echo 'Nie udało się stworzyć konta';

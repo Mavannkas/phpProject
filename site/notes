@@ -1,11 +1,22 @@
-//Wysyłanie z głównej strony
 //Podpiąć popupy w edycji konta, tworzeniu i edycji kolumn oraz truncate
 
-//ZROBIONE:
-//Logowanie
+ZROBIONE:
+Logowanie
+Rejestracja
+Wysylanie mail
+Dodawanie i usuwanie zdjęcia
+Zmiana hasła
+Tworzenie tabeli przy logowaniu
 
-
-
-//Do zrobienia:
-//Napisać co mam zrobić
-//Skonfigurować wysyłanie wiadomości email pod domenę!
+Do zrobienia:
+Napisać co mam zrobić
+Skonfigurować wysyłanie wiadomości email pod domenę!
+Pozmieniać linki
+DODAĆ ODZYSKIWANIE hasła
+usuwanie konta
+    Usuwanie bazy
+    usuwanie loginu i maila z bazy
+Skończyć dodawanie kolumn
+    zmiana info czy jest baza
+    konstruowanie zapytania sql
+    Wczytywanie tabel z bazy przy wejściu na stronę

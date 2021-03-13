@@ -1,5 +1,5 @@
 <?php session_start();
-if(empty($_SESSION['user']) && (empty($_GET['lvl']) || ($_GET['lvl']!='login' && $_GET['lvl']!='register'))){
+if(empty($_SESSION['user']) && (empty($_GET['lvl']) || ($_GET['lvl']!='login' && $_GET['lvl']!='recovery' &&$_GET['lvl']!='register'))){
     header("Location: http://localhost/PHP_PROJEKT/site/panel/?lvl=login");
 }else if(!empty($_SESSION['user']) && !empty($_GET['lvl']) && ($_GET['lvl']=='login' || $_GET['lvl']=='register')){
     header("Location: http://localhost/PHP_PROJEKT/site/panel/");
@@ -27,7 +27,13 @@ if(empty($_SESSION['user']) && (empty($_GET['lvl']) || ($_GET['lvl']!='login' &&
         <a class="header__logo" href="../"><i class="fas fa-database"></i>Make<span>DB</span></a>
         <div class="header__profile">
             <div class="header__profile-head">
-                <img src="../img/user.svg" alt="user profile" class="header__profile-img" width="40px"></img>
+                <img src="<?php 
+                    if(file_exists('../user_img/'.$_SESSION['user'].'.png')){
+                        echo '../user_img/'.$_SESSION['user'].'.png';
+                    }else{
+                        echo '../img/user.svg';
+                    }
+                ?>" alt="user profile" class="header__profile-img" width="40px" onerror="this.onerror=null; this.src='../img/user.svg'"></img>
                 <p class="header__profile-name"><?php echo empty($_SESSION['user'])?'Gość':$_SESSION['user']; ?> <i class="fas fa-caret-down"></i></p>
             </div>
             <div class="header__dropdown-menu">
