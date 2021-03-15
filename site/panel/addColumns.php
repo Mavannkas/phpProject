@@ -13,6 +13,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php 
+                                require_once 'php/get_columns.php';
+                            ?>
                         </tbody>
                     </table>
                     <div class="btn-container"><button type="button" class="tabBtn add">+</button><button type="button" class="tabBtn del">-</button></div>

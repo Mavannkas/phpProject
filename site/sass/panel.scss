@@ -19,11 +19,11 @@ body{
 }
 
 .error{
-    @include output(#ff9797);
+    @include output(#bd0202);
 }
 
 .success{
-    @include output(#49d349);
+    @include output(#005a00);
 }
 
 

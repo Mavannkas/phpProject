@@ -14,16 +14,46 @@ include_once 'db.php';
         }
     }
 
-    function expandTable($data, $last){
-        $sql="ALTER TABLE user_".$_SESSION['id']." ";
-        
-        foreach ($input as $key=>$value) {
-            echo "[$key]{<br>";
-            foreach ($value as $k => $val) {
-                    echo "$k=>$val<br>";
+    function postToDB($sql){
+        global $conn;
+        $conn->select_db("makedb_user");
+        $conn->query($sql);
+        return $conn->error;
+    }
+
+    function genSQL($data, $last){
+        $sql="ALTER TABLE `user_".$_SESSION['id']."` ";
+        $unique="";
+        foreach ($data as $value) {
+            $sql.="ADD `".$value['name']."` ".$value['type'];
+            if($value['type']=="VARCHAR"){
+                $sql.="(65535)";
             }
-            echo "}<br>";
-        }//dokończyć XD
+            $sql.=" ";
+            if($value['null']!=1){
+                $sql.="NOT ";
+            }
+            $sql.="NULL ";
+            if($value['value']!=""){
+                $sql.="DEFAULT ";
+                if(strtolower($value['value'])=='null'){
+                    $sql.="NULL ";
+                }else if(strtolower($value['value'])=="current_timestamp"){
+                    $sql.="CURRENT_TIMESTAMP ";
+                }else{
+                    $sql.="'".$value['value']."' ";
+                }
+            }
+            $sql.="AFTER `$last`, ";
+            $last=$value['name'];
+
+            if($value['primary']==1){
+                $unique.="ADD UNIQUE (`".$value['name']."`), ";
+            }
+        }
+        $sql.=$unique;
+        return substr($sql,0,-2);
+
     }
 
 if(!empty($_SESSION['user'])){
@@ -32,7 +62,13 @@ if(!empty($_SESSION['user'])){
     //    echo json_encode(array('message'=>"Coś się zjebało"));
         $lastColumn=getLastColumnName();
         if($lastColumn){
-           expandTable($input,$lastColumn);
+           $sql=genSQL($input,$lastColumn);
+           $err=postToDB($sql);
+           if($err){
+            echo json_encode(array('message'=>$err));
+           }else{
+            echo json_encode(array('success'=>"ok"));
+           }
         }
 
 

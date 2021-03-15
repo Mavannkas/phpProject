@@ -1,16 +1,14 @@
 class Row{
     constructor(){
         this.table=document.querySelector('tbody');
-        const rowArr=this.table.querySelectorAll("tbody tr");
 
-        this.rowAmount=rowArr.length;
-        this.rowNodesArr=Array.from(rowArr);
+        this.rowAmount=0;
+        this.rowNodesArr=[];
         this.lastNode=this.rowNodesArr.slice(-1)[0];
         this.btns=document.querySelectorAll(".tabBtn");
 
         this.addActionToBtns();
 
-        console.log(this.btns);
         if(!this.rowAmount){
             this.setOneBtn();
         }
@@ -68,12 +66,13 @@ class Row{
     updateLastNode(){
         this.lastNode=this.table.querySelector("tr:last-child");
     }
-
+    
     expandTable(){
         const newRow=this.genNewRow();
         this.rowNodesArr.push(newRow);
         this.table.appendChild(newRow);
         this.updateLastNode();
+        this.lastNode.querySelector('input').focus();
         this.setTwiceBtns();
     }
 
@@ -120,13 +119,15 @@ const sendToPHP=async json=>{
     });
     response=await response.json();
     if(response.message){
-        new Popup(1, response.message);
+        new Popup(1, `<b>DB INFO</b><br><span>${response.message}</span>`);
+    }else{
+        location.reload();
     }
 };
 
 const columnMain=()=>{
     const myObj=new Row()
-    document.querySelector("#submit").addEventListener('click',()=>{
+    document.querySelector("#submit").addEventListener('click',()=>
         new Popup(2,"Jesteś pewien, że chcesz zatwierdzić?",()=>{
             const json=myObj.genJSON();
             if(json){
@@ -135,8 +136,18 @@ const columnMain=()=>{
                 new Popup(1,"Błędnie wypełniłeś");
             }
         })
+    );
+    
+    document.querySelector('.secondary-btn.secondary-btn--danger').addEventListener('click',()=>
+        new Popup(3, "Jesteś pewien, że chcesz usunąć wszystkie postępy?",()=>location.reload())
+    );
+    
+    document.querySelectorAll('input[type=checkbox]').forEach(a=>{
+        if(a.value=="YES" || a.value=="PRI" || a.value=="UNI"){
+            a.checked=true;
+        }
     });
-};
+}
 
 window.addEventListener('load',columnMain);
 

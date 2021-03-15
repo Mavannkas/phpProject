@@ -18,23 +18,23 @@ body {
 
 .error {
   margin-top: 1em;
-  color: #ff9797;
+  color: #bd0202;
 }
 
 .error--output {
   text-align: center;
-  color: #ff9797;
+  color: #bd0202;
   margin-bottom: 4em;
 }
 
 .success {
   margin-top: 1em;
-  color: #49d349;
+  color: #005a00;
 }
 
 .success--output {
   text-align: center;
-  color: #49d349;
+  color: #005a00;
   margin-bottom: 4em;
 }
 

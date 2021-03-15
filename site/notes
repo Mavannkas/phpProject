@@ -7,16 +7,17 @@ Wysylanie mail
 Dodawanie i usuwanie zdjęcia
 Zmiana hasła
 Tworzenie tabeli przy logowaniu
+Tworzenie kolumn i wyświetlanie ich
+Odzyskiwanie hasła
+Usuwanie i wybieranie kolumny
 
 Do zrobienia:
-Napisać co mam zrobić
-Skonfigurować wysyłanie wiadomości email pod domenę!
+Skonfigurować wysyłanie wiadomości email pod domenę
 Pozmieniać linki
-DODAĆ ODZYSKIWANIE hasła
 usuwanie konta
     Usuwanie bazy
     usuwanie loginu i maila z bazy
 Skończyć dodawanie kolumn
-    zmiana info czy jest baza
-    konstruowanie zapytania sql
-    Wczytywanie tabel z bazy przy wejściu na stronę
+    --->zmiana info czy jest baza<---
+Edycja kolumny
+    wyświetlenie edytowalnych informacji i post do db tego czegoś lel xD
