@@ -13,12 +13,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
+                            <?php
                                 require_once 'php/get_columns.php';
                             ?>
                         </tbody>
                     </table>
-                    <div class="btn-container"><button type="button" class="tabBtn add">+</button><button type="button" class="tabBtn del">-</button></div>
                     <div class="secondary-btn-box">
                         <button type="button" class="secondary-btn" id="submit">Zatwierdź</button>
                         <button type="button" class="secondary-btn secondary-btn--danger">Wyczyść</button>

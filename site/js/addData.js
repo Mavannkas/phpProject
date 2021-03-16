@@ -2,7 +2,6 @@ class RowData{
     constructor(){
         this.tbody=document.querySelector('tbody');
         this.theadTuples=document.querySelectorAll('th');
-        this.btns=document.querySelectorAll(".tabBtn");
         this.tupleTemplates=[];
         for (const node of this.theadTuples) {
             this.tupleTemplates.push({
@@ -13,19 +12,8 @@ class RowData{
         }
         this.tupleTemplates=this.tupleTemplates.map(this.genTemplate.bind(this));
         this.allRowsArr=[];
-        this.btns[0].addEventListener('click',this.expand.bind(this));
-        this.btns[1].addEventListener('click', this.collapse.bind(this));
-    }
-
-    checkBtnStatus(){
-        if(!this.allRowsArr.length){
-            this.btns[1].style.display="none";
-            this.btns[0].style.width="120px";
-            this.btns[0].style.borderBottomRightRadius="90%";
-        }else{
-            this.btns[1].style="";
-            this.btns[0].style="";
-        }
+        
+        this.addOpacityRow();
     }
 
     expand(){
@@ -36,17 +24,36 @@ class RowData{
             newRow.appendChild(td);
         }
         this.allRowsArr.push(newRow);
-        this.tbody.appendChild(newRow);
+        this.tbody.insertBefore(newRow, this.opacity);
         newRow.querySelector("td").firstChild.focus();
-        this.checkBtnStatus();
+
     }
 
+    addOpacityRow(){
+        const newRow=document.createElement('tr');
+        for (const i in this.tupleTemplates) {
+            const td=document.createElement('td');
+            td.appendChild(this.tupleTemplates[i].cloneNode())
+            newRow.appendChild(td);
+        }
+        this.opacity=newRow;
+        this.opacity.style.opacity=.15;
+        this.tbody.appendChild(this.opacity);
+
+        this.opacity.addEventListener('click',(a)=>{
+            a.preventDefault();
+            this.expand();
+        });
+        this.opacity.querySelector("td").addEventListener('focus',()=>this.expand())
+        this.opacity.querySelector("td:last-child").addEventListener('focus',()=>this.expand())
+    }
+    
     collapse(){
         if(this.allRowsArr.length){
             this.tbody.removeChild(this.allRowsArr.pop());
         }
-        this.checkBtnStatus();
     }
+
     getHTMLInputType(type){
         let myType;
         switch(type){

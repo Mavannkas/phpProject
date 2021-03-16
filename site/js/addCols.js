@@ -4,30 +4,10 @@ class Row{
 
         this.rowAmount=0;
         this.rowNodesArr=[];
-        this.lastNode=this.rowNodesArr.slice(-1)[0];
-        this.btns=document.querySelectorAll(".tabBtn");
+        this.lastNode=null;
 
-        this.addActionToBtns();
 
-        if(!this.rowAmount){
-            this.setOneBtn();
-        }
-    }
-
-    addActionToBtns(){
-        this.btns[0].addEventListener('click',()=>this.expandTable());
-        this.btns[1].addEventListener('click',()=>this.reduceTable());
-    }
-
-    setOneBtn(){
-        this.btns[1].style.display="none";
-        this.btns[0].style.width="120px";
-        this.btns[0].style.borderBottomRightRadius="90%";
-    }
-
-    setTwiceBtns(){
-        this.btns[1].style="";
-        this.btns[0].style="";
+        this.addOpacityRow();
     }
 
     genNewRow(){
@@ -64,27 +44,67 @@ class Row{
     }
 
     updateLastNode(){
-        this.lastNode=this.table.querySelector("tr:last-child");
+        this.lastNode=this.table.querySelector("tr:nth-last-child(2)");
     }
     
     expandTable(){
         const newRow=this.genNewRow();
         this.rowNodesArr.push(newRow);
-        this.table.appendChild(newRow);
+        this.table.insertBefore(newRow, this.opacity);
         this.updateLastNode();
         this.lastNode.querySelector('input').focus();
-        this.setTwiceBtns();
+        this.addFocus(newRow);
+    }
+    
+    addFocus(row){
+        row.querySelectorAll('input').forEach(el=>{
+            el.addEventListener('blur',(a)=>this.focusOutAction(row));
+        });
     }
 
-    reduceTable(){
-        if(this.rowAmount){
-            this.lastNode.remove();
-            this.rowAmount--;
-            this.updateLastNode();
-            this.rowNodesArr.pop();
-            if(!this.rowAmount){
-                this.setOneBtn();
+    focusOutAction(row){
+        if(row && this.isEmpty(row)){
+            this.reduceTable(row);
+        }
+    }
+
+    isEmpty(row){
+        let isEmpty=true;
+        console.log()
+        row.querySelectorAll('input').forEach(el=>{
+            if(el.type=='checkbox'){
+                console.log(el.checked)
+                if(el.checked){
+                    isEmpty=false;
+                }
+            }else if(el.type=='text'){
+                console.log(el.value)
+                if(el.value!=""){
+                    isEmpty=false;
+                }
             }
+        })
+        return isEmpty;
+    }
+
+    addOpacityRow(){
+        const newRow=this.genNewRow();
+        this.table.appendChild(newRow);
+        this.opacity=newRow;
+        this.opacity.style.opacity=.15;
+        this.opacity.addEventListener('click',(a)=>{
+            a.preventDefault();
+            this.expandTable();
+        });
+        this.opacity.querySelector("input").addEventListener('focus',()=>this.expandTable())
+        this.opacity.querySelector("input[name=isPrimary]").addEventListener('focus',()=>this.expandTable())
+    }
+    
+    reduceTable(row){
+        if(this.rowAmount){
+            row.remove();
+            this.updateLastNode();
+            this.rowNodesArr.splice(this.rowNodesArr.indexOf(row),1);
         }
     }
 
@@ -137,11 +157,11 @@ const columnMain=()=>{
             }
         })
     );
-    
+
     document.querySelector('.secondary-btn.secondary-btn--danger').addEventListener('click',()=>
         new Popup(3, "Jesteś pewien, że chcesz usunąć wszystkie postępy?",()=>location.reload())
     );
-    
+
     document.querySelectorAll('input[type=checkbox]').forEach(a=>{
         if(a.value=="YES" || a.value=="PRI" || a.value=="UNI"){
             a.checked=true;
