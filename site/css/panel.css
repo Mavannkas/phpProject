@@ -919,6 +919,25 @@ footer a:hover {
   overflow-x: auto;
 }
 
+.shadow-edit .popup form .table-scroll::-webkit-scrollbar {
+  height: 8px;
+  border-radius: 60px;
+}
+
+.shadow-edit .popup form .table-scroll::-webkit-scrollbar-track {
+  border-radius: 60px;
+  background-color: #c5f5ff7c;
+}
+
+.shadow-edit .popup form .table-scroll::-webkit-scrollbar-thumb {
+  border-radius: 60px;
+  background-color: #32a6bdb2;
+}
+
+.shadow-edit .popup form .table-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #32a6bd;
+}
+
 .shadow-edit .popup form table {
   display: table;
   max-width: 100%;

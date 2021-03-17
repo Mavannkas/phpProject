@@ -659,6 +659,23 @@ footer {
         width: 90%;
         margin: 2em auto 1em auto;
         overflow-x: auto;
+        &::-webkit-scrollbar {
+          height: 8px;
+          // border: 1px solid black;
+          border-radius: 60px;
+          &-track {
+            border-radius: 60px;
+            background-color: #c5f5ff7c;
+          }
+    
+          &-thumb {
+            border-radius: 60px;
+            background-color: #32a6bdb2;
+            &:hover {
+              background-color: #32a6bd;
+            }
+          }
+        }
       }
       table {
         display: table;
@@ -917,7 +934,7 @@ a.logout {
   }
 
   footer {
-    display: none;.
+    display: none;
   }
 
   main {

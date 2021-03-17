@@ -70,7 +70,6 @@ class Row{
 
     isEmpty(row){
         let isEmpty=true;
-        console.log()
         row.querySelectorAll('input').forEach(el=>{
             if(el.type=='checkbox'){
                 console.log(el.checked)
@@ -131,17 +130,22 @@ class Row{
 };
 
 const sendToPHP=async json=>{
-    let response = await fetch('php/add_cols.php',{
-        method:"POST",
-        mode:"same-origin",
-        credentials:"same-origin",
-        body: json
-    });
-    response=await response.json();
-    if(response.message){
-        new Popup(1, `<b>DB INFO</b><br><span>${response.message}</span>`);
-    }else{
-        location.reload();
+    try{
+
+        let response = await fetch('php/add_cols.php',{
+            method:"POST",
+            mode:"same-origin",
+            credentials:"same-origin",
+            body: json
+        });
+        response=await response.json();
+        if(response.message){
+            new Popup(1, `<b>DB INFO</b><br><span>${response.message}</span>`);
+        }else{
+            location.reload();
+        }
+    }catch(a){
+        new Popup(1, `<b>DB INFO</b><br><span>brak połączenia z bazą danych</span>`);
     }
 };
 

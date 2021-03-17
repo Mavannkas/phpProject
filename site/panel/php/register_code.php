@@ -1,23 +1,24 @@
 <?php
 include_once 'db.php';
-
-function isNotInDB($name,$value){
-  global $conn;
-  $conn->select_db("makedb");
-  $sql="SELECT $name FROM users WHERE $name='$value'";
-  $result = $conn->query($sql);
-
-  if(($result && $result->num_rows) || !$result){
-    return false;
-  }else{
-    return true;
+if(!$conn->connect_error){
+  function isNotInDB($name,$value){
+    global $conn;
+    $conn->select_db("makedb");
+    $sql="SELECT $name FROM users WHERE $name='$value'";
+    $result = $conn->query($sql);
+    
+    if(($result && $result->num_rows) || !$result){
+      return false;
+    }else{
+      return true;
+    }
   }
-}
-function createDB($name){
-  global $conn;
-  $conn->select_db("makedb_user");
-  $sql="CREATE TABLE user_$name(
-    id int not null
+  function createDB($name){
+    global $conn;
+    $conn->select_db("makedb_user");
+    $sql="CREATE TABLE user_$name(
+    id int not null AUTO_INCREMENT,
+    PRIMARY KEY (id)
   )";
   $result=$conn->query($sql);
 }
@@ -41,7 +42,7 @@ function getID($login){
   $conn->select_db("makedb");
   $sql="SELECT user_id FROM users WHERE login='$login'";
   $result = $conn->query($sql);
-
+  
   if($result && $result->num_rows){
     return $result->fetch_assoc()['user_id'];
   }else{
@@ -51,22 +52,22 @@ function getID($login){
 
 function sendMail($mail, $login, $hash){
   $sub="Weryfikacja konta";
-
+  
   $headers[] = 'MIME-Version: 1.0';
   $headers[] = 'Content-type: text/html; charset=iso-8859-1';
   $headers[] = 'From: Weryfikacja konta <noreply@makedb.pl>';
   $message='
   <html>
-    <head>
-      <title>Weryfikacja konta</title>
-    </head>
-    <body>
-      <p>Witaj, <strong>'.$login.'</strong> dziękuję za rejestrację!</p>
-      <p> Jeśli ty zakładałeś konto kliknij <a href="http://localhost/PHP_PROJEKT/site/verify.php?email='.$mail.'&hash='.$hash.'">tutaj</a>. Jeśli nie, zignoruj wiadomość</p>
-    </body>
+  <head>
+  <title>Weryfikacja konta</title>
+  </head>
+  <body>
+  <p>Witaj, <strong>'.$login.'</strong> dziękuję za rejestrację!</p>
+  <p> Jeśli ty zakładałeś konto kliknij <a href="http://localhost/PHP_PROJEKT/site/verify.php?email='.$mail.'&hash='.$hash.'">tutaj</a>. Jeśli nie, zignoruj wiadomość</p>
+  </body>
   </html>
-';
-
+  ';
+  
   mail($mail, $sub, $message,implode("\r\n", $headers));
 }
 
@@ -94,17 +95,17 @@ if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['password
     $bool++;
     echo "Błędny email<br>";
   }
-
+  
   $uppercase = preg_match('@[A-Z]@', $_POST['password']);
   $lowercase = preg_match('@[a-z]@', $_POST['password']);
   $number    = preg_match('@[0-9]@', $_POST['password']);
   $specialChars = preg_match('@[^\w]@', $_POST['password']);
-
+  
   if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($_POST['password']) < 8){
     $bool++;
     echo "Hasło nie spełnia wymagań<br>";
   }
-
+  
   if($bool==0){
     $reg_hash=md5(rand(0,1000));
     if(createAccount($login, $mail, $_POST['password'],$reg_hash)){
@@ -115,7 +116,8 @@ if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['password
       echo 'Nie udało się stworzyć konta';
     }
   }
-
+  
 }
 
+}
 ?>

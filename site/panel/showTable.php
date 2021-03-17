@@ -63,6 +63,5 @@
                     ❯
                 </button>
             </div>
-            <script src="../js/popup.js"></script>
             <script src="../js/editData.js"></script>
         </section>

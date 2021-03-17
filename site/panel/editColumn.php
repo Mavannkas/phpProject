@@ -29,7 +29,7 @@
                     }
                 }
                 ?>
-                <form class="form__body">
+                <form action="./?lvl=editColumn" method="POST" class="form__body">
                     <table>
                         <thead>
                             <tr>
@@ -41,13 +41,27 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php 
+                        if(!empty($_POST['col'])&& empty($_POST['delete'])){
+                            echo "<input type='text' name='oldName' id='oldName' value='$_POST[col]' hidden>";
+                            require_once "php/show_column_description.php";
+                        
+                        }
+                        ?>
                         </tbody>
                     </table>
                     <div class="secondary-btn-box">
-                        <button type="button" class="secondary-btn" id="submit">Zatwierdź</button>
+                        <button type="button" class="secondary-btn">Zatwierdź</button>
                         <button type="reset" class="secondary-btn secondary-btn--danger">Wyczyść</button>
                     </div>
                 </form>
+                    <p class="success--output">
+                    <?php 
+                     if(!empty($_POST['columnName'])){
+                         require_once "php/edit_one_column.php";
+                     }
+                    ?>
+                    </p>
             </div>
             <script src="../js/editColumn.js"><script>
         </section>

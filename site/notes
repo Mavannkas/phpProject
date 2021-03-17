@@ -10,14 +10,18 @@ Tworzenie tabeli przy logowaniu
 Tworzenie kolumn i wyświetlanie ich
 Odzyskiwanie hasła
 Usuwanie i wybieranie kolumny
+Dodawanie kolumn
+Edycja kolumn
+Truncate
+Usuwanie Konta
 
 Do zrobienia:
 Skonfigurować wysyłanie wiadomości email pod domenę
 Pozmieniać linki
-usuwanie konta
-    Usuwanie bazy
-    usuwanie loginu i maila z bazy
-Skończyć dodawanie kolumn
-    --->zmiana info czy jest baza<---
-Edycja kolumny
-    wyświetlenie edytowalnych informacji i post do db tego czegoś lel xD
+
+Dodawanie krotek
+Podgląd
+    SQL
+    Przewijanie xD
+Edycja krotek
+

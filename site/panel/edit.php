@@ -59,11 +59,13 @@
                             <input type="checkbox" name="acc-del" id="acc-del-input" hidden>
                             <button type="button" class="secondary-btn secondary-btn--danger" id="acc-del-btn">Usuń konto</button>
                         </form>
+                        <p class="success--output">
                         <?php 
                             if(!empty($_POST['acc-del'])){
                                 include_once 'php/acc_del.php';
                             }
-                        ?>
+                            ?>
+                        </p>
                     </div>
                 </div>
             <script src="../js/edit.js"></script>
