@@ -1,20 +1,10 @@
 <?php 
 require_once "php/db.php";
 
-function getDesc($name){
-    global $conn;
-    $conn->select_db("makedb_user");
-    $sql="SHOW COLUMNS FROM user_$_SESSION[id] WHERE Field='$name'";
 
-    $result=$conn->query($sql);
-    if($result && $result->num_rows){
-        return $result->fetch_assoc();
-    }else{
-        return false;
-    }
-}
-
-if($data=getDesc($_POST['col'])){
+$data=getDescribe($_POST['col'])->fetch_assoc();
+echo $data;
+if($data){
 
     $data['Default']=str_replace("'","",$data['Default']);
     $name=$data['Field'];

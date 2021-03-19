@@ -4,9 +4,13 @@ class RowData{
         this.theadTuples=document.querySelectorAll('th');
         this.tupleTemplates=[];
         for (const node of this.theadTuples) {
+            let start=node.getAttribute('data-start');
+            if(start.includes("current_timestamp")){
+                start=this.getCurrTimestamp();
+            }
             this.tupleTemplates.push({
                 type:node.getAttribute('data-type'),
-                start:node.getAttribute('data-start'),
+                start:start,
                 null:node.getAttribute('data-null')
             });
         }
@@ -52,6 +56,11 @@ class RowData{
         if(this.allRowsArr.length){
             this.tbody.removeChild(this.allRowsArr.pop());
         }
+    }
+
+    getCurrTimestamp(){
+        const time=new Date();
+        return `${time.getFullYear()}-${(time.getMonth()+1).toString().padStart(2,0)}-${time.getDate().toString().padStart(2,0)}T${time.getHours().toString().padStart(2,0)}:${time.getMinutes().toString().padStart(2,0)}:${time.getSeconds().toString().padStart(2,0)}`;
     }
 
     getHTMLInputType(type){
@@ -178,7 +187,25 @@ class RowData{
     }
 };
 
-const sendData=data=>alert(data);
+const sendData=async json=>{
+     try{
+
+        let response = await fetch('php/add_tuples.php',{
+            method:"POST",
+            mode:"same-origin",
+            credentials:"same-origin",
+            body: json
+        });
+        response=await response.json();
+        if(response.message){
+            new Popup(1, `<b>DB INFO</b><br><span>${response.message}</span>`);
+        }else{
+            location.reload();
+        }
+    }catch(a){
+        new Popup(1, `<b>DB INFO</b><br><span>brak połączenia z bazą danych</span>`);
+    }
+};
 
 const dataMain=()=>{
     const myObj=new RowData();

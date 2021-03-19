@@ -59,7 +59,7 @@ if(!$conn->connect_error){
     if(!empty($_SESSION['user'])){
         $input = json_decode(file_get_contents('php://input'), true);
         if($input){
-            //    echo json_encode(array('message'=>"Coś się zjebało"));
+
             $lastColumn=getLastColumnName();
             if($lastColumn){
                 $sql=genSQL($input,$lastColumn);

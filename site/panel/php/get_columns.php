@@ -1,26 +1,21 @@
 <?php 
-include_once 'db.php'; 
-if(!$conn->connect_error){
+include_once 'db.php';
 
-    function getDescribe(){
-        global $conn;
-        $conn->select_db('makedb_user');
-        $sql="DESCRIBE user_".$_SESSION['id'];
-        $result=$conn->query($sql);
-        
-        $result->fetch_assoc();
-        return $result;
-    }
+if(!$conn->connect_error){
     
-    $result=getDescribe();
-    
+    $result=getDescribe('%');
+    $result->fetch_assoc();
     while($row=$result->fetch_assoc()){
+
+
+
         $type=$row['Type'];
         if($type=='int(11)'){
             $type='int';
         }else if($type=="mediumtext"){
             $type='varchar';
         }
+        
         echo<<<end
         <tr>
         <td>
