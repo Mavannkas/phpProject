@@ -8,7 +8,7 @@
                         <label for="isAdv"></label>
                     </div>
                     <div class="advanced-query__input-area hidden">
-                        <textarea name="query" id="query"></textarea>
+                        <textarea name="query" id="query" placeholder="select * from $table where 1=1 ($table ma zawsze takie zostać)"></textarea>
                         <div class="advanced-query__btn-box">
                             <button type="submit" class="secondary-btn">Zatwierdź</button>
                             <button type="reset" class="secondary-btn" id='reset-area'>Wyczyść</button>
@@ -22,46 +22,50 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Numer</th>
-                                <th>Imie</th>
-                                <th>Nazwisko sdfsdfsddfgdfgdfgdfgdfgdfgdfg</th>
-                                <th>Nazwisko</th>
-                                <th>Nazwisko</th>
-                                <th>Nazwisko</th>
-                                <th>Nazwisko</th>
+                                <?php 
+                                require_once 'php/prepare_column_data.php';
+                                ?>
                             </tr>
                         </thead>
                         <tbody class="show-data">
-                            <tr id="tuple-1">
-                                <td data-type="int">1000</td>
-                                <td data-type="float">200.12</td>
-                                <td data-type="varchar">słowo max 255 znaków</td>
-                                <td data-type="text">Tekst max 65tys znaków </td>
-                                <td data-type="date">1999-12-20</td>
-                                <td data-type="time">20:59:59</td>
-                                <td data-type="timestamp">1971-01-01 00:00:00</td>
-                            </tr>
-                            <tr id="tuple-2">
-                                <td data-type="int">1000</td>
-                                <td data-type="float">200.12</td>
-                                <td data-type="varchar">słowo max 255 znaków</td>
-                                <td data-type="text">Tekst max 65tys znaków </td>
-                                <td data-type="date">1999-12-20</td>
-                                <td data-type="time">00:59:59</td>
-                                <td data-type="timestamp">1970-01-01 00:00:00</td>
-                            </tr>
+                            <?php 
+                            if(empty($_GET['query'])){
+                                $query="select * from user_$_SESSION[id]";
+                                $sourceQuery="";
+                            }else{
+                                $query=htmlspecialchars($_GET['query']);
+                                $sourceQuery=trim($query);
+                                $query=str_replace('$table', "user_$_SESSION[id]",trim($query), $count);
+                                if($count!=1){
+                                    $query="select * from user_$_SESSION[id]";
+                                    $sourceQuery="";
+                                }
+                            }
+                            if(empty($_GET['limit'])){
+                                $limit=0;
+                            }else{
+                                $limit=intval(htmlspecialchars($_GET['limit']));
+                            }
+
+                            $query.=" LIMIT $limit,25";
+                            include_once 'php/show_tuples.php';
+                            ?>
                         </tbody>
                     </table>
                 </form>
             </div>
             <div class="tuple-number">
-                <button class="tuple-number__arrow" id="tuple-left-arrow">
+                <a href='./?lvl=showTable<?php echo "&limit=".($limit==0?0:$limit-25)."&query=$sourceQuery"?>' class="tuple-number__arrow" id="tuple-left-arrow">
                     ❮
-                </button>
-                <p class="tuple-number__interval">1-25</p>
-                <button class="tuple-number__arrow" id="tuple-right-arrow">
+                </a>
+                <p class="tuple-number__interval">
+                <?php 
+                echo ($limit+1)."-".($limit+25);
+                ?>
+                </p>
+                <a href='./?lvl=showTable<?php echo "&limit=".($limit+25)."&query=$sourceQuery"?>' class="tuple-number__arrow" id="tuple-right-arrow">
                     ❯
-                </button>
+                </a>
             </div>
             <script src="../js/editData.js"></script>
         </section>
