@@ -12,10 +12,11 @@ class editTuple{
     }
 
     close(){
-        this.popupBody.querySelector("#send").removeEventListener('click',this.close.bind(this));
+        this.popupBody.querySelector("#send").removeEventListener('click',this.sendToDB.bind(this));
         this.popupBody.querySelector("#close").removeEventListener('click',this.close.bind(this));
-        document.body.removeEventListener('keypress', this.eventHandler, true)
+        document.body.removeEventListener('keypress', this.eventHandler, true);
         this.popupBody.remove();
+        delete this;
     }
     
     insertData(){
@@ -76,7 +77,6 @@ class editTuple{
         this.allCells.map(a=>Object.assign(a,this.getHTMLInputType(a.type)))
                     .map((a,i)=>Object.assign(a,this.genInputNode(a.HTMLInput,a.value,i)));
         
-
     }
 
     getHTMLInputType(type){
@@ -159,7 +159,7 @@ class editTuple{
     }
 
     addListeners(){
-        this.popupBody.querySelector("#send").addEventListener('click',()=>this.popupEvent(2, "Czy jesteś pewny, że chcesz zapisać zmiany?",this.close.bind(this)));
+        this.popupBody.querySelector("#send").addEventListener('click',()=>this.popupEvent(2, "Czy jesteś pewny, że chcesz zapisać zmiany?",this.sendToDB.bind(this)));
 
         this.popupBody.querySelector("#close").addEventListener('click',()=>this.popupEvent(3, "Czy na pewno chcesz anulować zmiany?",this.close.bind(this)));
 
@@ -168,12 +168,40 @@ class editTuple{
     }
 
     bodyEvent(key){
-        console.log()
         if(key.key==="Enter" && !(this.popupHandler && this.popupHandler.exists) && !"INPUT,TEXTAREA".includes(key.target.nodeName)){
             this.popupEvent(2, "Czy jesteś pewny, że chcesz zapisać zmiany?",this.close.bind(this))
         }
     }
 
+    async sendToDB(){
+        try{
+
+            let response = await fetch('php/edit_tuple.php',{
+                method:"POST",
+                mode:"same-origin",
+                credentials:"same-origin",
+                body: this.genJSON()
+            });
+            response=await response.json();
+            if(response.message){
+                new Popup(1, `<b>DB INFO</b><br><span>${response.message}</span>`);
+            }else{
+                location.reload();
+            }
+        }catch(a){
+            new Popup(1, `<b>DB INFO</b><br><span>brak połączenia z bazą danych</span>`);
+        }
+    }
+    genJSON(){
+        const input=Array.from(this.popupBody.querySelectorAll("input,textarea")).map(a=>a.value);
+        const result={
+            id:this.id
+        };
+        for(const i in this.colNames){
+            result[this.colNames[i]]=input[i];
+        }
+        return JSON.stringify(result);
+    }
 }
 
 document.querySelector(".show-data").addEventListener('click',a=>new editTuple(a.target.parentNode))
@@ -190,4 +218,8 @@ inputArea.addEventListener('keydown',() => inputArea.style.height=`${inputArea.s
 document.querySelector('#reset-area').addEventListener('click',()=>{
     queryArea.classList.add('hidden');
     inputArea.style='';
+});
+
+document.querySelector('#reset').addEventListener('click',()=>{
+    new Popup(2,"Na pewno chcesz zresetować?",()=>location.href=location.href.slice(0,location.href.match(/\?/).index))
 });

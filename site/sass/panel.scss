@@ -35,7 +35,9 @@ body {
   text-align: center;
   font-size: 3rem;
 }
-
+table{
+  margin: 0 auto;
+}
 .checkboxContainer {
   position: relative;
   display: flex;
@@ -659,6 +661,7 @@ footer {
         width: 90%;
         margin: 2em auto 1em auto;
         overflow-x: auto;
+
         &::-webkit-scrollbar {
           height: 8px;
           // border: 1px solid black;
@@ -733,7 +736,7 @@ footer {
 .tuple-number {
   display: flex;
   align-items: center;
-  margin-bottom: 10em;
+  margin-bottom: 2em;
   a {
     border: none;
     font-size: 2rem;

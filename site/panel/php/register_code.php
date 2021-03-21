@@ -52,7 +52,7 @@ function getID($login){
 
 function sendMail($mail, $login, $hash){
   $sub="Weryfikacja konta";
-  
+  $location='http://'.$_SERVER['HTTP_HOST'];
   $headers[] = 'MIME-Version: 1.0';
   $headers[] = 'Content-type: text/html; charset=iso-8859-1';
   $headers[] = 'From: Weryfikacja konta <noreply@makedb.pl>';
@@ -63,7 +63,7 @@ function sendMail($mail, $login, $hash){
   </head>
   <body>
   <p>Witaj, <strong>'.$login.'</strong> dziękuję za rejestrację!</p>
-  <p> Jeśli ty zakładałeś konto kliknij <a href="http://localhost/PHP_PROJEKT/site/verify.php?email='.$mail.'&hash='.$hash.'">tutaj</a>. Jeśli nie, zignoruj wiadomość</p>
+  <p> Jeśli ty zakładałeś konto kliknij <a href="'.$location.'/verify.php?email='.$mail.'&hash='.$hash.'">tutaj</a>. Jeśli nie, zignoruj wiadomość</p>
   </body>
   </html>
   ';

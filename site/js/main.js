@@ -54,7 +54,9 @@ const main=()=>{
 
     bodyShadow.addEventListener('click',()=>togglePop("none"));
     cross.addEventListener('click',()=>togglePop("none"));
-    logBtn.addEventListener('click',()=>togglePop("block"));
+    if(logBtn){
+        logBtn.addEventListener('click',()=>togglePop("block"));
+    }
 
 }
 

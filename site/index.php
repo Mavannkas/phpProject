@@ -228,7 +228,7 @@
 
             <div class="loginPop__close"><i class="fas fa-times"></i></div>
             <h4 class="loginPop__header">Logowanie</h4>
-            <form action="http://localhost/PHP_PROJEKT/site/panel/?lvl=login" method="POST">
+            <form action="./panel/?lvl=login" method="POST">
                 <label for="login">Login</label>
                 <input type="text" id="login" name="login" required>
                 <label for="pass">Hasło</label>

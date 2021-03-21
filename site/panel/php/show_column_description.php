@@ -3,7 +3,6 @@ require_once "php/db.php";
 
 
 $data=getDescribe($_POST['col'])->fetch_assoc();
-echo $data;
 if($data){
 
     $data['Default']=str_replace("'","",$data['Default']);

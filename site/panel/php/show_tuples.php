@@ -30,9 +30,22 @@ function genTemplate($res){
     return $result;
 }
 
+function showTH($data){
+    if(isset($data)){
+
+        $nameArr=array_keys($data);
+        
+        foreach($nameArr as $name){
+            if($name!='id'){
+                echo "<th>$name</th>";
+            }
+        }
+    }
+}
+
 function createRows($template, $arr){
     for($i=0;$i<count($arr);$i++){
-        echo str_replace('$NUMBER',$i,$template[0][0]);
+        echo str_replace('$NUMBER',$arr[$i]['id'],$template[0][0]);
         for($j=1;$j<count($template)-1;$j++){
             echo str_replace('$VALUE',$arr[$i][$template[$j][1]],$template[$j][0]);
         }
@@ -53,10 +66,6 @@ if(!$conn->connect_error){
        while($row=$result->fetch_assoc()){
            array_push($resultArray,$row);
        }
-       if(count($resultArray)>0){
-           $template=genTemplate($resultArray[0]);
-           createRows($template, $resultArray);
-        }
     }
 }
     ?>

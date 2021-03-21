@@ -40,7 +40,8 @@ if(!$conn->connect_error){
       }
       
       addLogin($data['user_id']);
-      header("Location: http://localhost/PHP_PROJEKT/site/");
+      $location='http://'.$_SERVER['HTTP_HOST'];
+      header("Location: $location");
     }else{
       echo "Błędne dane logowania";
     }

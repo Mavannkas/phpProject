@@ -1,11 +1,13 @@
 <?php session_start();
+$location='http://'.$_SERVER['HTTP_HOST'];
+
 if(empty($_SESSION['user']) && (empty($_GET['lvl']) || ($_GET['lvl']!='login' && $_GET['lvl']!='recovery' &&$_GET['lvl']!='register'))){
-    header("Location: http://localhost/PHP_PROJEKT/site/panel/?lvl=login");
+    header("Location: $location/panel/?lvl=login");
 
 }else if(!empty($_SESSION['user']) && !empty($_GET['lvl']) && ($_GET['lvl']=='login' || $_GET['lvl']=='register')){
-        header("Location: http://localhost/PHP_PROJEKT/site/panel/");
+        header("Location: $location/panel/");
 }else if( !empty($_SESSION['user']) && $_SESSION['db']!=1 && $_GET['lvl']!='addColumns' && $_GET['lvl']!='edit'){
-    header("Location: http://localhost/PHP_PROJEKT/site/panel/?lvl=addColumns");
+    header("Location: $location/panel/?lvl=addColumns");
 }
 ?>
 <!DOCTYPE html>
