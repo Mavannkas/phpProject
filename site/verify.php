@@ -4,7 +4,7 @@
      
      function findMail($mail,$hash){
          global $conn;
-         $conn->select_db("makedb");
+         $conn->select_db("m21358_makedb");
          $sql="SELECT * FROM users WHERE email='$mail' and register_hash='$hash' and is_active!=1";
          $result = $conn->query($sql);
          if(($result && $result->num_rows)){
@@ -16,7 +16,7 @@
         
         function activeUser($mail){
             global $conn;
-            $conn->select_db("makedb");
+            $conn->select_db("m21358_makedb");
             $sql="UPDATE users SET is_active=1 WHERE email='$mail'";
             $result = $conn->query($sql);
             

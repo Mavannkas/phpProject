@@ -48,6 +48,10 @@ body {
   font-size: 3rem;
 }
 
+table {
+  margin: 0 auto;
+}
+
 .checkboxContainer {
   position: relative;
   display: -webkit-box;
@@ -505,6 +509,10 @@ main section {
   color: #2eb0ca;
 }
 
+.form__body > .form__input-box i:hover {
+  cursor: auto;
+}
+
 .form__body button {
   display: block;
   margin: 2em auto;
@@ -917,10 +925,6 @@ footer a:hover {
   width: 90%;
   margin: 2em auto 1em auto;
   overflow-x: auto;
-}
-
-.shadow-edit .popup form .table-scroll table {
-  margin: 0 auto;
 }
 
 .shadow-edit .popup form .table-scroll::-webkit-scrollbar {

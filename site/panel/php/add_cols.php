@@ -4,7 +4,7 @@ include_once 'db.php';
 if(!$conn->connect_error){
     function getLastColumnName(){
         global $conn;
-        $sql="SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'makedb_user' AND TABLE_NAME ='user_".$_SESSION['id']."' ORDER BY ORDINAL_POSITION DESC LIMIT 1";
+        $sql="SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'm21358_makedb_user' AND TABLE_NAME ='user_".$_SESSION['id']."' ORDER BY ORDINAL_POSITION DESC LIMIT 1";
         $result=$conn->query($sql);
         
         if($result && $result->num_rows){
@@ -16,7 +16,7 @@ if(!$conn->connect_error){
     
     function postToDB($sql){
         global $conn;
-        $conn->select_db("makedb_user");
+        $conn->select_db("m21358_makedb_user");
         $conn->query($sql);
         return $conn->error;
     }
@@ -25,10 +25,13 @@ if(!$conn->connect_error){
         $sql="ALTER TABLE `user_".$_SESSION['id']."` ";
         $unique="";
         foreach ($data as $value) {
-            $sql.="ADD `".$value['name']."` ".$value['type'];
             if($value['type']=="VARCHAR"){
-                $sql.="(65535)";
+                $value['type']="VARCHAR(21000)";
             }
+            if($value['type']=="TEXT")
+                $value['value']="";
+            
+            $sql.="ADD `".$value['name']."` ".$value['type'];
             $sql.=" ";
             if($value['null']!=1){
                 $sql.="NOT ";
@@ -68,7 +71,7 @@ if(!$conn->connect_error){
                     echo json_encode(array('message'=>$err));
                 }else{
                     echo json_encode(array('success'=>"ok"));
-                    $conn->select_db("makedb");
+                    $conn->select_db("m21358_makedb");
                     $conn->query("UPDATE users SET has_database=1");
                     $conn->query("INSERT INTO db_change(user_id_fk) VALUES ($_SESSION[id])");
                     $_SESSION['db']=1;

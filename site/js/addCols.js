@@ -72,12 +72,10 @@ class Row{
         let isEmpty=true;
         row.querySelectorAll('input').forEach(el=>{
             if(el.type=='checkbox'){
-                console.log(el.checked)
                 if(el.checked){
                     isEmpty=false;
                 }
             }else if(el.type=='text'){
-                console.log(el.value)
                 if(el.value!=""){
                     isEmpty=false;
                 }

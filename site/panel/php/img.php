@@ -3,7 +3,7 @@
     if(!$conn->connect_error){
         function setImgState($state){
             global $conn;
-            $conn->select_db("makedb");
+            $conn->select_db("m21358_makedb");
             $sql="UPDATE users SET has_img=$state WHERE user_id=".$_SESSION['id'];
             $_SESSION['img']=$state;
             $result=$conn->query($sql);
@@ -13,7 +13,7 @@
             $target="../user_img/".$_SESSION['user'].'.png';
             $file=$_FILES["img-file"];
             $type=strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
-            if(getimagesize($file['tmp_name']) && $file['size']<3000000 && ($type=='jpg' || $type=='png' || $type=='jpeg')){
+            if(getimagesize($file['tmp_name']) && $file['size']<10000000 && ($type=='jpg' || $type=='png' || $type=='jpeg')){
                 if(move_uploaded_file($file["tmp_name"], $target)){
                     switch ($type){
                         case 'png':
@@ -37,12 +37,12 @@
                         if($_SESSION['img']=='1'){
                             unlink("../user_img/".$_SESSION['user'].'.png');
                             setImgState(0);
-                            echo "<p class='success--output'>Udało się usunąć zdjęcie</p>";
+                            echo "<p class='success--output'>Udało się usunąć zdjęcie efekt zobaczysz po odświeżeniu strony</p>";
                         }
                     }else if(!empty($_FILES["img-file"])){
                         if(saveImg()){
                             setImgState(1);
-                            echo "<p class='success--output'>Udało się zmienić zdjęcie</p>";
+                            echo "<p class='success--output'>Udało się zmienić zdjęcie efekt zobaczysz po odświeżeniu strony</p>";
                         }else{
                             echo "<p class='error--output'>Nie udało się zmienić zdjęcia</p>";
                         }

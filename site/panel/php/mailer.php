@@ -4,8 +4,8 @@ function sendMail($name, $mail, $tel, $mess){
     $sub="Potwierdzenie wysłania wiadomości";
 
     $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-    $headers[] = 'From: Potwierdzenie <noreply@makedb.pl>';
+    $headers[] = 'Content-type: text/html; charset=utf-8';
+    $headers[] = 'From: Potwierdzenie <noreply@miensny.ct8.pl>';
     $message='
     <html>
       <head>

@@ -4,38 +4,38 @@ include_once 'db.php';
 if(!$conn->connect_error){
     
     $result=getDescribe('%');
-    $result->fetch_assoc();
-    while($row=$result->fetch_assoc()){
+    if($result){
 
-
-
-        $type=$row['Type'];
-        if($type=='int(11)'){
-            $type='int';
-        }else if($type=="mediumtext"){
-            $type='varchar';
+        $result->fetch_assoc();
+        while($row=$result->fetch_assoc()){
+            $type=$row['Type'];
+            if($type=='int(11)'){
+                $type='int';
+            }else if($type=="varchar(21000)"){
+                $type='varchar';
+            }
+            
+            echo<<<end
+            <tr>
+            <td>
+            <input type="text" value="$row[Field]" disabled>
+            </td>
+            <td>
+            <input type="text" value="$type" disabled>
+            </td>
+            <td>
+            <input type="text" value="$row[Default]" disabled>
+            </td>
+            <td class="checkboxContainer">
+            <input type="checkbox" name="isNull" value="$row[Null]" disabled>
+            <label for="isNull"></label>
+            </td>
+            <td class="checkboxContainer">
+            <input type="checkbox" name="isPrimary" value="$row[Key]" disabled>
+            <label for="isPrimary"></label>
+            </td></tr>
+            end;
         }
-        
-        echo<<<end
-        <tr>
-        <td>
-        <input type="text" value="$row[Field]" disabled>
-        </td>
-        <td>
-        <input type="text" value="$type" disabled>
-        </td>
-        <td>
-        <input type="text" value="$row[Default]" disabled>
-        </td>
-        <td class="checkboxContainer">
-        <input type="checkbox" name="isNull" id="isNull" value="$row[Null]" disabled>
-        <label for="isNull"></label>
-        </td>
-        <td class="checkboxContainer">
-        <input type="checkbox" name="isPrimary" id="isPrimary" value="$row[Key]" disabled>
-        <label for="isPrimary"></label>
-        </td></tr>
-        end;
     }
 }
     ?>

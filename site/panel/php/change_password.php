@@ -4,7 +4,7 @@
     if(!$conn->connect_error){
         function getHash(){
             global $conn;
-            $conn->select_db("makedb");
+            $conn->select_db("m21358_makedb");
             $sql="SELECT password_hash FROM users WHERE user_id='".$_SESSION['id']."'";
             $result=$conn->query($sql);
             if($result && $result->num_rows){
@@ -16,7 +16,7 @@
         
         function updateHash($pass){
             global $conn;
-            $conn->select_db("makedb");
+            $conn->select_db("m21358_makedb");
             $hash=password_hash($pass, PASSWORD_DEFAULT);
             $sql="UPDATE users SET password_hash='$hash' WHERE user_id=".$_SESSION['id'];
             $result=$conn->query($sql);

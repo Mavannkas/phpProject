@@ -3,8 +3,11 @@
         $sql="ALTER TABLE `user_".$_SESSION['id']."` CHANGE `$old` ";
         $sql.="`".$value['name']."` ".$value['type'];
         if($value['type']=="VARCHAR"){
-            $sql.="(65535)";
+            $sql.="(21000)";
         }
+		if($value['type']=="TEXT"){
+			$value['value']="";
+		}
         $sql.=" ";
         if($value['null']!=1){
             $sql.="NOT ";
@@ -25,10 +28,10 @@
 
     function sendSQLToDB($sql){
         global $conn;
-        $conn->select_db("makedb_user");
+        $conn->select_db("m21358_makedb_user");
         return $conn->query($sql); 
     }
-
+if(isset($conn) && !$conn->connect_error){
     $_POST['isNull']=!empty($_POST['isNull'])?1:0;
     $data=array(
         'type'=>$_POST['type'],
@@ -38,9 +41,10 @@
     );
     $sql=genSQL($data,$_POST['oldName']);
     if(sendSQLToDB($sql)){
-        $conn->select_db("makedb");
+        $conn->select_db("m21358_makedb");
         $conn->query("INSERT INTO db_change(user_id_fk) VALUES ($_SESSION[id])");
         echo "Udało się edytować";
     }
-
+    
+}
 ?>

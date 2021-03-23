@@ -10,16 +10,16 @@
                 <form action="./?lvl=register" method="POST"class="form__body">
                     <div class="form__input-box">
                         <label for="login">Login</label>
-                        <input type="text" id="login" name="login" required>
+                        <input type="text" id="login" name="login" required value="<?php if($bool) echo $login ?>">
                     </div>
                     <div class="form__input-box">
                         <label for="mail">Email</label>
-                        <input type="email" id="mail" name="mail" required>
+                        <input type="email" id="mail" name="mail" required value="<?php if($bool) echo $mail ?>">
                     </div>
                     <div class="form__input-box">
                         <label for="password">Hasło</label>
                         <input type="password" id="password" name="password" required>
-                        <i type="button" class="fas fa-question" data-bs-toggle="tooltip" data-html="true" title="Minimum 8 znaków, co najmniej 1 znak specjalny, wielka litera i cyfra">
+                        <i type="button" class="fas fa-question" id="tooltip" data-mdb-toggle="tooltip" title="Minimum 8 znaków, co najmniej 1 znak specjalny, wielka litera i cyfra">
                           </i>
                     </div>
                     <div class="form__input-box">

@@ -3,7 +3,7 @@ include_once 'db.php';
 if(!$conn->connect_error){
   function isNotInDB($name,$value){
     global $conn;
-    $conn->select_db("makedb");
+    $conn->select_db("m21358_makedb");
     $sql="SELECT $name FROM users WHERE $name='$value'";
     $result = $conn->query($sql);
     
@@ -15,7 +15,7 @@ if(!$conn->connect_error){
   }
   function createDB($name){
     global $conn;
-    $conn->select_db("makedb_user");
+    $conn->select_db("m21358_makedb_user");
     $sql="CREATE TABLE user_$name(
     id int not null AUTO_INCREMENT,
     PRIMARY KEY (id)
@@ -25,7 +25,7 @@ if(!$conn->connect_error){
 
 function createAccount($login,$mail,$password, $reg){
   global $conn;
-  $conn->select_db("makedb");
+  $conn->select_db("m21358_makedb");
   $hash=password_hash($password, PASSWORD_DEFAULT);
   $sql="INSERT INTO users(login, email, password_hash, register_hash) VALUES ('$login','$mail','$hash', '$reg')";
   $result = $conn->query($sql);
@@ -39,7 +39,7 @@ function createAccount($login,$mail,$password, $reg){
 
 function getID($login){
   global $conn;
-  $conn->select_db("makedb");
+  $conn->select_db("m21358_makedb");
   $sql="SELECT user_id FROM users WHERE login='$login'";
   $result = $conn->query($sql);
   
@@ -54,8 +54,8 @@ function sendMail($mail, $login, $hash){
   $sub="Weryfikacja konta";
   $location='http://'.$_SERVER['HTTP_HOST'];
   $headers[] = 'MIME-Version: 1.0';
-  $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-  $headers[] = 'From: Weryfikacja konta <noreply@makedb.pl>';
+  $headers[] = 'Content-type: text/html; charset=utf-8';
+  $headers[] = 'From: Weryfikacja konta <noreply@miensny.ct8.pl>';
   $message='
   <html>
   <head>
@@ -109,7 +109,7 @@ if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['password
   if($bool==0){
     $reg_hash=md5(rand(0,1000));
     if(createAccount($login, $mail, $_POST['password'],$reg_hash)){
-      echo '<p style="color:green; text-align:center">Udało się utworzyć konto. Musisz je jeszcze aktywować</p>';
+      echo '<p style="color:green; text-align:center">Udało się utworzyć konto. Musisz je jeszcze aktywować, wiadomość została wysłana na <b>'.$mail.'</b></p>';
       createDB(getID($login));
       sendMail($mail, $login, $reg_hash);
     }else{

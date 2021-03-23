@@ -3,7 +3,7 @@ include_once 'db.php';
 
 function postToDB($sql){
     global $conn;
-    $conn->select_db("makedb_user");
+    $conn->select_db("m21358_makedb_user");
     $result=$conn->query($sql);
     return $result;
 }
@@ -19,7 +19,7 @@ function genTemplate($res){
 
             if($type=='int(11)'){
                 $type='int';
-            }else if($type=='mediumtext'){
+            }else if($type=='varchar(21000)'){
                 $type="varchar";
             }
             array_push($result,array('<td data-type="'.$type.'">$VALUE</td>',$row['Field']));
@@ -54,18 +54,21 @@ function createRows($template, $arr){
 }
 
 if(!$conn->connect_error){
-    $result=postToDB($query);
-    if(gettype($result)=="boolean" && $result==true){
-        echo "<p class='success--output'>Poprawnie wykonano zapytanie</p>";
-    }else if($result==false){
-        $error=str_replace("user_$_SESSION[id]",'$table',$conn->error);
-        $error=str_replace(";",';<br>',$error);
-        echo "<p class='error--output'>$error</p>";
-    }else{
-       $resultArray=array();
-       while($row=$result->fetch_assoc()){
-           array_push($resultArray,$row);
-       }
+    if($query){
+
+        $result=postToDB($query);
+        if(gettype($result)=="boolean" && $result==true){
+            echo "<p class='success--output'>Poprawnie wykonano zapytanie</p>";
+        }else if($result==false){
+            $error=str_replace("user_$_SESSION[id]",'$table',$conn->error);
+            $error=str_replace(";",';<br>',$error);
+            echo "<p class='error--output'>$error</p>";
+        }else{
+            $resultArray=array();
+            while($row=$result->fetch_assoc()){
+                array_push($resultArray,$row);
+            }
+        }
     }
 }
-    ?>
+?>

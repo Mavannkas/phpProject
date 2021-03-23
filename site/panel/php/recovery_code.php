@@ -5,8 +5,8 @@ if(!$conn->connect_error){
     $sub="Potwierdzenie wysłania wiadomości";
     
     $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-    $headers[] = 'From: Odzyskiwanie hasła <noreply@makedb.pl>';
+    $headers[] = 'Content-type: text/html; charset=utf-8';
+    $headers[] = 'From: Odzyskiwanie hasła <noreply@miensny.ct8.pl>';
     $message='
     <html>
     <head>
@@ -28,7 +28,7 @@ if(!$conn->connect_error){
   
   function getUserData($mail){
     global $conn;
-    $conn->select_db("makedb");
+    $conn->select_db("m21358_makedb");
     $sql="SELECT login FROM users WHERE email='$mail'";
     $result=$conn->query($sql);
     
@@ -54,7 +54,7 @@ if(!$conn->connect_error){
   
   function updateHash($email, $pass){
     global $conn;
-    $conn->select_db("makedb");
+    $conn->select_db("m21358_makedb");
     $hash=password_hash($pass, PASSWORD_DEFAULT);
     $sql="UPDATE users SET password_hash='$hash' WHERE email='".$email."'";
     $result=$conn->query($sql);

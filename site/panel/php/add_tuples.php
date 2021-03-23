@@ -5,7 +5,7 @@ if(!$conn->connect_error){
     
     function postToDB($sql){
         global $conn;
-        $conn->select_db("makedb_user");
+        $conn->select_db("m21358_makedb_user");
         $conn->query($sql);
         return $conn->error;
     }
@@ -47,7 +47,7 @@ if(!$conn->connect_error){
                     echo json_encode(array('message'=>$err));
                 }else{
                     echo json_encode(array('success'=>"ok"));
-                    $conn->select_db("makedb");
+                    $conn->select_db("m21358_makedb");
                     $conn->query("INSERT INTO db_DATA_change(user_id_fk) VALUES ($_SESSION[id])");
                 }
             

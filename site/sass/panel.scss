@@ -365,6 +365,9 @@ main {
         bottom: 8px;
         font-size: 2.5rem;
         color: $main-color;
+        &:hover{
+          cursor: auto;
+        }
       }
     }
 

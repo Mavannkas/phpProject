@@ -3,7 +3,7 @@ include_once 'db.php';
 if(!$conn->connect_error){
   function getUserData($nick){
     global $conn;
-    $conn->select_db("makedb");
+    $conn->select_db("m21358_makedb");
     $sql="SELECT * FROM users WHERE BINARY login='$nick' and is_active=1";
     $result=$conn->query($sql);
     
@@ -16,7 +16,7 @@ if(!$conn->connect_error){
   
   function addLogin($id){
     global $conn;
-    $conn->select_db("makedb");
+    $conn->select_db("m21358_makedb");
     $sql="INSERT INTO login (user_id_fk) VALUES ($id)";
     $result=$conn->query($sql);
   }

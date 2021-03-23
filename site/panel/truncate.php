@@ -11,7 +11,7 @@
                 <?php 
                 if(isset($_POST['delete'])){
                     require_once "php/db.php";
-                    $conn->select_db("makedb_user");
+                    $conn->select_db("m21358_makedb_user");
                     if($result=$conn->query("TRUNCATE user_$_SESSION[id]")){
                         $conn->select_db("makedb");
                         $conn->query("INSERT INTO db_truncate(user_id_fk) VALUES ($_SESSION[id])");

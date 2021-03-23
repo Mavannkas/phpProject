@@ -2,7 +2,7 @@
 
 function getDescribe($name){
     global $conn;
-    $conn->select_db("makedb_user");
+    $conn->select_db("m21358_makedb_user");
     $sql="SHOW COLUMNS FROM user_$_SESSION[id] WHERE Field like '$name'";
 
     $result=$conn->query($sql);
@@ -13,9 +13,9 @@ function getDescribe($name){
     }
 }
 
-    $server='localhost';
-    $user="root";
-    $password="";
+    $server='pma.ct8.pl';
+    $user="m21358_miensny";
+    $password="1@Qwerty";
     $conn=@new mysqli($server, $user, $password);
 
     if($conn->connect_error){
