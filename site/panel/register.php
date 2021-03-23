@@ -1,3 +1,4 @@
+<?php if(session_start()==2):?>
         <section>
             <div class="form">
             <p class="error--output">
@@ -33,3 +34,4 @@
             </div>
             <script src="../js/reg.js"></script>
         </section>
+<?php endif; ?>

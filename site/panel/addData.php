@@ -1,3 +1,4 @@
+<?php if(session_start()==2):?>
             <div class="add-data">
 
                 <h3 class="title">Dodaj Krotki</h3>
@@ -25,3 +26,4 @@
 
                     <script src="../js/addData.js"></script>
                 </section>
+<?php endif; ?>

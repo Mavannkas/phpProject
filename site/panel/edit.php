@@ -1,3 +1,4 @@
+<?php if(session_start()==2):?>
         <section>
             <div class="profile-edit">
                 <h3 class="title">Edycja Konta</h3>
@@ -12,7 +13,7 @@
                                 }else{
                                     echo '../img/user.svg';
                                 }
-                            ?>" alt="profilowe" class="profile-edit__img" onerror="this.onerror=null; this.src='../img/user.svg'">
+                                ?>" alt="profilowe" class="profile-edit__img" onerror="this.onerror=null; this.src='../img/user.svg'">
                             <label for="img-file">Wybierz zdjęcie profilowe</label>
                             <input type="file" name="img-file" id="img-file"  accept=".png,.jpg,.jpeg">
                             <input type="checkbox" name="img-del" id="img-del-file" hidden>
@@ -25,7 +26,7 @@
                             if(!empty($_FILES['img-file']['tmp_name']) || !empty($_POST['img-del'])){
                                 include_once 'php/img.php';
                             }
-                        ?>
+                            ?>
                     </div>
                     <div class="profile-edit__option">
                         <h4 class="profile-edit__option-header">HASŁO</h4>
@@ -47,7 +48,7 @@
                             if(!empty($_POST['oldPass']) || !empty($_POST['pass'])){
                                 include_once 'php/change_password.php';
                             }
-                        ?>
+                            ?>
                     </div>
 
                     <div class="profile-edit__option">
@@ -71,3 +72,4 @@
             <script src="../js/edit.js"></script>
             </div>
         </section>
+<?php endif; ?>

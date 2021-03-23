@@ -1,3 +1,4 @@
+<?php if(session_start()==2):?>
         <section>
             <div class="truncate">
                 <h3 class="title">Usuń zawartość tabeli</h3>
@@ -24,3 +25,4 @@
             </div>
             <script src="../js/truncate.js"></script>
         </section>
+<?php endif; ?>

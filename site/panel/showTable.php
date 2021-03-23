@@ -1,3 +1,4 @@
+<?php if(session_start()==2):?>
         <section class="show-data-section">
             <div class=advanced-query>
                 <h3 class="title">Zapytanie SQL</h3>
@@ -53,7 +54,7 @@
                                         showTH($resultArray[0]);
                                     }
                                 }
-
+                                
                                 ?>
                             </tr>
                         </thead>
@@ -62,7 +63,7 @@
                             if(isset($resultArray) && count($resultArray)>0){
                                 $template=genTemplate($resultArray[0]);
                                 createRows($template, $resultArray);
-                             }
+                            }
                             ?>
                         </tbody>
                     </table>
@@ -84,3 +85,4 @@
             <button type="button" class="secondary-btn" id="reset">Wyczyść zapytanie</button>
             <script src="../js/editData.js"></script>
         </section>
+<?php endif; ?>

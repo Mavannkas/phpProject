@@ -1,3 +1,4 @@
+<?php if(session_start()==2):?>
         <section>
             <div class="addColumns">
                 <h3 class="title">Edytuj kolumnę</h3>
@@ -6,7 +7,7 @@
                     <select name="col" id="col">
                         <?php 
                             require_once 'php/get_columns_name.php';
-                        ?>
+                            ?>
                     </select>
                     <input type="radio" name='delete' hidden>
                     <div class="secondary-btn-box">
@@ -25,7 +26,7 @@
                         }else{
                             echo "<p class='error--output'>Nie udało się usunąć $_POST[col]</p>";
                         }
-
+                        
                     }
                 }
                 ?>
@@ -45,7 +46,7 @@
                         if(!empty($_POST['col'])&& empty($_POST['delete'])){
                             echo "<input type='text' name='oldName' id='oldName' value='$_POST[col]' hidden>";
                             require_once "php/show_column_description.php";
-                        
+                            
                         }
                         ?>
                         </tbody>
@@ -59,9 +60,10 @@
                     <?php 
                      if(!empty($_POST['columnName'])){
                          require_once "php/edit_one_column.php";
-                     }
-                    ?>
+                        }
+                        ?>
                     </p>
             </div>
             <script src="../js/editColumn.js"><script>
         </section>
+<?php endif; ?>

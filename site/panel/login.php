@@ -1,4 +1,4 @@
-       
+<?php if(session_start()==2):?>
        <section>
             <div class="form">
                 <p class="error--output">
@@ -23,3 +23,4 @@
                 <a href="./?lvl=recovery" class="form__footer">Odzyskaj hasło!</a>
             </div>
         </section>
+<?php endif; ?>

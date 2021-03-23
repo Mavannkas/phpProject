@@ -1,4 +1,5 @@
-<section>
+<?php if(session_start()==2):?>
+        <section>
         <div class="form">
         <?php
         include_once 'php/recovery_code.php';
@@ -15,3 +16,4 @@
                 <a href="./?lvl=login" class="form__footer">Zaloguj się!</a>
             </div>
         </section>
+<?php endif; ?>
