@@ -1,4 +1,4 @@
-<?php if(session_start()==2):?>
+<?php if(session_status()==2):?>
         <section>
             <div class="addColumns">
                 <h3 class="title">Stwórz kolumny</h3>

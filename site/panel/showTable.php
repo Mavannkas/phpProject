@@ -1,4 +1,4 @@
-<?php if(session_start()==2):?>
+<?php if(session_status()==2):?>
         <section class="show-data-section">
             <div class=advanced-query>
                 <h3 class="title">Zapytanie SQL</h3>

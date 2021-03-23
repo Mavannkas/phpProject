@@ -1,4 +1,4 @@
-<?php if(session_start()==2):?>
+<?php if(session_status()==2):?>
         <section>
             <div class="form">
             <p class="error--output">

@@ -1,4 +1,4 @@
-<?php if(session_start()==2):?>
+<?php if(session_status()==2):?>
         <section>
             <div class="truncate">
                 <h3 class="title">Usuń zawartość tabeli</h3>
