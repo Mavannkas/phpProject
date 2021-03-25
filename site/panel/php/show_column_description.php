@@ -11,7 +11,7 @@ if(file_exists ('php/db.php')){
             $type=$data['Type'];
             if($type=='int(11)'){
             $type='int';
-        }else if($type=="varchar(21000)"){
+        }else if($type=="varchar(10000)"){
             $type='varchar';
         }
         $type=strtoupper($type);

@@ -123,6 +123,7 @@ table {
 
 .secondary-btn-box {
   display: flex;
+  justify-content: space-around;
 }
 
 .show {
@@ -176,7 +177,7 @@ table {
     display: inline-block;
     width: 200px;
     right: 20px;
-    padding: 10px 1em;
+    padding: 5px 1em;
     border-radius: 5px;
     z-index: 100;
 
@@ -187,7 +188,7 @@ table {
       background-color: #fff;
       border-radius: 50%;
       overflow: hidden;
-      margin-right: 1.5em;
+      margin-right: 1em;
     }
     &-name {
       transition: color 0.3s;
@@ -199,8 +200,20 @@ table {
       justify-content: center;
       align-items: center;
 
-      p {
-        margin: 0;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        p{
+          display: flex;
+          width: 100px;
+          height: 50px;
+          margin: 0;
+          line-height: 50px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
     }
     &:hover {
@@ -216,7 +229,6 @@ table {
   &__dropdown-menu {
     display: none;
     width: 180px;
-    margin: 0.5em 0;
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.144);
@@ -939,7 +951,7 @@ a.logout {
     color: $main-color;
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 560px) {
   .small-device {
     position: fixed;
     top: 0;

@@ -3,7 +3,7 @@
         $sql="ALTER TABLE `user_".$_SESSION['id']."` CHANGE `$old` ";
         $sql.="`".$value['name']."` ".$value['type'];
         if($value['type']=="VARCHAR"){
-            $sql.="(21000)";
+            $sql.="(10000)";
         }
 		if($value['type']=="TEXT"){
 			$value['value']="";

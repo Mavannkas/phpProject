@@ -138,6 +138,7 @@ class RowData{
     }
 
     genTemplate(params){
+        console.log(params.type);
         let infoAboutType=Object.assign(this.getHTMLInputType(params.type),
         {'value': params.start});
 

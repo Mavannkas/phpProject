@@ -26,7 +26,7 @@ if(!$conn->connect_error){
         $unique="";
         foreach ($data as $value) {
             if($value['type']=="VARCHAR"){
-                $value['type']="VARCHAR(21000)";
+                $value['type']="VARCHAR(10000)";
             }
             if($value['type']=="TEXT")
                 $value['value']="";

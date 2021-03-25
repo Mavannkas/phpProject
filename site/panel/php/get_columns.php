@@ -11,7 +11,7 @@ if(!$conn->connect_error){
             $type=$row['Type'];
             if($type=='int(11)'){
                 $type='int';
-            }else if($type=="varchar(21000)"){
+            }else if($type=="varchar(10000)"){
                 $type='varchar';
             }
             

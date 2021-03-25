@@ -13,15 +13,13 @@ Dodawanie kolumn
 Edycja kolumn
 Truncate
 Usuwanie Konta
-
+//dużo innych zapomniałem wpisywać xD
 
 Do zrobienia:
 
 Panel admina
-    Zmiana maila usera
-    Zmiana nicku usera
-    ponowne wysłanie maila potwierdzającego
+    zakodować php wysyłania usera nicku i maila (zmiany)
 
-
+usunąć execute z plikow
 
 htmlspecialchars tam gdzie dodajesz dane

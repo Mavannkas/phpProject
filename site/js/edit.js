@@ -6,6 +6,9 @@ const editMain=()=>{
     const imgAdd=document.querySelector("#img-add");
     const imgDel=document.querySelector("#img-del");
     const accDelBtn=document.querySelector("#acc-del-btn");
+    const sendMail=document.querySelector("#send-btn");
+    const changeMail=document.querySelector("#change-mail-btn");
+    const changeLogin=document.querySelector("#change-login-btn");
 
     const colorReset=()=>{
         password.style.backgroundColor="";
@@ -32,17 +35,21 @@ const editMain=()=>{
         }
         if(!message){
             console.log(message)
-            document.querySelector('.profile-edit__form--password').submit();
+            document.querySelector('#pass').submit();
         }else{
             err.innerText=message;
         }
     }
 
-    btn.addEventListener('click',()=>new Popup(2,"Czy na pewno chcesz zmienić hasło?", checkPass));
-    imgAdd.addEventListener('click',()=>new Popup(2,"Czy na pewno chcesz zmienić zdjęcie?",()=>
-        document.querySelector('.profile-edit__form--img').submit()
-        ));
-        
+    const shortCustomListener=(element, message, selector)=>
+                                element.addEventListener('click',()=>new Popup(2, message,()=>
+                                document.querySelector(selector).submit()
+                                ));
+
+
+
+    shortCustomListener(imgAdd, "Czy na pewno chcesz zmienić zdjęcie?", '.profile-edit__form--img');
+
     imgDel.addEventListener('click',()=>new Popup(3,"Czy na pewno chcesz <span>usunąć<span> zdjęcie?",()=>{
         document.querySelector('#img-del-file').checked=true;
         document.querySelector('.profile-edit__form--img').submit();
@@ -50,8 +57,28 @@ const editMain=()=>{
 
     accDelBtn.addEventListener('click',()=>new Popup(3,"Czy na pewno chcesz <span>usunąć<span> konto?",()=>{
         document.querySelector("#acc-del-input").checked=true;
-        document.querySelector('.profile-edit__form--delete').submit();
+        document.querySelector('#del').submit();
     }));
+    
+    if(sendMail){
+        sendMail.addEventListener('click',()=>new Popup(2,"Czy chcesz wysłać link aktywacyjny?",()=>{
+            document.querySelector("#send-mail").checked=true;
+            document.querySelector('#send').submit();
+        }));
+    }
+
+    if(changeMail){
+        shortCustomListener(changeMail, "Czy chcesz zmienić email", '#change-mail');
+    }
+
+    if(changeLogin){
+        shortCustomListener(changeLogin, "Czy chcesz zmienić login", '#change-login');
+    }
+
+    if(btn){
+        btn.addEventListener('click',()=>new Popup(2,"Czy na pewno chcesz zmienić hasło?", checkPass));
+    }
+   
 }
 
 

@@ -12,7 +12,11 @@ function getDescribe($name){
         return false;
     }
 }
-
+function execute($sql, $db){
+    global $conn;
+    $conn->select_db($db);
+    return $conn->query($sql);
+}
     // $server='pma.ct8.pl';
     // $user="m21358_miensny";
     // $password="1@Qwerty";

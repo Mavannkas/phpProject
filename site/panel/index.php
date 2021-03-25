@@ -39,7 +39,7 @@ if(empty($_SESSION['user']) && (empty($_GET['lvl']) || ($_GET['lvl']!='login' &&
                         echo '../img/user.svg';
                     }
                 ?>" alt="user profile" class="header__profile-img" width="40px" onerror="this.onerror=null; this.src='../img/user.svg'"></img>
-                <p class="header__profile-name"><?php echo empty($_SESSION['user'])?'Gość':$_SESSION['user']; ?> <i class="fas fa-caret-down"></i></p>
+                <div class="header__profile-name"><p><?php echo empty($_SESSION['user'])?'Gość':$_SESSION['user']; ?></p><i class="fas fa-caret-down"></i></div>
             </div>
             <div class="header__dropdown-menu">
                 <ul>

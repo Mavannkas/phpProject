@@ -28,10 +28,11 @@
                             }
                             ?>
                     </div>
+                    <?php if(!isset($_SESSION['admin_data'])|| $_SESSION['admin_data']['id']==$_SESSION['id']):?>
                     <div class="profile-edit__option">
                         <h4 class="profile-edit__option-header">HASŁO</h4>
                         <hr>
-                        <form action="./?lvl=edit" method="POST"  class="profile-edit__form profile-edit__form--password">
+                        <form action="./?lvl=edit" method="POST"  class="profile-edit__form profile-edit__form--password" id="pass">
                             <div class="profile-edit__input-box">
                                 <label for="oldPass">Stare Hasło</label><input type="password" id="oldPass" name="oldPass" required>
                             </div>
@@ -50,11 +51,12 @@
                             }
                             ?>
                     </div>
+                    <?php endif;?>
 
                     <div class="profile-edit__option">
                         <h4 class="profile-edit__option-header">ZAAWANSOWANE</h4>
                         <hr>
-                        <form action="./?lvl=edit" method="POST" class="profile-edit__form profile-edit__form--delete">
+                        <form action="./?lvl=edit" method="POST" class="profile-edit__form profile-edit__form--delete" id="del">
                             <p>Czy chcesz <span>nieodwracalnie usunąć</span> konto?</p>
                             <p>Procedura jest <span>nieodwracalna!</span></p>
                             <input type="checkbox" name="acc-del" id="acc-del-input" hidden>
@@ -68,6 +70,61 @@
                             ?>
                         </p>
                     </div>
+                    <?php if(isset($_SESSION['active']) && $_SESSION['active']=="0"):?>
+                    <div class="profile-edit__option">
+                        <h4 class="profile-edit__option-header">Wyślij ponownie link aktywacyjny</h4>
+                        <hr>
+                        <form action="./?lvl=edit" method="POST" class="profile-edit__form profile-edit__form--delete" id="send">
+                            <p>Konto jest dalej nieaktywne.</p>
+                            <p>Chcesz wysłać ponownie link aktywacyjny?</p>
+                            <input type="checkbox" name="send-mail" id="send-mail" hidden>
+                            <button type="button" class="secondary-btn" id="send-btn">Wyślij</button>
+                        </form>
+                        <p class="success--output">
+                            <?php 
+                            if(!empty($_POST['send-mail'])){
+                                include_once 'php/resend-mail.php';
+                            }
+                            ?>
+                        </p>
+                    </div>
+                    <?php endif;?>
+
+                    <div class="profile-edit__option">
+                        <h4 class="profile-edit__option-header">EMAIL</h4>
+                        <hr>
+                        <form action="./?lvl=edit" method="POST"  class="profile-edit__form profile-edit__form--password" id="change-mail">
+                            <div class="profile-edit__input-box">
+                                <label for="newMail">Mail</label><input type="email" id="newMail" name="newMail" value="<?php echo $_SESSION['email']; ?>" required>
+                            </div>
+
+                            <button type="button" class="secondary-btn" id="change-mail-btn">Zmień email</button>
+                        </form>
+                        <?php 
+                            if(!empty($_POST['newMail'])){
+                                include_once 'php/change-mail.php';
+                            }
+                        ?>
+                    </div>
+
+                    <div class="profile-edit__option">
+                        <h4 class="profile-edit__option-header">LOGIN</h4>
+                        <hr>
+                        <form action="./?lvl=edit" method="POST"  class="profile-edit__form profile-edit__form--password" id="change-login">
+                            <div class="profile-edit__input-box">
+                                <label for="login">Login</label><input type="test" id="login" name="login" value="<?php echo $_SESSION['user']; ?>" required>
+                            </div>
+
+                            <button type="button" class="secondary-btn" id="change-login-btn">Zmień login</button>
+                        </form>
+                        <?php 
+                            if(!empty($_POST['login'])){
+                                include_once 'php/change-login.php';
+                            }
+                        ?>
+                    </div>
+
+
                 </div>
             <script src="../js/edit.js"></script>
             </div>

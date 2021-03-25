@@ -19,7 +19,7 @@ function genTemplate($res){
 
             if($type=='int(11)'){
                 $type='int';
-            }else if($type=='varchar(21000)'){
+            }else if($type=='varchar(10000)'){
                 $type="varchar";
             }
             array_push($result,array('<td data-type="'.$type.'">$VALUE</td>',$row['Field']));
