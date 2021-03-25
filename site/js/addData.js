@@ -48,8 +48,10 @@ class RowData{
             a.preventDefault();
             this.expand();
         });
+        if(this.opacity.querySelectorAll("td").length!=1){
+            this.opacity.querySelector("td:last-child").lastElementChild.addEventListener('focus',()=>this.expand())
+        }
         this.opacity.querySelector("td").firstElementChild.addEventListener('focus',()=>this.expand())
-        this.opacity.querySelector("td:last-child").lastElementChild.addEventListener('focus',()=>this.expand())
     }
     
     collapse(){

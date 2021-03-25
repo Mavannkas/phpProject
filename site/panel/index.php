@@ -48,6 +48,9 @@ if(empty($_SESSION['user']) && (empty($_GET['lvl']) || ($_GET['lvl']!='login' &&
                         <hr>
                         <li><a href="./?lvl=register">Rejestracja</a></li>
                     <?php else:?>
+                        <?php if($_SESSION['admin']==1):?>
+                            <li><a href="./?lvl=admin">Panel Admina</a></li>
+                        <?php endif; ?>
                         <li><a href="./?lvl=edit">Edycja Konta</a></li>
                         <hr>
                         <li><a href="./?logout=1" class='logout'>Wyloguj się</a></li>
@@ -78,6 +81,9 @@ if(empty($_SESSION['user']) && (empty($_GET['lvl']) || ($_GET['lvl']!='login' &&
         <section>
             <?php 
                 if(!empty($_GET['lvl'])){
+                if($_GET['lvl']=="admin" && $_SESSION['admin']!=1){
+                    $_GET['lvl']="showTable";
+                }
                     if(file_exists('./'.$_GET['lvl'].'.php')){
                         require_once './'.$_GET['lvl'].'.php';
                     }else{

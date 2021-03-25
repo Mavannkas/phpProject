@@ -25,7 +25,7 @@ if(!$conn->connect_error){
   
   if (!empty($_POST['login']) && !empty($_POST['pass']))
   {
-    $data=getUserData($_POST['login']);
+    $data=getUserData(htmlspecialchars($_POST['login']));
     if($data && password_verify($_POST['pass'], $data['password_hash'])){
       $temp=array(
         'user'=>$data['login'],
@@ -38,7 +38,12 @@ if(!$conn->connect_error){
       foreach($temp as $key=>$value){
         $_SESSION[$key]=$value;
       }
-      
+      if($_SESSION['admin']==1){
+        $_SESSION['admin_data']=array(
+          'user'=>$data['login'],
+          'id'=>$data['user_id']
+        );
+      }
       addLogin($data['user_id']);
       $location='http://'.$_SERVER['HTTP_HOST'];
       header("Location: $location");

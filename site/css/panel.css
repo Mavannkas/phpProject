@@ -545,7 +545,8 @@ footer a:hover {
 }
 
 .profile-edit {
-  min-width: 700px;
+  width: 80%;
+  max-width: 700px;
   margin: 4em 0;
 }
 
@@ -1156,6 +1157,11 @@ footer a:hover {
   background-color: #cc1313;
 }
 
+.add-data .secondary-btn {
+  margin-right: 2em;
+  margin-left: 2em;
+}
+
 .add-data table {
   border: 1px solid black;
 }
@@ -1213,6 +1219,7 @@ footer a:hover {
 .add-data .form__body-container {
   max-width: 80vw;
   overflow-x: auto;
+  margin: 0 auto;
 }
 
 .add-data .form__body-container::-webkit-scrollbar {
@@ -1232,6 +1239,46 @@ footer a:hover {
 
 .add-data .form__body-container::-webkit-scrollbar-thumb:hover {
   background-color: #32a6bd;
+}
+
+.admin {
+  width: 90%;
+  max-width: 600px;
+}
+
+.admin .form__body > label {
+  margin-bottom: 1em;
+}
+
+.admin .form__body select {
+  margin-bottom: 1.5em;
+}
+
+.admin .form__body .filter-options {
+  margin: 1em 0 3em 0;
+}
+
+.admin .form__body .filter-options input[type="text"] {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 2em;
+}
+
+.admin .form__body .filter-options > label {
+  margin-bottom: 1em;
+  display: block;
+  text-align: center;
+}
+
+.admin .form__body .select-box > label {
+  display: block;
+  text-align: center;
+}
+
+.admin .form__body .select-box select {
+  display: block;
+  max-width: 300px;
+  margin: 1em auto 2em auto;
 }
 
 a.logout {
@@ -1264,7 +1311,7 @@ a.logout:hover {
   color: #2eb0ca;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .small-device {
     position: fixed;
     top: 0;

@@ -13,9 +13,12 @@ function getDescribe($name){
     }
 }
 
-    $server='pma.ct8.pl';
-    $user="m21358_miensny";
-    $password="1@Qwerty";
+    // $server='pma.ct8.pl';
+    // $user="m21358_miensny";
+    // $password="1@Qwerty";
+    $server='localhost';
+    $user="root";
+    $password="";
     $conn=@new mysqli($server, $user, $password);
 
     if($conn->connect_error){

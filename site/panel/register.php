@@ -11,11 +11,11 @@
                 <form action="./?lvl=register" method="POST"class="form__body">
                     <div class="form__input-box">
                         <label for="login">Login</label>
-                        <input type="text" id="login" name="login" required value="<?php if($bool) echo $login ?>">
+                        <input type="text" id="login" name="login" required value="<?php if(isset($bool) && $bool) echo $login ?>">
                     </div>
                     <div class="form__input-box">
                         <label for="mail">Email</label>
-                        <input type="email" id="mail" name="mail" required value="<?php if($bool) echo $mail ?>">
+                        <input type="email" id="mail" name="mail" required value="<?php if(isset($bool) && $bool) echo $mail ?>">
                     </div>
                     <div class="form__input-box">
                         <label for="password">Hasło</label>

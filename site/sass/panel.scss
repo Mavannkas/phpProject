@@ -35,7 +35,7 @@ body {
   text-align: center;
   font-size: 3rem;
 }
-table{
+table {
   margin: 0 auto;
 }
 .checkboxContainer {
@@ -365,7 +365,7 @@ main {
         bottom: 8px;
         font-size: 2.5rem;
         color: $main-color;
-        &:hover{
+        &:hover {
           cursor: auto;
         }
       }
@@ -403,7 +403,8 @@ footer {
 
 //acc-edit
 .profile-edit {
-  min-width: 700px;
+  width: 80%;
+  max-width: 700px;
   margin: 4em 0;
   @include myInput;
   hr {
@@ -673,7 +674,7 @@ footer {
             border-radius: 60px;
             background-color: #c5f5ff7c;
           }
-    
+
           &-thumb {
             border-radius: 60px;
             background-color: #32a6bdb2;
@@ -804,6 +805,10 @@ footer {
 .add-data {
   @include tableStyle;
   @include addBtn;
+  .secondary-btn{
+    margin-right: 2em;
+    margin-left: 2em;
+  }
   table {
     border: 1px solid black;
     th {
@@ -853,7 +858,7 @@ footer {
   .form__body-container {
     max-width: 80vw;
     overflow-x: auto;
-
+    margin: 0 auto;
     &::-webkit-scrollbar {
       height: 8px;
       // border: 1px solid black;
@@ -869,6 +874,46 @@ footer {
         &:hover {
           background-color: #32a6bd;
         }
+      }
+    }
+  }
+}
+
+.admin {
+  width: 90%;
+  max-width: 600px;
+  .form__body {
+    > label {
+      margin-bottom: 1em;
+    }
+    select {
+      margin-bottom: 1.5em;
+    }
+    .filter-options {
+      margin: 1em 0 3em 0;
+
+      input[type="text"] {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 2em;
+      }
+
+      > label {
+        margin-bottom: 1em;
+        display: block;
+        text-align: center;
+      }
+    }
+
+    .select-box {
+      > label {
+        display: block;
+        text-align: center;
+      }
+      select {
+        display: block;
+        max-width: 300px;
+        margin: 1em auto 2em auto;
       }
     }
   }
@@ -894,7 +939,7 @@ a.logout {
     color: $main-color;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .small-device {
     position: fixed;
     top: 0;
