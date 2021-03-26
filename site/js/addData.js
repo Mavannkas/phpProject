@@ -4,7 +4,7 @@ class RowData{
         this.theadTuples=document.querySelectorAll('th');
         this.tupleTemplates=[];
         for (const node of this.theadTuples) {
-            let start=node.getAttribute('data-start');
+            let start=node.getAttribute('data-start').toLocaleLowerCase();
             if(start.includes("current_timestamp")){
                 start=this.getCurrTimestamp();
             }
