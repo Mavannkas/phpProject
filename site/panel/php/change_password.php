@@ -28,7 +28,7 @@
             $hash=getHash();
             
             if($hash && password_verify($_POST['oldPass'],$hash)){
-                if(updateHash($_POST['pass'])){
+                if(updateHash(htmlspecialchars($_POST['pass']))){
                     echo "<p class='success--output'>Udało się zmienić hasło</p>";
                 }else{
                     echo "<p class='error--output'>Nie udało się zmienić hasła</p>";

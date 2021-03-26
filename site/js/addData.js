@@ -44,10 +44,10 @@ class RowData{
         this.opacity.style.opacity=.15;
         this.tbody.appendChild(this.opacity);
 
-        this.opacity.addEventListener('click',(a)=>{
+        this.opacity.addEventListener('mousedown',(a)=>{
             a.preventDefault();
             this.expand();
-        });
+        }, true);
         if(this.opacity.querySelectorAll("td").length!=1){
             this.opacity.querySelector("td:last-child").lastElementChild.addEventListener('focus',()=>this.expand())
         }
@@ -79,7 +79,7 @@ class RowData{
                 case "float":
                     myType={
                         type:"number",
-                        step:"0.000000000000001",
+                        step:"0.0001",
                         min:"-2147483648",
                         max:"2147483647"
                 }

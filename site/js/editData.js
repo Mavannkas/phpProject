@@ -93,7 +93,7 @@ class editTuple{
                 case "float":
                     myType={
                         type:"number",
-                        step:"0.000000000000001",
+                        step:"0.0001",
                         min:"-2147483648",
                         max:"2147483647"
                 }

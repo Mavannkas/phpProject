@@ -63,11 +63,11 @@ if(!$conn->connect_error){
   
   $bool=false;
   if(!empty($_POST['email'])){
-    $login=getUserData($_POST['email']);
+    $login=getUserData(htmlspecialchars($_POST['email']));
     $pass=randomPassword();
     if($login){
-      if(updateHash($_POST['email'], $pass)){
-        if(sendMail($_POST['email'], $login, $pass)){
+      if(updateHash(htmlspecialchars($_POST['email']), $pass)){
+        if(sendMail(htmlspecialchars($_POST['email']), $login, $pass)){
           echo "<p class='success--output'>Niedługo otrzymasz maila z nowym hasłem</p>";
           $bool=true;
         }

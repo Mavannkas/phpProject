@@ -53,7 +53,7 @@ function createRows($template, $arr){
     }
 }
 
-if(!$conn->connect_error){
+if(!$conn->connect_error && session_status()==2){
     if($query){
 
         $result=postToDB($query);

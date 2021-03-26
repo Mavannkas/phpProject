@@ -26,7 +26,7 @@ if(!$conn->connect_error){
   if (!empty($_POST['login']) && !empty($_POST['pass']))
   {
     $data=getUserData(htmlspecialchars($_POST['login']));
-    if($data && password_verify($_POST['pass'], $data['password_hash'])){
+    if($data && password_verify(htmlspecialchars($_POST['pass']), $data['password_hash'])){
       $temp=array(
         'user'=>$data['login'],
         'id'=>$data['user_id'],

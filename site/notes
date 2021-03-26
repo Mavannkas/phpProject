@@ -17,9 +17,4 @@ Usuwanie Konta
 
 Do zrobienia:
 
-Panel admina
-    zakodować php wysyłania usera nicku i maila (zmiany)
-
-usunąć execute z plikow
-
 htmlspecialchars tam gdzie dodajesz dane

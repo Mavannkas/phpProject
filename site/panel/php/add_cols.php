@@ -65,7 +65,7 @@ if(!$conn->connect_error){
 
             $lastColumn=getLastColumnName();
             if($lastColumn){
-                $sql=genSQL($input,$lastColumn);
+                $sql=htmlspecialchars(genSQL($input,$lastColumn));
                 $err=postToDB($sql);
                 if($err){
                     echo json_encode(array('message'=>$err));

@@ -15,7 +15,8 @@ if(!$conn->connect_error){
         $sql="INSERT INTO `user_$_SESSION[id]` (";
 
         foreach ($data as $key=>$value) {
-            $sql.="`$key`,";
+            $temp=htmlspecialchars($key);
+            $sql.="`$temp`,";
         }
         $sql=substr($sql,0,-1).") VALUES ";
         return $sql;
@@ -28,7 +29,8 @@ if(!$conn->connect_error){
         foreach($data as $element){
             $sql.="(";
             foreach($element as $value){
-                $sql.='"'.$value.'",';
+                $temp=htmlspecialchars($value);
+                $sql.='"'.$temp.'",';
             }
             $sql=substr($sql,0,-1)."),";
         }
@@ -42,6 +44,7 @@ if(!$conn->connect_error){
         if($input){
                 $sql=genSQLStart($input[0]);
                 $sql.=genSQL($input);
+
                 $err=postToDB($sql);
                 if($err){
                     echo json_encode(array('message'=>$err));

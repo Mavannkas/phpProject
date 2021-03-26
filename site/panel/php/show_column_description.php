@@ -3,7 +3,7 @@ if(file_exists ('php/db.php')){
     require_once "php/db.php";
     
     if(!$conn->connect_error){
-        $data=getDescribe($_POST['col'])->fetch_assoc();
+        $data=getDescribe(htmlspecialchars($_POST['col']))->fetch_assoc();
         if($data){
             
             $data['Default']=str_replace("'","",$data['Default']);

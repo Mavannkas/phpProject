@@ -43,7 +43,7 @@
                                 <label for="pass-2">Powtórz Hasło</label><input type="password" id="pass-2" required>
                             </div>
                             <div class="error"></div>
-                            <button type="button" class="secondary-btn">Zmień Hasło</button>
+                            <button type="button" class="secondary-btn" id='change-pass-btn'>Zmień Hasło</button>
                         </form>
                         <?php 
                             if(!empty($_POST['oldPass']) || !empty($_POST['pass'])){
@@ -70,6 +70,9 @@
                             ?>
                         </p>
                     </div>
+                    
+                    <?php if(isset($_SESSION['admin_data']) && $_SESSION['admin_data']['id']!=$_SESSION['id']):?>
+
                     <?php if(isset($_SESSION['active']) && $_SESSION['active']=="0"):?>
                     <div class="profile-edit__option">
                         <h4 class="profile-edit__option-header">Wyślij ponownie link aktywacyjny</h4>
@@ -102,7 +105,7 @@
                         </form>
                         <?php 
                             if(!empty($_POST['newMail'])){
-                                include_once 'php/change-mail.php';
+                                include_once 'php/change_mail.php';
                             }
                         ?>
                     </div>
@@ -119,10 +122,11 @@
                         </form>
                         <?php 
                             if(!empty($_POST['login'])){
-                                include_once 'php/change-login.php';
+                                include_once 'php/change_login.php';
                             }
                         ?>
                     </div>
+                    <?php endif;?>
 
 
                 </div>

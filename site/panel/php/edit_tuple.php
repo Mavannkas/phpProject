@@ -28,7 +28,7 @@ if(!$conn->connect_error){
             if(isset($input['id'])){
                 $id=$input['id'];
                 unset($input['id']);
-                $sql=genSQL($input, $id);
+                $sql=htmlspecialchars(genSQL($input, $id));
                 if(postToDB($sql)){
                     echo json_encode(array('message'=>$conn->error));
                 }else{

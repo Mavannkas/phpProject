@@ -1,5 +1,5 @@
 const editMain=()=>{
-    const btn = document.querySelector(".profile-edit__form--password button");
+    const btn = document.querySelector("#change-pass-btn");
     const password = document.querySelector("#pass-1");
     const passTest = document.querySelector("#pass-2");
     const err=document.querySelector(".error");

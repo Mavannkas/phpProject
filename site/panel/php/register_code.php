@@ -71,7 +71,7 @@ function sendMail($mail, $login, $hash){
   mail($mail, $sub, $message,implode("\r\n", $headers));
 }
 
-if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['password']))
+if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty(htmlspecialchars($_POST['password'])))
 {
   $login=htmlspecialchars($_POST['login']);
   $bool=0;
@@ -96,19 +96,19 @@ if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['password
     echo "Błędny email<br>";
   }
   
-  $uppercase = preg_match('@[A-Z]@', $_POST['password']);
-  $lowercase = preg_match('@[a-z]@', $_POST['password']);
-  $number    = preg_match('@[0-9]@', $_POST['password']);
-  $specialChars = preg_match('@[^\w]@', $_POST['password']);
+  $uppercase = preg_match('@[A-Z]@', htmlspecialchars($_POST['password']));
+  $lowercase = preg_match('@[a-z]@', htmlspecialchars($_POST['password']));
+  $number    = preg_match('@[0-9]@', htmlspecialchars($_POST['password']));
+  $specialChars = preg_match('@[^\w]@', htmlspecialchars($_POST['password']));
   
-  if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($_POST['password']) < 8){
+  if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen(htmlspecialchars($_POST['password'])) < 8){
     $bool++;
     echo "Hasło nie spełnia wymagań<br>";
   }
   
   if($bool==0){
     $reg_hash=md5(rand(0,1000));
-    if(createAccount($login, $mail, $_POST['password'],$reg_hash)){
+    if(createAccount($login, $mail, htmlspecialchars($_POST['password']),$reg_hash)){
       echo '<p style="color:green; text-align:center">Udało się utworzyć konto. Musisz je jeszcze aktywować, wiadomość została wysłana na <b>'.$mail.'</b></p>';
       createDB(getID($login));
       sendMail($mail, $login, $reg_hash);

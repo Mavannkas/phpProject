@@ -19,6 +19,7 @@
                 if(!empty($_POST['col'])){
                     if(!empty($_POST['delete'])){
                         $conn->select_db('m21358_makedb_user');
+                        $_POST['col']=htmlspecialchars($_POST['col']);
                         $sql="ALTER TABLE user_$_SESSION[id] DROP `$_POST[col]`";
                         $result=$conn->query($sql);
                         if($result){

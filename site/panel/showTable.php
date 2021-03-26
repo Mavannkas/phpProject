@@ -28,7 +28,7 @@
                                     $query="select * from user_$_SESSION[id]";
                                     $sourceQuery="";
                                 }else{
-                                    $query=htmlspecialchars($_GET['query']);
+                                    $query=($_GET['query']);
                                     $sourceQuery=trim($query);
                                     $query=str_replace('$table', "user_$_SESSION[id]",trim($query), $count);
                                     if($count!=1){

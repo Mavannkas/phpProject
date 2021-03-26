@@ -34,12 +34,12 @@
 if(isset($conn) && !$conn->connect_error){
     $_POST['isNull']=!empty($_POST['isNull'])?1:0;
     $data=array(
-        'type'=>$_POST['type'],
-        'name'=>$_POST['columnName'],
-        'null'=>$_POST['isNull'],
-        'value'=>$_POST['startValue']
+        'type'=>htmlspecialchars($_POST['type']),
+        'name'=>htmlspecialchars($_POST['columnName']),
+        'null'=>htmlspecialchars($_POST['isNull']),
+        'value'=>htmlspecialchars($_POST['startValue'])
     );
-    $sql=genSQL($data,$_POST['oldName']);
+    $sql=genSQL($data,htmlspecialchars($_POST['oldName']));
     if(sendSQLToDB($sql)){
         $conn->select_db("m21358_makedb");
         $conn->query("INSERT INTO db_change(user_id_fk) VALUES ($_SESSION[id])");
